@@ -12,7 +12,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Hello World Maia m</title>
+  <title>Hello World Maia </title>
 </head>
 <body>
 <s:form action="HelloWorld" >
