@@ -19,5 +19,9 @@
   <s:textfield name="userName" label="User Name" />
   <s:submit />
 </s:form>
+
+
+<a href="/user.action">CIAO</a>
+
 </body>
 </html>

@@ -8,5 +8,12 @@
             <result name="SUCCESS">/success.jsp</result>
             <result name="error">/error.jsp</result>
         </action>
+
+
+        <action name ="user" class="it.uniclam.action.TestAction">
+        <result name="SUCCESS">/user.jsp</result>
+
+        </action>
+
     </package>
 </struts>
