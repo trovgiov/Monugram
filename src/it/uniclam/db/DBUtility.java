@@ -43,8 +43,7 @@ public class DBUtility {
             dbConnection = (Connection) DriverManager.getConnection(URL, USER,
                     PASSWORD);
 
-            System.out.println("DB CONNECTED WITH USER : "+USER);
-            return dbConnection;
+             return dbConnection;
 
         } catch (SQLException e) {
 
