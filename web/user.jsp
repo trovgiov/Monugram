@@ -17,6 +17,7 @@
     <s:property value="name"/>
     <s:property value="surname"/>
     <br/>
+    <br>
   </s:iterator>
 </body>
 </html>
