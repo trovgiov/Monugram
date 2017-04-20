@@ -10,10 +10,13 @@
         </action>
 
 
-        <action name ="user" class="it.uniclam.action.TestAction">
-        <result name="SUCCESS">/user.jsp</result>
 
+        <action name="register" class="it.uniclam.action.RegisterAction">
+            <result name="success">/register-success.jsp</result>
+            <result name="error">/register-error.jsp</result>
         </action>
+
+
 
     </package>
 </struts>
