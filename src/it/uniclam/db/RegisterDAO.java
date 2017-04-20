@@ -15,6 +15,8 @@ public class RegisterDAO {
         int status = 0;
 
         try {
+
+            //Connessione al db
             Connection con = DBUtility.getDBConnection();
             PreparedStatement stmt = con
                     .prepareStatement("insert into User (nome,cognome,email,password, point) values(?,?,?,?,3)");
