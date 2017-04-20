@@ -9,7 +9,6 @@ import java.sql.SQLException;
 
 /**
  * Connessione DB con JDBC driver
- * @author GiovanniTrovini
  *
  */
 public class DBUtility {

@@ -8,13 +8,15 @@
     <title>User</title>
 </head>
 <body>
-<h1>Gli utenti nel db sono :</h1>
+<h1>Gli utenti nel db sono:</h1>
+<br/>
 
 <s:iterator value="lista" status="itstatus">
 
     <s:property value="iduser"/>
     <s:property value="name"/>
     <s:property value="surname"/>
+    <br/>
   </s:iterator>
 </body>
 </html>
