@@ -23,7 +23,7 @@
     <s:textfield name="nome" label="Name"></s:textfield>
     <s:textfield name="cognome" label="Surname"></s:textfield>
     <s:textfield name="email" label="Email"></s:textfield>
-    <s:textfield name="password" label="password"></s:textfield>
+    <s:password name="password" label="password"></s:password>
 
 
 

@@ -16,7 +16,15 @@
             <result name="error">/register-error.jsp</result>
         </action>
 
+        <action name="login">
+            <result>/login.jsp</result>
+        </action>
 
 
+        <action name="loginprocess" class="it.uniclam.action.Login">
+            <result name="success">/loginsuccess.jsp</result>
+            <result name="error">/register-error.jsp</result>
+
+        </action>
     </package>
 </struts>
