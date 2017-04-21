@@ -1,33 +1,64 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: GiovanniTrovini
-  Date: 21/04/17
-  Time: 11:16
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Login.jsp</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monugram - Sign In</title>
 
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
 
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
 <body>
-
-<s:form action="loginprocess">
-    <header>Login</header>
-    <s:textfield name="email" label="Email"></s:textfield>
-    <s:password name="password" label="Password"></s:password>
-    <s:submit value="login"></s:submit>
-</s:form>
-
-
+<s:div class="container">
+    <s:div class="top">
+        <h1 id="title" class="hidden"><span id="logo">Monu<span>GRAM</span></span></h1>
+    </s:div>
+    <s:div class="login-box animated fadeInUp">
+        <s:div class="box-header">
+            <h2>Log In</h2>
+        </s:div>
+            <s:form action="loginprocess">
+                <s:textfield name="email" label="Email"></s:textfield>
+                <br/>
+                <s:password name="password" label="Password"></s:password>
+                <br/>
+                <s:submit value="Login"></s:submit>
+                <br/>
+            </s:form>
+        <a href="#"><p class="small">Forgot your password?</p></a>
+</s:div>
+</s:div>
 </body>
+
+<script>
+    $(document).ready(function () {
+        $('#logo').addClass('animated fadeInDown');
+        $("input:text:visible:first").focus();
+    });
+    $('#username').focus(function() {
+        $('label[for="username"]').addClass('selected');
+    });
+    $('#username').blur(function() {
+        $('label[for="username"]').removeClass('selected');
+    });
+    $('#password').focus(function() {
+        $('label[for="password"]').addClass('selected');
+    });
+    $('#password').blur(function() {
+        $('label[for="password"]').removeClass('selected');
+    });
+</script>
+
 </html>
