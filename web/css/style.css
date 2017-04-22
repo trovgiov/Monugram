@@ -1,4 +1,31 @@
 body {
+  margin: 0;
+  background: #000; 
+}
+
+/* THIS CODE IS FOR BACKGROUND VIDEO! */
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+ background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+  background-size: cover;
+  transition: 1s opacity;
+}
+.stopfade { 
+   opacity: .5;
+}
+/* END CODE FOR BACKGROUND VIDEO */
+
+/* NORMAL IMAGE CLASS */
+/*
+body {
 	background: url("../images/photo_bg.jpg") no-repeat center center fixed;
 	background-size: cover;
 	font-size: 16px;
@@ -7,6 +34,7 @@ body {
 	margin: 0;
 	color: #666;
 }
+*/
 
 /* Typography */
 h1#title {
@@ -34,6 +62,14 @@ h2 {
 	letter-spacing: 1px;
 	font-size: 1.4em;
 	line-height: 2.8em;
+}
+
+h3 {
+	text-align: center;
+	color: white;
+	font-weight: 600;
+	letter-spacing: 1px;
+	font-size: 1.4em;
 }
 
 a {
@@ -64,6 +100,13 @@ p.small {
 	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.6) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(to bottom,  rgba(0,0,0,0.6) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+}
+
+.forms {
+	text-align:center;
+	margin: 10px auto;
+	position: relative;
+
 }
 
 .login-box {

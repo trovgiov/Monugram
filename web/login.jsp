@@ -25,25 +25,34 @@
  </head>
 
 <body>
+<!-- ATTENTION! THIS CODE IS FOR BACKGROUND VIDEO! -->
+    <video poster="../images/photo_bg.jpg" id="bgvid" playsinline autoplay muted loop>
+    <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+    <source src="../images/videobg_hd.mp4" type="video/mp4">
+    </video>
+<!-- ATTENTION! THIS CODE IS FOR BACKGROUND VIDEO! -->
+
+
 <s:div class="container">
     <s:div class="top">
-        <h1 id="title" class="hidden"><span id="logo">Monu<span>GRAM</span></span></h1>
+        <h1 id="title" class="hidden"><span id="logo">Monu<span>GRAM</span></span></h1><br>
     </s:div>
+    <s:div><h3>The world at your fingertips!</h3></s:div>
     <s:div class="login-box animated fadeInUp">
         <s:div class="box-header">
             <h2>Log In</h2>
-
         </s:div>
-            <s:form action="loginprocess">
-                <s:textfield name="email" label="Email"></s:textfield>
-                <br/>
-                <s:password name="password" label="Password"></s:password>
-                <br/>
+            <s:form action="loginprocess" class="forms">
+                <s:label value="Email"></s:label>
+                <s:textfield name="email"></s:textfield>
+
+                <s:label value="Password"></s:label>
+                <s:password name="password"></s:password>
+
                 <s:submit value="Login"></s:submit>
-                <br/>
             </s:form>
 
-        <a href="./facebook.html"><p class="small">LOGIN WITH FACEBOOK</p></a>
+        <a href="./facebook.html"><img src="../images/facebook-login-blue.png" alt="Facebook Login" style="width:152px;height:42px;border:0;"></a>
 
         <a href="#"><p class="small">Forgot your password?</p></a>
 </s:div>
