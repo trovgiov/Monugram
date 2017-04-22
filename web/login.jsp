@@ -18,7 +18,11 @@
     <link rel="stylesheet" href="css/style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-</head>
+
+
+
+    <script type = "text/javascript" src="try.js"></script>
+ </head>
 
 <body>
 <s:div class="container">
@@ -28,6 +32,7 @@
     <s:div class="login-box animated fadeInUp">
         <s:div class="box-header">
             <h2>Log In</h2>
+
         </s:div>
             <s:form action="loginprocess">
                 <s:textfield name="email" label="Email"></s:textfield>
@@ -37,6 +42,9 @@
                 <s:submit value="Login"></s:submit>
                 <br/>
             </s:form>
+
+        <a href="./facebook.html"><p class="small">LOGIN WITH FACEBOOK</p></a>
+
         <a href="#"><p class="small">Forgot your password?</p></a>
 </s:div>
 </s:div>
