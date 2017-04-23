@@ -20,6 +20,15 @@ public  class Login implements SessionAware {
     private String email,password;
 
     private String nome;
+    private String cognome;
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
 
     public String getNome() {
         return nome;
@@ -86,9 +95,13 @@ public  class Login implements SessionAware {
                     u=new User(rs2.getInt("idUser"),rs2.getString("nome"),rs2.getString("cognome"),email,password,rs2.getInt("point"));
 
                 }
+
                 nome=u.getNome();
-                System.out.println("nome " +u.getNome());
-                // chiusura rs2 e stmt2
+                cognome=u.getCognome();
+                email=u.getEmail();
+
+
+                 // chiusura rs2 e stmt2
                 rs2.close();
                 stmt2.close();
                 // chiusura rs e stmt

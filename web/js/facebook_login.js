@@ -24,8 +24,6 @@ window.fbAsyncInit = function() {
 
 
 
-
-
                 //se mi trovo, qui sono connesso su facebook e quindi mi deve reindirizzare nella home con i parametri
                 // il link va creato con ?
 
@@ -70,6 +68,7 @@ function login(){
 
 
 
+
         }
         else if (response.status=='not_authorized'){
             document.getElementById('status').innerHTML = 'We are not logged in';
@@ -85,8 +84,15 @@ function login(){
 
 function getInfo(){
 
-    FB.api('/me','GET', {fields: 'first_name,last_name,name,id'}, function(response){
+    FB.api('/me','GET', {fields: 'first_name,last_name,name,id,email'}, function(response){
          document.getElementById('status').innerHTML=response.first_name;
+
+
+
+
+        window.location.href = "/Monugram/facebook_login.action?nome="+response.first_name+"&cognome="+response.last_name+"&email="+response.email;
+
+
 
     });
 }

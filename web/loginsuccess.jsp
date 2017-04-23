@@ -12,7 +12,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>ruggero</title>
+    <title> </title>
 
 
 
@@ -21,10 +21,10 @@
 
 <body>
 
-NOME RUGGERO IL COGLIONE
-<s:property value="nome"/>
+Utente Loggato :  Nome : <s:property value="nome"/>  , Cognome : <s:property value="cognome"/> , Email : <s:property value="email"/>
 
 
+<p>Capture Image: <input type="file" accept="image/*" id="capture" capture="camera">
 
 
 

@@ -62,7 +62,7 @@ public class RegisterDAO {
                 //Connessione al db
                 Connection con = DBUtility.getDBConnection();
                 PreparedStatement stmt = con
-                        .prepareStatement("insert into User (nome,cognome,email,password, point) values(?,?,?,?,3)");
+                        .prepareStatement("insert into User (nome,cognome,email,password, point,login_type) values(?,?,?,?,3,'app')");
 
                 stmt.setString(1, r.getNome());
                 stmt.setString(2, r.getCognome());

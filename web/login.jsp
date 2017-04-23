@@ -21,7 +21,7 @@
 
 
 
-    <script type = "text/javascript" src="try.js"></script>
+    <script type = "text/javascript" src="js/facebook_login.js"></script>
  </head>
 
 <body>

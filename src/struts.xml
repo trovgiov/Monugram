@@ -26,5 +26,12 @@
             <result name="error">/register-error.jsp</result>
 
         </action>
+
+
+        <action name="facebook_login" class="it.uniclam.action.FacebookLogin">
+            <result name="SUCCESS">/loginsuccess.jsp</result>
+
+        </action>
+
     </package>
 </struts>
