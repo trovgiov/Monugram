@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monugram - Sign In</title>
+    <title>Monugram - Register</title>
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
@@ -55,6 +55,7 @@
         <a href="./facebook.html"><img src="../images/facebook-login-blue.png" alt="Facebook Login" style="width:152px;height:42px;border:0;"></a>
 
         <a href="#"><p class="small">Forgot your password?</p></a>
+        <a href="./register.jsp"><p class="small">Are you not registered? LOG ON!</p></a>
 </s:div>
 </s:div>
 </body>
