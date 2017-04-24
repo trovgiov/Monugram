@@ -104,7 +104,7 @@ public class FacebookLogin extends ActionSupport {
         }
 
 
-        // Acquisisco l'utente e creo il bean  // Si può evitare ??? 
+        // Acquisisco l'utente e creo il bean  // Si può evitare ???
 
         try {
 

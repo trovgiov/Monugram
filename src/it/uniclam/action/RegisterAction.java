@@ -63,6 +63,7 @@ public class RegisterAction {
         if(i>0){
             return "success";
         }
+
         return "error";
     }
 }

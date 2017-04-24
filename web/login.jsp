@@ -49,7 +49,7 @@
                 <s:label value="Password"></s:label>
                 <s:password name="password"></s:password>
 
-                <s:submit value="Login"></s:submit>
+                  <s:submit value="Login"></s:submit>
             </s:form>
 
         <a href="./facebook.html"><img src="../images/facebook-login-blue.png" alt="Facebook Login" style="width:152px;height:42px;border:0;"></a>

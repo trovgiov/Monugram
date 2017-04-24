@@ -15,7 +15,7 @@ window.fbAsyncInit = function() {
 
     FB.getLoginStatus(function (response) {
 
-            if (response.status=='connected'){
+             if (response.status=='connected'){
 
 
                 document.getElementById('status').innerHTML = 'We are Connected';
@@ -88,9 +88,11 @@ function getInfo(){
          document.getElementById('status').innerHTML=response.first_name;
 
 
+        //var undefined = "undefined";
 
 
-        window.location.href = "/Monugram/facebook_login.action?nome="+response.first_name+"&cognome="+response.last_name+"&email="+response.email;
+
+             window.location.href = "/Monugram/facebook_login.action?nome=" + response.first_name + "&cognome=" + response.last_name + "&email=" + response.email;
 
 
 

@@ -54,7 +54,16 @@ public class RegisterDAO {
         boolean check = checkUser(r);
         //System.out.println(".............."+check);
 
-        if(check == false)
+
+        boolean checkemail=false;
+
+        //controllo
+
+        // se vero check mail = true
+        //altrimenti status = -1;
+
+
+        if(check == false && checkemail==true)
         {
             // Inserimento Utente solo se check uguale a false
             try {
