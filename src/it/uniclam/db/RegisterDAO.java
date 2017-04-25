@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+
 /**
  * Created by GiovanniTrovini on 20/04/17.
  */
@@ -47,6 +48,34 @@ public class RegisterDAO {
         return end;
     }
 
+    /* CONTROLLO SE L'UTENTE INSERISCE CORRETTAMENTE L'INDIRIZZO EMAIL:
+        -> Restituisce TRUE se l'email è corretta
+                       FALSE altrimenti
+     */
+    public static boolean isValidEmail(String email) {
+        boolean stricterFilter = true;
+        String stricterFilterString = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+        String laxString = ".+@.+\\.[A-Za-z]{2}[A-Za-z]*";
+        String emailRegex = stricterFilter ? stricterFilterString : laxString;
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(emailRegex);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
+    }
+
+    /* CONTROLLO SE L'UTENTE INSERISCE LA PASSWORD:
+        -> Restituisce TRUE se c'è almeno un carattere
+                       FALSE altrimenti
+     */
+    public static boolean passCheck(String password)
+    {
+        boolean isPasswordOk = true;
+        if (password.length()==0)
+            isPasswordOk=false;
+        else
+            isPasswordOk=true;
+        return isPasswordOk;
+    }
+
     public static int save(RegisterAction r)
     {
 
@@ -54,16 +83,16 @@ public class RegisterDAO {
         boolean check = checkUser(r);
         //System.out.println(".............."+check);
 
+        boolean checkemail=isValidEmail(r.getEmail());
+        //System.out.println("STATUS EMAIL "+checkemail);
 
-        boolean checkemail=false;
+        boolean checkPassword=passCheck(r.getPassword());
+        //System.out.println("STATUS PASSWORD "+checkPassword);
 
-        //controllo
-
-        // se vero check mail = true
-        //altrimenti status = -1;
-
-
-        if(check == false && checkemail==true)
+        /* Controllo PRE-QUERY:
+            -> Controlla se l'utente è già presente nel DB, se l'email è corretta e se c'è la password
+         */
+        if(check == false && checkemail==true && checkPassword==true)
         {
             // Inserimento Utente solo se check uguale a false
             try {
