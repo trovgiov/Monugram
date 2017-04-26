@@ -60,10 +60,13 @@ public class RegisterAction {
     //setters and getters
     public String execute(){
         int i= RegisterDAO.save(this);
-        if(i>0){
+        if(i==1){
             return "success";
         }
 
+        else if(i==2){
+            return "insert_error";
+        }
         return "error";
     }
 }

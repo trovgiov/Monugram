@@ -6,14 +6,15 @@
     <package name="default" extends="struts-default">
         <action name="HelloWorld" class="it.uniclam.HelloWorld">
             <result name="SUCCESS">/success.jsp</result>
-            <result name="error">/error.jsp</result>
+            <result name="error">/error/error.jsp</result>
         </action>
 
 
 
         <action name="register" class="it.uniclam.action.RegisterAction">
             <result name="success">/register-success.jsp</result>
-            <result name="error">/register-error.jsp</result>
+            <result name="error">/error/register-error.jsp</result>
+            <result name="insert_error">/error/register-error_mail.jsp</result>
         </action>
 
         <action name="login">
@@ -23,13 +24,19 @@
 
         <action name="loginprocess" class="it.uniclam.action.Login">
             <result name="success">/loginsuccess.jsp</result>
-            <result name="error">/register-error.jsp</result>
+            <result name="error">/error/register-error.jsp</result>
 
         </action>
 
 
         <action name="facebook_login" class="it.uniclam.action.FacebookLogin">
             <result name="SUCCESS">/loginsuccess.jsp</result>
+            <result name="no_mail">/no_email.jsp</result>
+        </action>
+
+        <action name="register_mail" class="it.uniclam.action.RegisterMail">
+            <result name="SUCCESS">/loginsuccess.jsp</result>
+
 
         </action>
 

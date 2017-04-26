@@ -31,6 +31,7 @@ public class RegisterDAO {
 
             ResultSet rs2 = stm2.executeQuery(sql);
 
+
             while (rs2.next()) {
                 tst = rs2.getString("email");
                 if (r.getEmail().equals(tst)) {
@@ -68,7 +69,7 @@ public class RegisterDAO {
      */
     public static boolean passCheck(String password)
     {
-        boolean isPasswordOk = true;
+        boolean isPasswordOk = false;
         if (password.length()==0)
             isPasswordOk=false;
         else
@@ -92,6 +93,13 @@ public class RegisterDAO {
         /* Controllo PRE-QUERY:
             -> Controlla se l'utente è già presente nel DB, se l'email è corretta e se c'è la password
          */
+
+
+
+        // Status = 0 Falso   // utente non salvato
+        // Status = 1 Vero
+        // Status = 2 Email o Password errata
+
         if(check == false && checkemail==true && checkPassword==true)
         {
             // Inserimento Utente solo se check uguale a false
@@ -114,6 +122,11 @@ public class RegisterDAO {
             } catch (Exception e) {
             }
         }
+        else {
+
+            status =2;
+        }
+        System.out.println("Status "+status);
         return status;
     }
 }

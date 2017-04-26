@@ -84,15 +84,15 @@ function login(){
 
 function getInfo(){
 
-    FB.api('/me','GET', {fields: 'first_name,last_name,name,id,email'}, function(response){
-         document.getElementById('status').innerHTML=response.first_name;
-
-
-        //var undefined = "undefined";
+    FB.api('/me','GET', {fields: 'first_name,last_name,email,id'}, function(response){
+         document.getElementById('status').innerHTML=response.id;
 
 
 
-             window.location.href = "/Monugram/facebook_login.action?nome=" + response.first_name + "&cognome=" + response.last_name + "&email=" + response.email;
+
+
+
+                 window.location.href = "/Monugram/facebook_login.action?nome=" + response.first_name + "&cognome=" + response.last_name + "&email=" + response.email;
 
 
 

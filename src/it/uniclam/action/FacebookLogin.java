@@ -51,99 +51,152 @@ public class FacebookLogin extends ActionSupport {
 
         // Acquisisco tutte le persone che si sono collegate all'app con facebook
 
+        System.out.println(email);
 
-        try {
-
-            Connection con = DBUtility.getDBConnection();
-
-            String sql1;
-
-            String login_type;
-            login_type = "facebook";
-            sql1 = "SELECT nome,cognome,email from User where nome='" + nome + "'and cognome='" + cognome + "'and email='" + email + "'and login_type='" + login_type + "'";
-
-            java.sql.Statement stmt2 = con.createStatement();
-
-            ResultSet rs2 = stmt2.executeQuery(sql1);
-
-            //controllo se l'utente esiste
-            // se check = false -> utente non esiste
-            //se check = true -> utente esiste
-
-            boolean check = rs2.next();
-            int status = 0;
-
-            if (check == false) {
-                System.out.println("Utente Non esistente");
-
-                PreparedStatement stmt = con
-                        .prepareStatement("insert into User (nome,cognome,email,password, point,login_type) values(?,?,?,'encrypted',3,'facebook')");
-
-                stmt.setString(1, nome);
-                stmt.setString(2, cognome);
-                stmt.setString(3, email);
+        if (email.equals("undefined")){
 
 
-                status = stmt.executeUpdate(); // execute query
+            email="undefined";
+
+            try {
+
+                Connection con3 = DBUtility.getDBConnection();
+
+                String sql3;
+
+                sql3 = "SELECT email from User where nome='" + nome + "' and cognome= '" + cognome + "'";
+
+                java.sql.Statement stmt3 = con3.createStatement();
+
+                ResultSet rs3 = stmt3.executeQuery(sql3);
+
+                Boolean check = false;
+
+                check=rs3.next();
+
+                System.out.println("CHECK " + check);
 
 
-                // devo inserirlo
+                if(check){
 
-            } else {
-                // non devo inserirlo e creo la session
 
-                System.out.println("Utente Esistente");
+                    email =rs3.getString("email");
 
+
+
+
+
+
+                        return "SUCCESS";
+                }
+
+
+                else if(!check){
+                    return "no_mail";
+
+                }
+
+                //controllo se l'utente esiste
+                // se check = false -> utente non esiste
+                //se check = true -> utente esiste
+
+
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
 
 
-            stmt2.close();
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
 
-        // Acquisisco l'utente e creo il bean  // Si può evitare ???
+         }
+        else {
+            try {
 
-        try {
+                Connection con = DBUtility.getDBConnection();
 
-            Connection con2 = DBUtility.getDBConnection();
+                String sql1;
 
-            String sql2;
+                String login_type;
+                login_type = "facebook";
+                sql1 = "SELECT nome,cognome,email from User where nome='" + nome + "'and cognome='" + cognome + "'and email='" + email + "'and login_type='" + login_type + "'";
 
-             sql2 = "SELECT * from User where email='" + email + "'";
+                java.sql.Statement stmt2 = con.createStatement();
 
-            java.sql.Statement stmt2 = con2.createStatement();
+                ResultSet rs2 = stmt2.executeQuery(sql1);
 
-            ResultSet rs2 = stmt2.executeQuery(sql2);
+                //controllo se l'utente esiste
+                // se check = false -> utente non esiste
+                //se check = true -> utente esiste
 
-            while(rs2.next()){
+                boolean check = rs2.next();
+                int status = 0;
 
-               User u=new User(rs2.getInt("idUser"),rs2.getString("nome"),rs2.getString("cognome"),email,"encrypted",rs2.getInt("point"));
+                if (check == false) {
+                    System.out.println("Utente Non esistente");
+
+                    PreparedStatement stmt = con
+                            .prepareStatement("insert into User (nome,cognome,email,password, point,login_type) values(?,?,?,'encrypted',3,'facebook')");
+
+                    stmt.setString(1, nome);
+                    stmt.setString(2, cognome);
+                    stmt.setString(3, email);
 
 
-                System.out.println("Utente Loggato: Nome "+u.getNome()+"Cognome "+u.getCognome()+"Email: "+getEmail());
+                    status = stmt.executeUpdate(); // execute query
+
+
+                    // devo inserirlo
+
+                } else {
+                    // non devo inserirlo e creo la session
+
+                    System.out.println("Utente Esistente");
+
+                }
+
+
+                stmt2.close();
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
 
-            //controllo se l'utente esiste
-            // se check = false -> utente non esiste
-            //se check = true -> utente esiste
+
+            // Acquisisco l'utente e creo il bean  // Si può evitare ???
+
+            try {
+
+                Connection con2 = DBUtility.getDBConnection();
+
+                String sql2;
+
+                sql2 = "SELECT * from User where email='" + email + "'";
+
+                java.sql.Statement stmt2 = con2.createStatement();
+
+                ResultSet rs2 = stmt2.executeQuery(sql2);
+
+                while (rs2.next()) {
+
+                    User u = new User(rs2.getInt("idUser"), rs2.getString("nome"), rs2.getString("cognome"), email, "encrypted", rs2.getInt("point"));
 
 
+                    System.out.println("Utente Loggato: Nome " + u.getNome() + "Cognome " + u.getCognome() + "Email: " + getEmail());
+                }
+
+                //controllo se l'utente esiste
+                // se check = false -> utente non esiste
+                //se check = true -> utente esiste
 
 
-            stmt2.close();
-            con2.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+                stmt2.close();
+                con2.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+
         }
-
-
-
-
-
-
         return "SUCCESS";
 
     }
