@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Enifix
+  Date: 26/04/2017
+  Time: 15:18
+  To change this template use File | Settings | File Templates.
+--%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,11 +19,6 @@
         $( function() {
             $( "#dialog" ).dialog();
         } );
-
-        $( function ()
-        {
-            window.open("", "Results", "resizable,height=200,width=200");
-        })
     </script>
 </head>
 <body>

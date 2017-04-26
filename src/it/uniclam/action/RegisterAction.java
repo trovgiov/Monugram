@@ -1,12 +1,13 @@
 package it.uniclam.action;
 
+import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.RegisterDAO;
 
 /**
  * Created by GiovanniTrovini on 20/04/17.
  */
 
-public class RegisterAction {
+public class RegisterAction extends ActionSupport {
     private String nome;
     private String cognome;
     private String email;
@@ -58,15 +59,25 @@ public class RegisterAction {
     }
 
     //setters and getters
-    public String execute(){
-        int i= RegisterDAO.save(this);
-        if(i==1){
+    public String execute() {
+        int i = RegisterDAO.save(this);
+        if (i == 1) {
             return "success";
-        }
-
-        else if(i==2){
+        } else if (i == 2) {
             return "insert_error";
         }
         return "error";
     }
+/*    @Override
+    public void validate() {
+        if(null == email || "".equals(email)){
+            addActionError("Name is required!!");
+        }else{
+            addActionMessage("Hello " + email);
+        }
+    }
+    http://keylesson.com/index.php/2015/04/16/struts2-actionerror-actionmessage-1809/
+    */
+
+
 }
