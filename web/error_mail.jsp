@@ -1,20 +1,35 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: Enifix
-  Date: 27/04/2017
-  Time: 11:29
-  To change this template use File | Settings | File Templates.
+    Document   : message
+    Created on : Sep 18, 2012, 7:31:39 PM
+    Author     : Sudhanshu
 --%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib uri="/struts-tags" prefix="s" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Email Error</title>
-</head>
-<body>
-There is a problem sending your email to <s:property value="to"/>.
-</body>
+    <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>Result</title>
+            <style>
+              .msg1
+    {
+                       background-color: cornsilk;
+                       font-family: verdana;
+                       font-weight: lighter;
+                       margin:0 25% 0 25%;
+    }
+            </style>
+        </head>
+    <body>
+        <div class="msg1">
+                <s:a href="back">Back</s:a>
+                <%
+                if(session.getAttribute("sms")!=null){
+                %>
+                <s:property value="#session.sms"/>
+                <%
+                }
+                %>
+           
+        </body>
 </html>

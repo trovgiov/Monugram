@@ -17,7 +17,7 @@
 <body>
 
 <s:div id="dialog" title="Basic dialog">
-    <p>ERROREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE</p>
+    <p>ERROREEEEEEEEEEEEEEEEEEEEEEE</p>
 </s:div>
 
 

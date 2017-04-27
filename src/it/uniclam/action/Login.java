@@ -5,18 +5,21 @@ package it.uniclam.action;
  */
 
 
+import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
 import it.uniclam.db.LoginDAO;
 import it.uniclam.model.User;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Map;
 
 
-public  class Login implements SessionAware {
+public  class Login extends ActionSupport implements SessionAware  {
     private String email,password;
 
     private String nome;
@@ -117,7 +120,7 @@ public  class Login implements SessionAware {
             return "success";
         }
         else{
-            return "error";
+            return "log_error";
         }
     }
 
@@ -144,5 +147,30 @@ public  class Login implements SessionAware {
     @Override
     public void setSession(Map<String, Object> map) {
 
+    }
+
+    @Override
+    public void validate(){
+
+        if(this.getEmail().isEmpty()){
+            addFieldError("email", "Email Field cannot be left blank!!!");
+        }
+        else if((!getEmail().endsWith("@gmail.com"))&&(!getEmail().endsWith("@live.com"))&&(!getEmail().endsWith("@hotmail.com"))){
+            addFieldError("email", "Email ID not valid!!!");
+        }
+        /*else if(from.isEmpty()){
+            addFieldError("to", "Email Field cannot be left blank!!!");
+        }
+        else  if((!from.endsWith("@gmail.com"))&&(!from.endsWith("@live.com"))&&(!from.endsWith("@hotmail.com"))){
+            addFieldError("from", "Email ID not valid!!!");
+        }*/
+        else if(password.contentEquals(getPassword()))
+        {
+            addFieldError("password", "Please enter your password!!!");
+        }
+
+        /*else if(message.isEmpty()){
+            addFieldError("message", "Please Enter your message!!!");
+        }*/
     }
 }

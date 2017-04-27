@@ -1,9 +1,8 @@
 <!DOCTYPE struts PUBLIC
         "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.0.dtd">
-
 <struts>
-    <package name="default" extends="struts-default">
+    <package name="default" extends="struts-default" namespace="/">
         <action name="HelloWorld" class="it.uniclam.HelloWorld">
             <result name="SUCCESS">/success.jsp</result>
             <result name="error">/error/error.jsp</result>
@@ -24,8 +23,8 @@
 
         <action name="loginprocess" class="it.uniclam.action.Login">
             <result name="success">/loginsuccess.jsp</result>
-            <result name="error">/error/register-error.jsp</result>
-
+            <result name="log_error">login.jsp</result>
+            <result name="input">login.jsp</result>
         </action>
 
 
@@ -36,14 +35,16 @@
 
         <action name="register_mail" class="it.uniclam.action.RegisterMail">
             <result name="SUCCESS">/loginsuccess.jsp</result>
-
         </action>
 
-        <action name="emailer"
-                class="it.uniclam.action.MailSender"
-                method="execute">
-                <result name="success">/success_mail.jsp</result>
-                <result name="error">/error_mail.jsp</result>
+        <action name="sendemail" class="it.uniclam.action.SendMail">
+            <result name="success">success_mail.jsp</result>
+            <result name="input">mail.jsp</result>
+            <result name="error">error_mail.jsp</result>
+        </action>
+
+        <action name="back" class="it.uniclam.action.Back">
+            <result>mail.jsp</result>
         </action>
 
     </package>

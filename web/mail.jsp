@@ -1,35 +1,55 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: Enifix
-  Date: 27/04/2017
-  Time: 11:27
-  To change this template use File | Settings | File Templates.
+
+    Document   : index
+
+    Created on : Sep 18, 2012, 4:36:50 PM
+
+Author     : Sudhanshu
+
 --%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+
+<%@taglib uri="/struts-tags" prefix="s" %>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+
+
 <html>
+
+
 <head>
-    <title>Email Form</title>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <title>Struts2Mail System</title>
+
+    <style>
+
+        .msg{
+            max-height: 200px;
+            min-height: 200px;
+            max-width: 500px;
+            min-width: 500px;
+            background-color: aqua;
+        }
+        #text{
+            font-family: verdana;
+            font-size: smaller;
+            font-weight: lighter;
+            margin:0 25% 0 25%;
+        }
+    </style>
 </head>
 <body>
-<em>The form below uses Google's SMTP server.
-    So you need to enter a gmail username and password
-</em>
-<form action="emailer" method="post">
-    <label for="from">From</label><br/>
-    <input type="text" name="from"/><br/>
-    <label for="password">Password</label><br/>
-    <input type="password" name="password"/><br/>
-    <label for="to">To</label><br/>
-    <input type="text" name="to"/><br/>
-    <label for="subject">Subject</label><br/>
-    <input type="text" name="subject"/><br/>
-    <label for="body">Body</label><br/>
-    <input type="text" name="body"/><br/>
-    <input type="submit" value="Send Email"/>
-</form>
+<div id="text">
+    <h1>My Mailing System</h1>
+    <s:form method="post" action="sendemail">
+        <s:textfield name="to" label="Your Email" maxLength="40" size="80" required="true"/>
+        <s:submit value="Send"/>
+    </s:form>
+
 </body>
 </html>
