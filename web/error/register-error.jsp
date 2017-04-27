@@ -12,17 +12,12 @@
         $( function() {
             $( "#dialog" ).dialog();
         } );
-
-        $( function ()
-        {
-            window.open("", "Results", "resizable,height=200,width=200");
-        })
     </script>
 </head>
 <body>
 
 <s:div id="dialog" title="Basic dialog">
-    <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+    <p>ERROREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE</p>
 </s:div>
 
 

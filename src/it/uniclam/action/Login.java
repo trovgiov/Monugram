@@ -84,7 +84,7 @@ public  class Login implements SessionAware {
 
                 String sql2;
 
-                sql2 = "SELECT idUser,nome,cognome,email,password,point from User where email='"+email+"'";
+                sql2 = "SELECT idUser,nome,cognome,email,password,point from user where email='"+email+"'";
 
                 java.sql.Statement stmt2 = con.createStatement();
 

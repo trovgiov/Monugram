@@ -56,7 +56,7 @@ public class RegisterMail extends ActionSupport {
 
             String login_type;
             login_type = "facebook";
-            sql1 = "SELECT nome,cognome,email from User where nome='" + nome + "'and cognome='" + cognome + "'and email='" + email + "'and login_type='" + login_type + "'";
+            sql1 = "SELECT nome,cognome,email from user where nome='" + nome + "'and cognome='" + cognome + "'and email='" + email + "'and login_type='" + login_type + "'";
 
             java.sql.Statement stmt2 = con.createStatement();
 
@@ -73,7 +73,7 @@ public class RegisterMail extends ActionSupport {
                 System.out.println("Utente Non esistente");
 
                 PreparedStatement stmt = con
-                        .prepareStatement("insert into User (nome,cognome,email,password, point,login_type) values(?,?,?,'encrypted',3,'facebook')");
+                        .prepareStatement("insert into user (nome,cognome,email,password, point,login_type) values(?,?,?,'encrypted',3,'facebook')");
 
                 stmt.setString(1, nome);
                 stmt.setString(2, cognome);
@@ -108,7 +108,7 @@ public class RegisterMail extends ActionSupport {
 
             String sql2;
 
-            sql2 = "SELECT * from User where email='" + email + "'";
+            sql2 = "SELECT * from user where email='" + email + "'";
 
             java.sql.Statement stmt2 = con2.createStatement();
 

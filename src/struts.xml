@@ -37,7 +37,13 @@
         <action name="register_mail" class="it.uniclam.action.RegisterMail">
             <result name="SUCCESS">/loginsuccess.jsp</result>
 
+        </action>
 
+        <action name="emailer"
+                class="it.uniclam.action.MailSender"
+                method="execute">
+                <result name="success">/success_mail.jsp</result>
+                <result name="error">/error_mail.jsp</result>
         </action>
 
     </package>

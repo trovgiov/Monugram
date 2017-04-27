@@ -14,9 +14,9 @@ import java.sql.SQLException;
 public class DBUtility {
 
     public static final String DRIVERNAME = "com.mysql.jdbc.Driver";
-    public static final String USER = "sql8168941";
-    public static final String PASSWORD = "d1APL5iNQl";
-    public static final String URL = "jdbc:mysql://sql8.freesqldatabase.com:3306/sql8168941";
+    public static final String USER = "monugramdb";
+    public static final String PASSWORD = "unicas2017!";
+    public static final String URL = "jdbc:mysql://mysql4.gear.host:3306/monugramdb";
 
     static {
 
