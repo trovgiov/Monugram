@@ -22,6 +22,24 @@
 
 
     <script type = "text/javascript" src="js/facebook_login.js"></script>
+
+    <style>
+
+        .msg{
+            max-height: 200px;
+            min-height: 200px;
+            max-width: 500px;
+            min-width: 500px;
+            background-color: aqua;
+        }
+        #text{
+            font-family: verdana;
+            font-size: smaller;
+            font-weight: lighter;
+            margin:0 25% 0 25%;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -42,16 +60,19 @@
         <s:form action="register" class="forms">
 
             <s:label value="Name"></s:label>
-            <s:textfield name="nome"></s:textfield>
+            <s:textfield name="nome" required="true"></s:textfield>
 
             <s:label value="Surname"></s:label>
-            <s:textfield name="cognome"></s:textfield>
+            <s:textfield name="cognome" required="true"></s:textfield>
 
             <s:label value="Email"></s:label>
             <s:textfield name="email"></s:textfield>
 
             <s:label value="Password"></s:label>
-            <s:password name="password"></s:password>
+            <s:password name="password1"></s:password>
+
+            <s:label value="Confirm your Password"></s:label>
+            <s:password name="password2"></s:password>
 
             <s:submit value="REGISTER"></s:submit>
         </s:form>

@@ -11,9 +11,10 @@
 
 
         <action name="register" class="it.uniclam.action.RegisterAction">
-            <result name="success">/register-success.jsp</result>   <!-- la pagina di test è hello.jsp & index1.jsp -->
+            <result name="success">/register-success.jsp</result>
             <result name="error">/error/register-error.jsp</result>
             <result name="insert_error">/error/register-error_mail.jsp</result>
+            <result name="input">register.jsp</result>
         </action>
 
         <action name="login">

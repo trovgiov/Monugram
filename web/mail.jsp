@@ -63,7 +63,7 @@
             <s:label value="Your Email"></s:label>
             <s:textfield name="to" required="true"></s:textfield>
 
-            <s:submit value="Login"></s:submit>
+            <s:submit value="SEND PASSWORD"></s:submit>
         </s:form>
 
         <a href="./login.jsp"><p class="small">Back to LOGIN</p></a>

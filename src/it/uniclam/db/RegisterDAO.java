@@ -87,7 +87,7 @@ public class RegisterDAO {
         boolean checkemail=isValidEmail(r.getEmail());
         //System.out.println("STATUS EMAIL "+checkemail);
 
-        boolean checkPassword=passCheck(r.getPassword());
+        boolean checkPassword=passCheck(r.getPassword1());
         //System.out.println("STATUS PASSWORD "+checkPassword);
 
         /* Controllo PRE-QUERY:
@@ -100,7 +100,7 @@ public class RegisterDAO {
         // Status = 1 Vero
         // Status = 2 Email o Password errata
 
-        if(check == false && checkemail==true && checkPassword==true)
+        if(check == false)// && checkemail==true && checkPassword==true)
         {
             // Inserimento Utente solo se check uguale a false
             try {
@@ -113,7 +113,7 @@ public class RegisterDAO {
                 stmt.setString(1, r.getNome());
                 stmt.setString(2, r.getCognome());
                 stmt.setString(3, r.getEmail());
-                stmt.setString(4, r.getPassword());
+                stmt.setString(4, r.getPassword1());
 
                 status = stmt.executeUpdate(); // execute query
 

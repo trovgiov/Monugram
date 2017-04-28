@@ -11,7 +11,8 @@ public class RegisterAction extends ActionSupport {
     private String nome;
     private String cognome;
     private String email;
-    private String password;
+    private String password1;
+    private String password2;
     private int point;
 
     public RegisterAction() {
@@ -42,12 +43,20 @@ public class RegisterAction extends ActionSupport {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassword1() {
+        return password1;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword1(String password1) {
+        this.password1 = password1;
+    }
+
+    public String getPassword2() {
+        return password2;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
     }
 
     public int getPoint() {
@@ -68,16 +77,17 @@ public class RegisterAction extends ActionSupport {
         }
         return "error";
     }
-/*    @Override
+@Override
     public void validate() {
-        if(null == email || "".equals(email)){
-            addActionError("Name is required!!");
-        }else{
-            addActionMessage("Hello " + email);
+        if(email.isEmpty()){
+            addFieldError("email", "Email Field cannot be left blank!!!");
         }
+        else if(password1.isEmpty())
+            addFieldError("password1", "Password Field cannot be left blank!!!");
+
+        else if(!password1.equals(password2))
+        addFieldError("password2", "Password mismatch!!!");
     }
-    http://keylesson.com/index.php/2015/04/16/struts2-actionerror-actionmessage-1809/
-    */
 
 
 }

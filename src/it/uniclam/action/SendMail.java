@@ -5,6 +5,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Date;
 import java.util.Properties;
 import javax.mail.*;
@@ -14,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import it.uniclam.db.DBUtility;
-import it.uniclam.model.User;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
 
@@ -24,7 +24,7 @@ public class SendMail extends ActionSupport implements ServletRequestAware{
     public static final String m_password = "unicas2017";
     public static final String smtpServ = "smtp.gmail.com";
     public static final String subject = "Password Recovery from Monugram";
-    public final String message = "Ciao";
+    public String message = "Hi, you have requested your password from MonugramAPP. Your password is: ";
     public String user_pass;
     private HttpServletRequest hsr;
     private HttpSession hs;
@@ -68,11 +68,18 @@ public class SendMail extends ActionSupport implements ServletRequestAware{
             // -- Set the FROM and TO fields --
             msg.setFrom(new InternetAddress(from));
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to, false));
+
+            // -- FIND PASSWORD --
+            user_pass = findPassword(getTo());
+            System.out.println("Password "+user_pass);
+            message = message + user_pass;
+
             msg.setSubject(subject);
             msg.setText(message);
             // -- Set some other header information --
             msg.setHeader("MyMail", "Mr. XYZ" );
             msg.setSentDate(new Date());
+
             // -- Send the message --
             Transport.send(msg);
             System.out.println("Message sent to "+to+" OK." );
@@ -87,6 +94,8 @@ public class SendMail extends ActionSupport implements ServletRequestAware{
     }
     @Override
     public String execute(){
+
+
         hs=hsr.getSession();
         try{
             if(hs.getAttribute("sms")!=null){
@@ -96,8 +105,6 @@ public class SendMail extends ActionSupport implements ServletRequestAware{
             System.out.println("IN EXECUTE() : FIRST TRY FAILED");
         }
         try{
-            user_pass = findPassword(to);
-            System.out.println("PASSERA "+user_pass);
             i=sendMail();
             if(i==0){
                 hs.setAttribute("sms", "Your E-Mail has been sent successfully to :"+to);
@@ -113,26 +120,23 @@ public class SendMail extends ActionSupport implements ServletRequestAware{
         }
     }
 
-    User u;
-    boolean status=false;
-    public String findPassword(String email)
+    public String findPassword(String u_email)
     {
         String uPass = "null";
+        Statement st = null;
         try{
 
             Connection con = DBUtility.getDBConnection();
+            st=con.createStatement();
+            String query = "select password from User where email='"+u_email+"';";
 
-            PreparedStatement ps=con.prepareStatement(
-                    "select password from User where email='email'");
+            ResultSet rs=st.executeQuery(query);
 
-            ResultSet rs=ps.executeQuery();
-
-            uPass=u.getPassword();
-
-            System.out.println("Password "+uPass);
-            status=rs.next();
+            if (rs.next())
+            {
+                uPass = rs.getString("password");
+            }
         }catch(Exception e){e.printStackTrace();}
-
 
         return uPass;
     }
