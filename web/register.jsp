@@ -74,11 +74,11 @@
     $('#username').blur(function() {
         $('label[for="username"]').removeClass('selected');
     });
-    $('#password').focus(function() {
-        $('label[for="password"]').addClass('selected');
+    $('#m_password').focus(function() {
+        $('label[for="m_password"]').addClass('selected');
     });
-    $('#password').blur(function() {
-        $('label[for="password"]').removeClass('selected');
+    $('#m_password').blur(function() {
+        $('label[for="m_password"]').removeClass('selected');
     });
 </script>
 

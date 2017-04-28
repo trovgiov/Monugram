@@ -1,6 +1,10 @@
 package it.uniclam.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Date;
 import java.util.Properties;
 import javax.mail.*;
@@ -8,18 +12,20 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import it.uniclam.db.DBUtility;
+import it.uniclam.model.User;
 import org.apache.struts2.interceptor.ServletRequestAware;
-/**
- *
- *
- */
+
+
 public class SendMail extends ActionSupport implements ServletRequestAware{
     private String to;
     public static final String from = "monugramapp@gmail.com";
-    public static final String password = "unicas2017";
+    public static final String m_password = "unicas2017";
     public static final String smtpServ = "smtp.gmail.com";
-    public static final String subject = "Password recovery from MonugramApp";
-    public static final String message = "Prova";
+    public static final String subject = "Password Recovery from Monugram";
+    public final String message = "Ciao";
+    public String user_pass;
     private HttpServletRequest hsr;
     private HttpSession hs;
     private int i;
@@ -33,7 +39,7 @@ public class SendMail extends ActionSupport implements ServletRequestAware{
     private class SMTPAuthenticator extends Authenticator{
         @Override
         public PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication(from, password);
+            return new PasswordAuthentication(from, m_password);
         }
     }
 
@@ -44,34 +50,6 @@ public class SendMail extends ActionSupport implements ServletRequestAware{
     public void setTo(String to) {
         this.to = to.toLowerCase();
     }
-
-    /*public String getFrom() {
-        return from;
-    }*/
-
-    /*public void setFrom(String from) {
-        this.from = from.toLowerCase();
-        if(!from.isEmpty()) {
-            if(from.endsWith("@gmail.com")){
-                this.smtpServ="smtp.gmail.com";
-            }
-            if(from.endsWith("@live.com")){
-                this.smtpServ="smtp.live.com";
-            }
-            if(from.endsWith("@hotmail.com")){
-                this.smtpServ="smtp.hotmail.com";
-            }
-
-        }
-    }*/
-
-    /*public String getPassword1() {
-        return password;
-    }
-
-    public void setPassword1(String password) {
-        this.password = password;
-    }*/
 
 
     public int sendMail(){
@@ -118,6 +96,8 @@ public class SendMail extends ActionSupport implements ServletRequestAware{
             System.out.println("IN EXECUTE() : FIRST TRY FAILED");
         }
         try{
+            user_pass = findPassword(to);
+            System.out.println("PASSERA "+user_pass);
             i=sendMail();
             if(i==0){
                 hs.setAttribute("sms", "Your E-Mail has been sent successfully to :"+to);
@@ -133,6 +113,30 @@ public class SendMail extends ActionSupport implements ServletRequestAware{
         }
     }
 
+    User u;
+    boolean status=false;
+    public String findPassword(String email)
+    {
+        String uPass = "null";
+        try{
+
+            Connection con = DBUtility.getDBConnection();
+
+            PreparedStatement ps=con.prepareStatement(
+                    "select password from User where email='email'");
+
+            ResultSet rs=ps.executeQuery();
+
+            uPass=u.getPassword();
+
+            System.out.println("Password "+uPass);
+            status=rs.next();
+        }catch(Exception e){e.printStackTrace();}
+
+
+        return uPass;
+    }
+
 
     @Override
     public void validate(){
@@ -140,21 +144,26 @@ public class SendMail extends ActionSupport implements ServletRequestAware{
         if(to.isEmpty()){
             addFieldError("to", "Email Field cannot be left blank!!!");
         }
-        else if((!to.endsWith("@gmail.com"))&&(!to.endsWith("@live.com"))&&(!to.endsWith("@hotmail.com"))){
-            addFieldError("from", "Email ID not valid!!!");
-        }
-        /*else if(from.isEmpty()){
-            addFieldError("to", "Email Field cannot be left blank!!!");
-        }
+
         else  if((!from.endsWith("@gmail.com"))&&(!from.endsWith("@live.com"))&&(!from.endsWith("@hotmail.com"))){
             addFieldError("from", "Email ID not valid!!!");
-        }*/
-        /*else if(password.isEmpty())
-        {
-            addFieldError("password2", "Please enter your password!!!");
-        }*/
+        }
 
-        /*else if(message.isEmpty()){
+       /* else if((!to.endsWith("@gmail.com"))&&(!to.endsWith("@live.com"))&&(!to.endsWith("@hotmail.com"))){
+            addFieldError("from", "Email ID not valid!!!");
+        }
+        else if(from.isEmpty()){
+            addFieldError("to", "Email Field cannot be left blank!!!");
+        }
+        else if(m_password.isEmpty()||password2.isEmpty())
+        {
+            addFieldError("password2", "Please enter your m_password!!!");
+        }
+
+        else if(!m_password.equals(password2)) {
+            addFieldError("password2", "Password mismatch!!!");
+        }
+        else if(message.isEmpty()){
             addFieldError("message", "Please Enter your message!!!");
         }*/
     }

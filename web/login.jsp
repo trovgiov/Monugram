@@ -73,7 +73,7 @@
 
         <a href="./facebook.html"><img src="../images/facebook-login-blue.png" alt="Facebook Login" style="width:152px;height:42px;border:0;"></a>
 
-        <a href="#"><p class="small">Forgot your password?</p></a>
+        <a href="./mail.jsp"><p class="small">Forgot your password?</p></a>
         <a href="./register.jsp"><p class="small">Are you not registered? LOG ON!</p></a>
 </s:div>
 </s:div>
@@ -90,11 +90,11 @@
     $('#username').blur(function() {
         $('label[for="username"]').removeClass('selected');
     });
-    $('#password').focus(function() {
-        $('label[for="password"]').addClass('selected');
+    $('#m_password').focus(function() {
+        $('label[for="m_password"]').addClass('selected');
     });
-    $('#password').blur(function() {
-        $('label[for="password"]').removeClass('selected');
+    $('#m_password').blur(function() {
+        $('label[for="m_password"]').removeClass('selected');
     });
 </script>
 

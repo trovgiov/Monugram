@@ -1,30 +1,28 @@
-<%--
-
-    Document   : index
-
-    Created on : Sep 18, 2012, 4:36:50 PM
-
-Author     : Sudhanshu
-
---%>
-
-<%@taglib uri="/struts-tags" prefix="s" %>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-
-
-<html>
-
+<html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monugram - Register</title>
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+    <script type = "text/javascript" src="js/facebook_login.js"></script>
 
-    <title>Struts2Mail System</title>
 
     <style>
 
@@ -42,14 +40,54 @@ Author     : Sudhanshu
             margin:0 25% 0 25%;
         }
     </style>
-</head>
-<body>
-<div id="text">
-    <h1>My Mailing System</h1>
-    <s:form method="post" action="sendemail">
-        <s:textfield name="to" label="Your Email" maxLength="40" size="80" required="true"/>
-        <s:submit value="Send"/>
-    </s:form>
 
+</head>
+
+<body>
+<!-- ATTENTION! THIS CODE IS FOR BACKGROUND VIDEO! -->
+<video poster="../images/photo_bg.jpg" id="bgvid" playsinline autoplay muted loop>
+    <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+    <source src="../images/videobg_hd.mp4" type="video/mp4">
+</video>
+<!-- ATTENTION! THIS CODE IS FOR BACKGROUND VIDEO! -->
+
+<s:div class="container">
+    <s:div class="top">
+        <h1 id="title" class="hidden"><span id="logo">Monu<span>GRAM</span></span></h1><br>
+    </s:div>
+    <s:div class="login-box animated fadeInUp">
+        <s:div class="box-header">
+            <h2>Recover your password</h2>
+        </s:div>
+        <s:form method="post" action="sendemail" class="forms">
+            <s:label value="Your Email"></s:label>
+            <s:textfield name="to" required="true"></s:textfield>
+
+            <s:submit value="Login"></s:submit>
+        </s:form>
+
+        <a href="./login.jsp"><p class="small">Back to LOGIN</p></a>
+    </s:div>
+</s:div>
 </body>
+
+<script>
+    $(document).ready(function () {
+        $('#logo').addClass('animated fadeInDown');
+        $("input:text:visible:first").focus();
+    });
+    $('#username').focus(function() {
+        $('label[for="username"]').addClass('selected');
+    });
+    $('#username').blur(function() {
+        $('label[for="username"]').removeClass('selected');
+    });
+    $('#m_password').focus(function() {
+        $('label[for="m_password"]').addClass('selected');
+    });
+    $('#m_password').blur(function() {
+        $('label[for="m_password"]').removeClass('selected');
+    });
+</script>
+
 </html>

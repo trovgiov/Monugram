@@ -35,9 +35,6 @@ private static String user_email;
     }
 
 
-
-
-
     public static String getUser_email() {
         return user_email;
     }

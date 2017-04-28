@@ -24,7 +24,7 @@ public class RegisterDAO {
             Connection con2 = DBUtility.getDBConnection();
 
             String tst = null;
-            String sql = "SELECT email from user";
+            String sql = "SELECT email from User";
 
 
             java.sql.Statement stm2 = con2.createStatement();
@@ -91,7 +91,7 @@ public class RegisterDAO {
         //System.out.println("STATUS PASSWORD "+checkPassword);
 
         /* Controllo PRE-QUERY:
-            -> Controlla se l'utente è già presente nel DB, se l'email è corretta e se c'è la password
+            -> Controlla se l'utente è già presente nel DB, se l'email è corretta e se c'è la m_password
          */
 
 
@@ -108,7 +108,7 @@ public class RegisterDAO {
                 //Connessione al db
                 Connection con = DBUtility.getDBConnection();
                 PreparedStatement stmt = con
-                        .prepareStatement("insert into user (nome,cognome,email,password, point,login_type) values(?,?,?,?,3,'app')");
+                        .prepareStatement("insert into User (nome,cognome,email,password, point,login_type) values(?,?,?,?,3,'app')");
 
                 stmt.setString(1, r.getNome());
                 stmt.setString(2, r.getCognome());

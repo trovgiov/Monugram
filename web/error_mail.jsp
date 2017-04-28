@@ -22,7 +22,7 @@
         </head>
     <body>
         <div class="msg1">
-                <s:a href="back">Back</s:a>
+                <s:a href="back to Email">Back</s:a>
                 <%
                 if(session.getAttribute("sms")!=null){
                 %>

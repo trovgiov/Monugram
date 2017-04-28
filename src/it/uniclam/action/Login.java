@@ -87,7 +87,7 @@ public  class Login extends ActionSupport implements SessionAware  {
 
                 String sql2;
 
-                sql2 = "SELECT idUser,nome,cognome,email,password,point from user where email='"+email+"'";
+                sql2 = "SELECT idUser,nome,cognome,email,password,point from User where email='"+email+"'";
 
                 java.sql.Statement stmt2 = con.createStatement();
 
@@ -163,11 +163,11 @@ public  class Login extends ActionSupport implements SessionAware  {
         }
         else  if((!from.endsWith("@gmail.com"))&&(!from.endsWith("@live.com"))&&(!from.endsWith("@hotmail.com"))){
             addFieldError("from", "Email ID not valid!!!");
-        }*/
-        else if(password.contentEquals(getPassword()))
-        {
-            addFieldError("password", "Please enter your password!!!");
         }
+        else if(m_password.contentEquals(u.getPassword()))
+        {
+            addFieldError("m_password", "Please enter your m_password!!!");
+        }*/
 
         /*else if(message.isEmpty()){
             addFieldError("message", "Please Enter your message!!!");
