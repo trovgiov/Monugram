@@ -70,7 +70,7 @@ public class RegisterMail extends ActionSupport {
             int status = 0;
 
             if (check == false) {
-                System.out.println("Utente Non esistente");
+                System.out.println("Utente Non esistente ciao ");
 
                 PreparedStatement stmt = con
                         .prepareStatement("insert into user (nome,cognome,email,password, point,login_type) values(?,?,?,'encrypted',3,'facebook')");
