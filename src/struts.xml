@@ -38,15 +38,33 @@
             <result name="SUCCESS">/loginsuccess.jsp</result>
         </action>
 
-        <action name="sendemail" class="it.uniclam.action.SendMail">
+        <action name="sendemail" class="it.uniclam.mail.SendMail">
             <result name="success">success_mail.jsp</result>
             <result name="input">mail.jsp</result>
             <result name="error">error_mail.jsp</result>
         </action>
 
-        <action name="back" class="it.uniclam.action.Back">
+        <action name="back" class="it.uniclam.mail.Back">
             <result>mail.jsp</result>
         </action>
 
+        <action name="uploadPhoto" class="it.uniclam.action.UploadAction">
+            <result name="SUCCESS">upload.jsp</result>
+        </action>
+
+
+        <action name="userImage" class="it.uniclam.upload.FileUploadAction">
+        <interceptor-ref name="fileUpload">
+            <param name="maximumSize">2097152</param>
+
+            <param name="allowedTypes">
+                image/png,image/gif,image/jpeg,image/pjpeg
+            </param>
+        </interceptor-ref>
+        <interceptor-ref name="defaultStack"></interceptor-ref>
+        <result name="success">successPhoto.jsp</result>
+        <result name="input">message.jsp</result>
+
+        </action>
     </package>
 </struts>

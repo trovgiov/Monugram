@@ -24,8 +24,8 @@
 Utente Loggato :  Nome : <s:property value="nome"/>  , Cognome : <s:property value="cognome"/> , Email : <s:property value="email"/>
 
 
-<p>Capture Image: <input type="file" accept="image/*" id="capture" capture="camera">
 
+<a href="<s:url action="uploadPhoto"/>?nome=<s:property value="nome"/>">Scatta o Carica una foto</a>
 
 
 </body>

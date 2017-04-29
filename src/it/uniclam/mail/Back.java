@@ -1,8 +1,9 @@
-package it.uniclam.action;
+package it.uniclam.mail;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.apache.struts2.interceptor.ServletRequestAware;
 
 /**
   *

@@ -4,19 +4,16 @@ package it.uniclam.mail;
  * Created by Enifix on 28/04/2017.
  */
 import com.opensymphony.xwork2.ActionSupport;
+import it.uniclam.action.RegisterAction;
+import org.apache.struts2.interceptor.ServletRequestAware;
 
-import java.util.Date;
-import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import it.uniclam.action.RegisterAction;
-import it.uniclam.action.SendMail;
-import it.uniclam.db.RegisterDAO;
-import org.apache.struts2.interceptor.ServletRequestAware;
+import java.util.Date;
+import java.util.Properties;
 
 public class RegMail extends ActionSupport implements ServletRequestAware
 {

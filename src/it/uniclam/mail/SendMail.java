@@ -1,21 +1,19 @@
-package it.uniclam.action;
+package it.uniclam.mail;
 
 import com.opensymphony.xwork2.ActionSupport;
+import it.uniclam.db.DBUtility;
+import org.apache.struts2.interceptor.ServletRequestAware;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.Date;
-import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import it.uniclam.db.DBUtility;
-import org.apache.struts2.interceptor.ServletRequestAware;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Date;
+import java.util.Properties;
 
 
 public class SendMail extends ActionSupport implements ServletRequestAware{
