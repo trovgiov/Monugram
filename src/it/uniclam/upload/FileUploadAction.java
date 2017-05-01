@@ -5,6 +5,8 @@ package it.uniclam.upload;
  */
 
 import com.opensymphony.xwork2.ActionSupport;
+import it.uniclam.model.Singleton;
+import it.uniclam.model.User;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
@@ -30,30 +32,14 @@ public class FileUploadAction extends ActionSupport implements
 
     // Variabili User
 
-    private String nome;
 
-    public String getNome() {
-        return nome;
-    }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCognome() {
-        return cognome;
-    }
-
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
-    }
-
-    private String cognome;
 
     public String execute() {
         try {
 
 
+            User u = Singleton.getMyUser();
             //directory che contiene le foto
             // Possibile Sviluppo = Creare cartelle per ogni monumento
             // Per ora, le foto si trovano nella cartella $TOMCAT_HOME/out/uploadedPhoto
@@ -67,6 +53,7 @@ public class FileUploadAction extends ActionSupport implements
              // Creo il file con il nome image.jpg per le foto da smartphone
 
             // ATTENZIONE : Bug da FIXARE
+
             File fileToCreate = new File(filePath, this.userImageFileName);
             String title= this.getUserImageFileName();
 
@@ -74,7 +61,7 @@ public class FileUploadAction extends ActionSupport implements
             // Si dovrebbe dividere in Nome_Cognome_Monumento.EXTENSION
 
             System.out.println("Nome File : "+title);
-
+            System.out.println("\nFoto caricata da : "+u.getNome());
 
 
 

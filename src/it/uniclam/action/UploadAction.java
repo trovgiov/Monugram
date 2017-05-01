@@ -1,15 +1,16 @@
 package it.uniclam.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import it.uniclam.model.Singleton;
+import it.uniclam.model.User;
 
 /**
  * Created by GiovanniTrovini on 29/04/17.
  */
 public class UploadAction extends ActionSupport {
 
-    private String nome;
-    private String cognome;
 
+ User u ;
 
     private String name;
    private  String surname;
@@ -30,31 +31,26 @@ public class UploadAction extends ActionSupport {
         this.surname = surname;
     }
 
-    public String getNome() {
-        return nome;
-
+    public User getU() {
+        return u;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setU(User u) {
+        this.u = u;
     }
 
-    public String getCognome() {
-        return cognome;
-    }
 
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
-    }
+
 
     public String execute (){
 
 
+        User u = Singleton.getMyUser();
 
-        name=getNome();
-        surname=getCognome();
+        name=u.getNome();
 
-        System.out.println("foto di "+name);
+
+        System.out.println("foto di "+u.getNome());
 
 
         return "SUCCESS";

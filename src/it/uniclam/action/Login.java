@@ -8,12 +8,11 @@ package it.uniclam.action;
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
 import it.uniclam.db.LoginDAO;
+import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import org.apache.struts2.interceptor.ServletRequestAware;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Map;
@@ -97,6 +96,7 @@ public  class Login extends ActionSupport implements SessionAware  {
 
                     u=new User(rs2.getInt("idUser"),rs2.getString("nome"),rs2.getString("cognome"),email,password,rs2.getInt("point"));
 
+
                 }
 
                 nome=u.getNome();
@@ -104,7 +104,11 @@ public  class Login extends ActionSupport implements SessionAware  {
                 email=u.getEmail();
 
 
-                 // chiusura rs2 e stmt2
+                Singleton.setMyUser(u);
+
+
+
+                // chiusura rs2 e stmt2
                 rs2.close();
                 stmt2.close();
                 // chiusura rs e stmt

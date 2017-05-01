@@ -25,7 +25,9 @@ Utente Loggato :  Nome : <s:property value="nome"/>  , Cognome : <s:property val
 
 
 
-<a href="<s:url action="uploadPhoto"/>?nome=<s:property value="nome"/>">Scatta o Carica una foto</a>
+<!--<a href="<s:url action="uploadPhoto"/>?nome=<s:property value="nome"/>">Scatta o Carica una foto</a> -->
+
+<a href="<s:url action="uploadPhoto"/>">Scatta o Carica una foto</a>
 
 
 </body>

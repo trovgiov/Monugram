@@ -2,6 +2,7 @@ package it.uniclam.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
+import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
 
 import java.sql.Connection;
@@ -14,6 +15,15 @@ import java.sql.SQLException;
  */
 public class FacebookLogin extends ActionSupport {
 
+User u;
+
+    public User getU() {
+        return u;
+    }
+
+    public void setU(User u) {
+        this.u = u;
+    }
 
     private String nome;
     private String cognome;
@@ -51,6 +61,10 @@ public class FacebookLogin extends ActionSupport {
 
         // Acquisisco tutte le persone che si sono collegate all'app con facebook
 
+
+
+        //Se l'email è undefined allora :
+
         System.out.println(email);
 
         if (email.equals("undefined")){
@@ -64,7 +78,7 @@ public class FacebookLogin extends ActionSupport {
 
                 String sql3;
 
-                sql3 = "SELECT email from User where nome='" + nome + "' and cognome= '" + cognome + "'";
+                sql3 = "SELECT idUser,nome,cognome,email,password,point from User where nome='" + nome + "' and cognome= '" + cognome + "'";
 
                 java.sql.Statement stmt3 = con3.createStatement();
 
@@ -77,28 +91,41 @@ public class FacebookLogin extends ActionSupport {
                 System.out.println("CHECK " + check);
 
 
+                //controllo se l'utente esiste
+
+                //se check = true -> utente esiste, creo il bean , login ok
+                // se check = false -> utente non esiste. Deve inserire la mail valida. Reindirizzo a no_email
+
                 if(check){
 
 
-                    email =rs3.getString("email");
+
+                    email = rs3.getString("email");
+
+
+                     u = new User(rs3.getInt("idUser"), rs3.getString("nome"), rs3.getString("cognome"), email, "encrypted", rs3.getInt("point"));
+
+
+                     Singleton.setMyUser(u);
 
 
 
 
 
 
-                        return "SUCCESS";
+
+
+                    return "SUCCESS";
                 }
 
 
                 else if(!check){
+
                     return "no_mail";
 
                 }
 
-                //controllo se l'utente esiste
-                // se check = false -> utente non esiste
-                //se check = true -> utente esiste
+
 
 
             } catch (SQLException e) {
@@ -109,6 +136,8 @@ public class FacebookLogin extends ActionSupport {
 
 
          }
+
+         // SE EMAIL NON UNDEFINED
         else {
             try {
 
@@ -162,7 +191,7 @@ public class FacebookLogin extends ActionSupport {
             }
 
 
-            // Acquisisco l'utente e creo il bean  // Si può evitare ???
+            // Acquisisco l'utente e creo il bean   ???
 
             try {
 
@@ -178,7 +207,7 @@ public class FacebookLogin extends ActionSupport {
 
                 while (rs2.next()) {
 
-                    User u = new User(rs2.getInt("idUser"), rs2.getString("nome"), rs2.getString("cognome"), email, "encrypted", rs2.getInt("point"));
+                     u = new User(rs2.getInt("idUser"), rs2.getString("nome"), rs2.getString("cognome"), email, "encrypted", rs2.getInt("point"));
 
 
                     System.out.println("Utente Loggato: Nome " + u.getNome() + "Cognome " + u.getCognome() + "Email: " + getEmail());
@@ -187,6 +216,10 @@ public class FacebookLogin extends ActionSupport {
                 //controllo se l'utente esiste
                 // se check = false -> utente non esiste
                 //se check = true -> utente esiste
+
+
+
+                Singleton.setMyUser(u);
 
 
                 stmt2.close();

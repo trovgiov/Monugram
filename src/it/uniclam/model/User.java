@@ -12,12 +12,16 @@ public class User {
     private String password;
     private int point;
 
+    public User() {
+    }
+
     public User(int iduser, String nome, String cognome, String email, String password, int point) {
         this.iduser = iduser;
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
         this.password = password;
+
         this.point = point;
     }
 

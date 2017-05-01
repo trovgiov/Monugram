@@ -2,6 +2,7 @@ package it.uniclam.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
+import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
 
 import java.sql.Connection;
@@ -45,6 +46,17 @@ public class RegisterMail extends ActionSupport {
 
     private String nome;
 
+
+    User u;
+
+    public User getU() {
+        return u;
+    }
+
+    public void setU(User u) {
+        this.u = u;
+    }
+
     public String execute() {
 
         try {
@@ -52,11 +64,12 @@ public class RegisterMail extends ActionSupport {
 
             Connection con = DBUtility.getDBConnection();
 
+            /*
             String sql1;
 
             String login_type;
             login_type = "facebook";
-            sql1 = "SELECT nome,cognome,email from user where nome='" + nome + "'and cognome='" + cognome + "'and email='" + email + "'and login_type='" + login_type + "'";
+            sql1 = "SELECT nome,cognome,email from User where nome='" + nome + "'and cognome='" + cognome + "'and email='" + email + "'and login_type='" + login_type + "'";
 
             java.sql.Statement stmt2 = con.createStatement();
 
@@ -67,13 +80,16 @@ public class RegisterMail extends ActionSupport {
             //se check = true -> utente esiste
 
             boolean check = rs2.next();
+
+            System.out.println("Check inside : "+check);
+
+            */
             int status = 0;
 
-            if (check == false) {
-                System.out.println("Utente Non esistente ciao ");
+                 System.out.println("Utente Non esistente  ");
 
                 PreparedStatement stmt = con
-                        .prepareStatement("insert into user (nome,cognome,email,password, point,login_type) values(?,?,?,'encrypted',3,'facebook')");
+                        .prepareStatement("insert into User (nome,cognome,email,password, point,login_type) values(?,?,?,'encrypted',3,'facebook')");
 
                 stmt.setString(1, nome);
                 stmt.setString(2, cognome);
@@ -85,30 +101,27 @@ public class RegisterMail extends ActionSupport {
 
                 // devo inserirlo
 
-            } else {
-                // non devo inserirlo e creo la session
-
-                System.out.println("Utente Esistente");
-
-            }
 
 
-            stmt2.close();
+
+
+
+            stmt.close();
             con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
 
-        // Acquisisco l'utente e creo il bean  // Si può evitare ???
-
+        // Acquisisco l'utente e creo il bean
         try {
 
             Connection con2 = DBUtility.getDBConnection();
 
             String sql2;
 
-            sql2 = "SELECT * from user where email='" + email + "'";
+            System.out.println("email register : "+email );
+            sql2 = "SELECT * from User where email='" + email + "'";
 
             java.sql.Statement stmt2 = con2.createStatement();
 
@@ -116,7 +129,7 @@ public class RegisterMail extends ActionSupport {
 
             while (rs2.next()) {
 
-                User u = new User(rs2.getInt("idUser"), rs2.getString("nome"), rs2.getString("cognome"), email, "encrypted", rs2.getInt("point"));
+                 u = new User(rs2.getInt("idUser"), rs2.getString("nome"), rs2.getString("cognome"), email, "encrypted", rs2.getInt("point"));
 
 
                 System.out.println("Utente Loggato: Nome " + u.getNome() + "Cognome " + u.getCognome() + "Email: " + getEmail());
@@ -127,8 +140,13 @@ public class RegisterMail extends ActionSupport {
             //se check = true -> utente esiste
 
 
+
             stmt2.close();
             con2.close();
+
+            Singleton.setMyUser(u);
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
