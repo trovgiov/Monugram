@@ -115,7 +115,7 @@ User u;
 
 
 
-                    return "SUCCESS";
+                    return "success";
                 }
 
 
@@ -230,7 +230,7 @@ User u;
 
 
         }
-        return "SUCCESS";
+        return "success";
 
     }
 
