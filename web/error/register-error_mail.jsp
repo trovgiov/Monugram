@@ -1,32 +1,33 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Enifix
-  Date: 26/04/2017
-  Time: 15:18
-  To change this template use File | Settings | File Templates.
---%>
-<!doctype html>
+<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=200, initial-scale=1">
-    <title>jQuery UI Dialog - Default functionality</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        $( function() {
-            $( "#dialog" ).dialog();
-        } );
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monugram - Registration Error</title>
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="../css/style_error.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
 </head>
+
 <body>
 
-<s:div id="dialog" title="Basic dialog">
-    <p>ERROREEEEEEEEEEE</p>
-</s:div>
 
+<s:div class="top">
+    <h1 id="title" class="hidden"><span id="logo"><span>OH NO! :(</span></br>AN ERROR OCCURRED WITH YOUR EMAIL!</br>PLEASE TRY AGAIN</span></h1>
+</s:div>
+<s:div class="logo"><a href="../login.jsp"><img src="../images/back.png" alt="back" style="width:213px;height:125px;"></a></s:div>
 
 </body>
+
 </html>
