@@ -1,13 +1,13 @@
 /* NORMAL IMAGE CLASS */
 
 body {
-	background: url("../images/bg.jpg") no-repeat center center fixed;
-	background-size: cover;
-	font-size: 16px;
-	font-family: 'Lato', sans-serif;
-	font-weight: 300;
-	margin: 0;
-	color: #666;
+    background: url("../../images/up_bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    margin: 0;
+    color: #666;
 }
 
 /* Typography */
