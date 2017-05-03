@@ -100,7 +100,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <article>
                 <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
                 <header>
-                    <h3><a href="#">Sed quis rhoncus placerat</a></h3>
+                    <h3><a href="#">Sid quis rhoncus placerat</a></h3>
                 </header>
                 <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
             </article>
