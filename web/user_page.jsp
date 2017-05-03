@@ -14,7 +14,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="assets/css/main.css" />
+
+
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/main.css"/>
+
+  <!--  <link rel="stylesheet" href="assets/css/main.css" /> -->
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 </head>
 <body class="homepage">
@@ -26,12 +30,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <!-- Inner -->
         <s:div class="inner">
             <header>
-                <h1><img src="../images/logo_w.png" alt="Monugram logo" style="width:82px;height:106px;"><a href="index.html" id="logo">WELCOME INTO MONUgram!</a></h1>
+                <h1><img src="../images/logo_w.png" alt="Monugram logo" style="width:82px;height:106px;"><a href="user_page.jsp" id="logo"> WELCOME INTO MONUgram!</a></h1>
                 <hr />
                 <p>Hi, <s:property value="nome"/>, let's start to capture or upload your FANTASTIC monument photos!</p>
             </header>
             <footer>
-                <a href="<s:url action="uploadPhoto"/> " class="button circled scrolly" target="popup" onclick="window.open(this.href,'Upload','width=400,height=200'); return false;">Start</a>
+                <a href="<s:url action="monument_drop"/> " class="button circled scrolly" target="popup" onclick="window.open(this.href,'Upload','width=450,height=400'); return false;">Start</a>
                 <!-- #banner -->
             </footer>
         </s:div>
@@ -41,7 +45,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <ul>
                 <li><a href="user_page.jsp">Home</a></li>
                 <li>
-                    <a href="#">Dropdown</a>
+                    <a href="#main">How it works?</a>
                     <ul>
                         <li><a href="#">Lorem ipsum dolor</a></li>
                         <li><a href="#">Magna phasellus</a></li>
@@ -60,7 +64,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 </li>
                 <li><a href="left-sidebar.html">My Photos</a></li>
                 <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                <li><a href="no-sidebar.html">No Sidebar</a></li>
+                <li><a href="no-sidebar.html">Contact Us</a></li>
             </ul>
         </nav>
 
@@ -69,11 +73,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     <!-- Banner -->
     <section id="banner">
         <header>
-            <h2><!--[--><s:property value="nome"/>, take a look at <strong>the most popular photos</strong>.<!--]--></h2>
-            <p>
-                <!--[-->A (free) responsive site template by <a href="http://html5up.net">HTML5 UP</a>.
-                Built on <strong>skel</strong> and released under the <a href="http://html5up.net/license">CCA</a> license.<!--]-->
-            </p>
+            <h2><!--[--><s:property value="nome"/>, take a look at <strong>your photos</strong>.<!--]--></h2>
         </header>
     </section>
 
@@ -82,7 +82,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <s:div class="reel">
 
             <article>
-                <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
                 <header>
                     <h3><a href="#">Pulvinar sagittis congue</a></h3>
                 </header>
@@ -90,7 +90,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </article>
 
             <article>
-                <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
                 <header>
                     <h3><a href="#">Fermentum sagittis proin</a></h3>
                 </header>
@@ -98,7 +98,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </article>
 
             <article>
-                <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
                 <header>
                     <h3><a href="#">Sed quis rhoncus placerat</a></h3>
                 </header>
@@ -106,7 +106,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </article>
 
             <article>
-                <a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
                 <header>
                     <h3><a href="#">Ultrices urna sit lobortis</a></h3>
                 </header>
@@ -114,7 +114,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </article>
 
             <article>
-                <a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
                 <header>
                     <h3><a href="#">Varius magnis sollicitudin</a></h3>
                 </header>
@@ -122,7 +122,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </article>
 
             <article>
-                <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
                 <header>
                     <h3><a href="#">Pulvinar sagittis congue</a></h3>
                 </header>
@@ -130,7 +130,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </article>
 
             <article>
-                <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
                 <header>
                     <h3><a href="#">Fermentum sagittis proin</a></h3>
                 </header>
@@ -138,7 +138,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </article>
 
             <article>
-                <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
                 <header>
                     <h3><a href="#">Sed quis rhoncus placerat</a></h3>
                 </header>
@@ -146,7 +146,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </article>
 
             <article>
-                <a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
                 <header>
                     <h3><a href="#">Ultrices urna sit lobortis</a></h3>
                 </header>
@@ -154,7 +154,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </article>
 
             <article>
-                <a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
                 <header>
                     <h3><a href="#">Varius magnis sollicitudin</a></h3>
                 </header>
@@ -166,9 +166,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
     <!-- Main -->
     <s:div class="wrapper style2">
-
+        <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
         <article id="main" class="container special">
-            <a href="#" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
             <header>
                 <h2><a href="#">Sed massa imperdiet magnis</a></h2>
                 <p>
@@ -388,6 +387,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <script src="assets/js/util.js"></script>
 <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
+
+<script>
+    function RefreshPage()
+    {
+        window.document.forms[0].submit();
+    }</script>
 
 </body>
 </html>

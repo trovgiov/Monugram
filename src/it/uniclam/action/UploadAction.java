@@ -62,25 +62,16 @@ private String monument;
     }
 
     public String execute (){
-
-
-
         User u = Singleton.getMyUser();
         Monument m = Singleton.getMymonument();
 
         name=u.getNome();
-
         monument=m.getMonument();
 
-
-
+        addActionMessage("Well done! Your image was successfully uploaded!");
 
         System.out.println("foto di "+u.getNome());
         System.out.println("Monumento "+m.getMonument());
-
-
-
-
 
         return "SUCCESS";
     }

@@ -10,6 +10,19 @@ body {
     color: #666;
 }
 
+#close {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+}
+
+#button {
+    background: transparent;
+    border: transparent;
+    color: white;
+}
+
 /* Typography */
 h1#title {
     font-family: 'Roboto Slab', serif;
@@ -61,6 +74,11 @@ p.small {
     color: white;
 }
 
+input#image-button{
+    background: #ccc url("../../images/camera.png") no-repeat top left;
+    padding-left: 16px;
+    height: 26px;
+}
 
 /* Layout */
 .container {
@@ -78,6 +96,14 @@ p.small {
     background: -webkit-linear-gradient(top,  rgba(0,0,0,0.6) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom,  rgba(0,0,0,0.6) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+}
+
+.mex {
+    border: solid 1px #7BA4E5;
+    background-color: #6A93D4;
+    border-radius: 5px;
+    padding: .3em .8em;
+    margin: 4px;
 }
 
 .forms {
