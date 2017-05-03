@@ -30,7 +30,7 @@
 
 
         <action name="facebook_login" class="it.uniclam.action.FacebookLogin">
-            <result name="success">/user_page.jsp</result>
+            <result name="success">/user_page_f.jsp</result>
             <result name="no_mail">/no_email.jsp</result>
         </action>
 
