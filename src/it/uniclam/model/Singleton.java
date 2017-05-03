@@ -13,4 +13,13 @@ public class Singleton {
     }
 
     private static User myUser;
+    private static Monument mymonument;
+
+    public static Monument getMymonument() {
+        return mymonument;
+    }
+
+    public static void setMymonument(Monument mymonument) {
+        Singleton.mymonument = mymonument;
+    }
 }

@@ -5,6 +5,7 @@ package it.uniclam.upload;
  */
 
 import com.opensymphony.xwork2.ActionSupport;
+import it.uniclam.model.Monument;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
 import org.apache.commons.io.FileUtils;
@@ -28,18 +29,26 @@ public class FileUploadAction extends ActionSupport implements
     private String userImageContentType;
     private String userImageFileName;
     private HttpServletRequest servletRequest;
-
+private String monument;
 
     // Variabili User
 
 
+    public String getMonument() {
+        return monument;
+    }
 
+    public void setMonument(String monument) {
+        this.monument = monument;
+    }
 
     public String execute() {
         try {
 
 
             User u = Singleton.getMyUser();
+            Monument m= Singleton.getMymonument();
+
             //directory che contiene le foto
             // Possibile Sviluppo = Creare cartelle per ogni monumento
             // Per ora, le foto si trovano nella cartella $TOMCAT_HOME/out/uploadedPhoto
@@ -62,6 +71,8 @@ public class FileUploadAction extends ActionSupport implements
 
             System.out.println("Nome File : "+title);
             System.out.println("\nFoto caricata da : "+u.getNome());
+            System.out.println("\nMonumento : "+m.getMonument());
+
 
 
 

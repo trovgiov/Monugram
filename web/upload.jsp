@@ -22,14 +22,20 @@
 
 <body>
 
-<s:div class="forms"> <h3>OK, <s:property value="name"></s:property>, upload or take your photo!</h3>
+<s:div class="forms"> <h3>OK, <s:property value="name"></s:property>, upload or take your photo at  <s:property value="monument"></s:property>!</h3>
 
 <s:form action="userImage" method="post" enctype="multipart/form-data" class="forms">
 
 
     <s:file name="userImage" accept="image/*" id="capture" capture="camera" />
+
+    <s:hidden value="monument"/>
+
      <s:submit value="Upload" align="center" />
+
 </s:form>
+
+
 </s:div>
 
 </body>

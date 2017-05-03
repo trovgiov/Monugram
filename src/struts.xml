@@ -2,6 +2,9 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+
+    <constant name="struts.multipart.maxSize" value="30000000" />
+
     <package name="default" extends="struts-default" namespace="/">
         <action name="HelloWorld" class="it.uniclam.HelloWorld">
             <result name="SUCCESS">/success.jsp</result>
@@ -55,7 +58,7 @@
 
         <action name="userImage" class="it.uniclam.upload.FileUploadAction">
         <interceptor-ref name="fileUpload">
-            <param name="maximumSize">2097152</param>
+            <param name="maximumSize">20174560</param>
 
             <param name="allowedTypes">
                 image/png,image/gif,image/jpeg,image/pjpeg
@@ -66,5 +69,14 @@
         <result name="input">message.jsp</result>
 
         </action>
+
+        <action name="monument_drop" class="it.uniclam.action.MonumentAction" method="display">
+        <result name="none">monument_drop.jsp</result>
+    </action>
+
+        <action name="resultAction" class="it.uniclam.action.MonumentAction" >
+            <result name="success">upload.jsp</result>
+        </action>
+
     </package>
 </struts>

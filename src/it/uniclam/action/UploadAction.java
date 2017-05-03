@@ -1,6 +1,7 @@
 package it.uniclam.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import it.uniclam.model.Monument;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
 
@@ -11,9 +12,19 @@ public class UploadAction extends ActionSupport {
 
 
  User u ;
+ Monument m;
 
     private String name;
-   private  String surname;
+
+    public Monument getM() {
+        return m;
+    }
+
+    public void setM(Monument m) {
+        this.m = m;
+    }
+
+    private  String surname;
 
     public String getName() {
         return name;
@@ -40,17 +51,35 @@ public class UploadAction extends ActionSupport {
     }
 
 
+private String monument;
 
+    public String getMonument() {
+        return monument;
+    }
+
+    public void setMonument(String monument) {
+        this.monument = monument;
+    }
 
     public String execute (){
 
 
+
         User u = Singleton.getMyUser();
+        Monument m = Singleton.getMymonument();
 
         name=u.getNome();
 
+        monument=m.getMonument();
+
+
+
 
         System.out.println("foto di "+u.getNome());
+        System.out.println("Monumento "+m.getMonument());
+
+
+
 
 
         return "SUCCESS";
