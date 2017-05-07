@@ -50,10 +50,10 @@ private String monument;
             Monument m= Singleton.getMymonument();
 
             //directory che contiene le foto
-            // Possibile Sviluppo = Creare cartelle per ogni monumento
-            // Per ora, le foto si trovano nella cartella $TOMCAT_HOME/out/uploadedPhoto
+            // Creare cartelle per ogni monumento -> FATTO
 
-            String filePath = servletRequest.getSession().getServletContext().getRealPath("/uploadPhoto");
+
+            String filePath = servletRequest.getSession().getServletContext().getRealPath("/"+m.getMonument());
 
 
              System.out.println("Server path:" + filePath);

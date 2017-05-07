@@ -10,9 +10,11 @@ import it.uniclam.db.DBUtility;
 import it.uniclam.db.LoginDAO;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Map;
@@ -76,6 +78,12 @@ public  class Login extends ActionSupport implements SessionAware  {
     public String execute(){
 
         boolean check = LoginDAO.validate(email, password);
+
+        HttpServletRequest req = ServletActionContext.getRequest();
+        setEmail(req.getParameter("email"));
+        setPassword(req.getParameter("password"));
+
+
          if(LoginDAO.validate(email, password)){
 
 
@@ -105,6 +113,7 @@ public  class Login extends ActionSupport implements SessionAware  {
 
 
                 Singleton.setMyUser(u);
+
 
 
 

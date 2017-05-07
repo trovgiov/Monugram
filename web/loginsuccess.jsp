@@ -17,18 +17,12 @@
 
 
 
+    <meta http-equiv="refresh" content="2;URL=<s:url action="home"/>">
 
-</head>
 
 <body>
 
-Utente Loggato :  Nome : <s:property value="nome"/>  , Cognome : <s:property value="cognome"/> , Email : <s:property value="email"/>
 
-
-
-<!--<a href="<s:url action="uploadPhoto"/>?nome=<s:property value="nome"/>">Scatta o Carica una foto</a> -->
-
-<a href="<s:url action="uploadPhoto"/>">Scatta o Carica una foto</a>
 
 
 </body>

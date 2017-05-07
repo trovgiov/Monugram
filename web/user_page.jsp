@@ -43,7 +43,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <!-- Nav -->
         <nav id="nav">
             <ul>
-                <li><a href="user_page.jsp">Home</a></li>
+                <li><a href="<s:url action="home"/>">Home</a></li>
                 <li>
                     <a href="#main">How it works?</a>
                     <ul>

@@ -26,6 +26,10 @@ private static String user_email;
             ps.setString(2,password);
             ResultSet rs=ps.executeQuery();
 
+
+
+
+
             user_email=email;
 
             System.out.println("Email "+getUser_email());
