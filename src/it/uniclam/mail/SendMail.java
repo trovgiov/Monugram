@@ -69,19 +69,27 @@ public class SendMail extends ActionSupport implements ServletRequestAware{
 
             // -- FIND PASSWORD --
             user_pass = findPassword(getTo());
-            System.out.println("Password "+user_pass);
-            message = message + user_pass;
+            if(user_pass.equalsIgnoreCase("null"))
+            {
+                System.out.println("The email "+getTo()+" doesn't exist! ");
+                return -1;
+            }
+            else
+            {
+                System.out.println("Password "+user_pass);
+                message = message + user_pass;
+                msg.setSubject(subject);
+                msg.setText(message);
+                // -- Set some other header information --
+                msg.setHeader("MyMail", "Mr. XYZ" );
+                msg.setSentDate(new Date());
 
-            msg.setSubject(subject);
-            msg.setText(message);
-            // -- Set some other header information --
-            msg.setHeader("MyMail", "Mr. XYZ" );
-            msg.setSentDate(new Date());
+                // -- Send the message --
+                Transport.send(msg);
+                System.out.println("Message sent to "+to+" OK." );
+                return 0;
+            }
 
-            // -- Send the message --
-            Transport.send(msg);
-            System.out.println("Message sent to "+to+" OK." );
-            return 0;
         }
         catch (Exception ex)
         {

@@ -5,6 +5,7 @@ import it.uniclam.model.Monument;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
 
+
 /**
  * Created by GiovanniTrovini on 29/04/17.
  */
@@ -61,7 +62,9 @@ private String monument;
         this.monument = monument;
     }
 
+
     public String execute (){
+
         User u = Singleton.getMyUser();
         Monument m = Singleton.getMymonument();
 
@@ -70,7 +73,7 @@ private String monument;
 
         addActionMessage("Well done! Your image was successfully uploaded!");
 
-        System.out.println("foto di "+u.getNome());
+        System.out.println("foto di user_id"+u.getNome());
         System.out.println("Monumento "+m.getMonument());
 
         return "SUCCESS";
