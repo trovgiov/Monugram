@@ -15,14 +15,13 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
 
 
 public class FileUploadAction extends ActionSupport implements
         ServletRequestAware {
-
-
 
 
     private File userImage;
@@ -31,6 +30,29 @@ public class FileUploadAction extends ActionSupport implements
     private HttpServletRequest servletRequest;
     private String monument;
 
+
+
+
+
+    private String filepath;
+
+    public String getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
+    }
+
+    private String cartella;
+
+    public String getCartella() {
+        return cartella;
+    }
+
+    public void setCartella(String cartella) {
+        this.cartella = cartella;
+    }
     // Variabili User
 
 
@@ -42,109 +64,72 @@ public class FileUploadAction extends ActionSupport implements
         this.monument = monument;
     }
 
-
-    public static String findUserId(String u_nome)
-    {
-        String uId = "null";
-        Statement st = null;
-        try{
-
-            Connection con = DBUtility.getDBConnection();
-            st=con.createStatement();
-            String query = "select idUser from User where nome='"+u_nome+"';";
-
-            ResultSet rs=st.executeQuery(query);
-
-            if (rs.next())
-            {
-                uId = rs.getString("idUser");
-            }
-        }catch(Exception e){e.printStackTrace();}
-
-        return uId;
-    }
-
-    public static String findMonId(String n_monumento)
-    {
-        String mId = "null";
-        Statement st = null;
-        try{
-
-            Connection con = DBUtility.getDBConnection();
-            st=con.createStatement();
-            String query = "select idMonument from Monument where monumento='"+n_monumento+"';";
-
-            ResultSet rs=st.executeQuery(query);
-
-            if (rs.next())
-            {
-                mId = rs.getString("idMonument");
-            }
-        }catch(Exception e){e.printStackTrace();}
-
-        return mId;
-    }
-
-    public static void insertDb(String id_user, String id_monument)
-    {
-        String mId = "null";
-        Statement st = null;
-        try{
-
-            Connection con2 = DBUtility.getDBConnection();
-            st=con2.createStatement();
-            String query = "insert idMonument from Monument where moumento='"+id_monument+"';";
-
-            ResultSet rs=st.executeQuery(query);
-
-            if (rs.next())
-            {
-                mId = rs.getString("idMonument");
-            }
-        }catch(Exception e){e.printStackTrace();}
-    }
-
-
     public String execute() {
         try {
 
-            String userId;
-            String monumId;
+
             User u = Singleton.getMyUser();
-            Monument m= Singleton.getMymonument();
+            Monument m = Singleton.getMymonument();
+
 
             //directory che contiene le foto
-            // Creare cartelle per ogni monumento -> FATTO
+            // Possibile Sviluppo = Creare cartelle per ogni monumento
+            // Per ora, le foto si trovano nella cartella $TOMCAT_HOME/out/uploadedPhoto
+
+             setFilepath(servletRequest.getSession().getServletContext().getRealPath("/Monumenti/" + m.getMonument()));
 
 
-            String filePath = servletRequest.getSession().getServletContext().getRealPath("/"+m.getMonument());
+            System.out.println("Server path:" + getFilepath());
 
 
-             System.out.println("Server path:" + filePath);
-
-
-             // Creo il file con il nome image.jpg per le foto da smartphone
+            // Creo il file con il nome image.jpg per le foto da smartphone
 
             // ATTENZIONE : Bug da FIXARE
 
-            monumId = findMonId(m.getMonument());
 
-            userImageFileName = monumId +"_" + u.getNome()+u.getCognome()+".jpg";
-            File fileToCreate = new File(filePath, this.getUserImageFileName());//userImageFileName);
-            String title= this.getUserImageFileName();
+            // Titolo immagine di default
+            String title = this.getUserImageFileName();
 
-            // Qui ottengo il nome file con l'estensione
-            // Si dovrebbe dividere in Nome_Cognome_Monumento.EXTENSION
+            // Divido la stringa ,  . è il carattere delimitatore
+            String[] output = title.split("\\.");
 
-            userId = findUserId(u.getNome());
+            String titolo = output[0];
+            String estensione = output[1];
 
-            System.out.println("Nome File : "+title);
-            System.out.println("\nFoto caricata da UserId: "+userId);
-            System.out.println("\nMonumento Id: "+monumId);
 
-            //insertDb(userId,monumId);
+            String user_info = u.getNome() + u.getCognome();
+
+
+            // Array per ospitare le variabili di ritorno
+
+            String [] final_title= new String[2];
+            final_title= (CheckName(user_info,m,u));
+
+
+            String official_title= final_title[0]+"."+estensione;
+            int contatore = Integer.parseInt(final_title[1]);
+
+
+            System.out.println("**** Nuovo Titolo : "+official_title);
+            System.out.println("**** Count : "+contatore);
+
+
+
+            File fileToCreate = new File(getFilepath(), official_title);
+
+
+
 
             FileUtils.copyFile(userImage, fileToCreate);
+
+            insert(m,official_title,contatore,u);
+
+            System.out.println("\nFoto Inserita nel db");
+
+            System.out.println("\nFoto caricata da : " + u.getNome());
+            System.out.println("\nMonumento : " + m.getMonument());
+
+
         } catch (Exception e) {
             e.printStackTrace();
             addActionError(e.getMessage());
@@ -184,4 +169,189 @@ public class FileUploadAction extends ActionSupport implements
 
     }
 
+
+    // RESTITUISCE IL NOME FILE
+
+    public String [] CheckName(String filename,Monument m, User u ) throws SQLException {
+
+
+
+
+        // Creo l'array per ospitare le variabili di ritorno
+        // result[0] è il filename
+        // result[1] è il count
+
+        String [] result= new String [2];
+        String out = null;
+
+        int count=0;
+
+
+
+
+
+
+        try {
+
+            Connection con = DBUtility.getDBConnection();
+
+            String sql;
+
+
+
+            sql = "SELECT tag from Photo WHERE  Monument_idMonument='"+m.getId_monument()+"' and User_idUser='"+u.getIduser()+"'";
+
+            java.sql.Statement stmt = con.createStatement();
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+
+            String new_filename;
+
+
+
+            // se è GIà PRESENTE IL FILE NAME, ALLORA AGGIUNGI IL CONTATORE
+            if (rs.next()) {
+
+
+
+
+
+
+                new_filename = rs.getString("tag");
+
+                System.out.println("Filename già presente " +new_filename);
+
+
+
+
+                Connection con1 = DBUtility.getDBConnection();
+
+                String sql1;
+
+                sql1 = "SELECT max(counter) as counter from Photo WHERE Monument_idMonument='"+m.getId_monument()+"' and User_idUser='"+u.getIduser()+"'";
+                java.sql.Statement stmt1 = con1.createStatement();
+
+                ResultSet rs1 = stmt1.executeQuery(sql1);
+
+                if (rs1.next()) {
+
+                    count = rs1.getInt("counter");
+                    System.out.println("COUNT : "+count);
+
+                    count=count+1;
+
+                    System.out.println("COUNT +1: "+count);
+                    out = filename+""+count;
+
+
+
+
+
+                    System.out.println("Filename : " + out);
+
+                }
+
+                rs1.close();
+                stmt1.close();
+            } else {
+
+                System.out.println("Filename non presente ");
+
+                count=0;
+                out = filename+""+count;
+
+
+
+            }
+
+
+            // chiusura rs2 e stmt2
+
+            rs.close();
+            stmt.close();
+
+            // chiusura rs e stmt
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
+        // ìnsert
+
+
+
+
+
+
+result[0]=out;
+
+
+    result[1]= Integer.toString(count);
+
+    System.out.println("ritorno 0 : "+ out);
+        System.out.println("ritorno 1 : "+count);
+
+
+
+
+        return result;
+    }
+
+
+
+
+
+    public static int findMonId(String n_monumento)
+    {
+        int mId=0;
+        java.sql.Statement st = null;
+        try{
+
+            Connection con = DBUtility.getDBConnection();
+            st=con.createStatement();
+            String query = "select idMonument from Monument where monumento='"+n_monumento+"';";
+
+            ResultSet rs=st.executeQuery(query);
+
+            if (rs.next())
+            {
+                mId = rs.getInt("idMonument");
+            }
+        }catch(Exception e){e.printStackTrace();}
+
+        return mId;
+    }
+
+
+    public void insert (Monument m,String final_filename,int count,User u) throws SQLException {
+
+
+
+        int id_monument= findMonId(m.getMonument());
+
+        Connection con = DBUtility.getDBConnection();
+        PreparedStatement stmt = con.prepareStatement("insert into Photo (tag,Monument_idMonument,counter, User_idUser) values(?,?,?,?)");
+
+        stmt.setString(1, final_filename);
+        stmt.setInt(2, id_monument);
+        stmt.setInt(3, count);
+        stmt.setInt(4, u.getIduser());
+
+        int status;
+        status = stmt.executeUpdate(); // execute query
+
+        stmt.close();
+        con.close();
+
+    }
+
+
+
+
 }
+
+
+
+

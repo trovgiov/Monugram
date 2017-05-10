@@ -17,6 +17,7 @@ public class MonumentAction extends ActionSupport{
      private ArrayList<String> list = new ArrayList<String>();
     private String monument;
 private String name;
+private int idmon;
 Monument m;
 
     public Monument getM() {
@@ -55,7 +56,7 @@ Monument m;
 
             String sql;
 
-            sql = "SELECT monumento from Monument";
+            sql = "SELECT idMonument,monumento from Monument";
 
             java.sql.Statement stmt = con.createStatement();
 
@@ -65,6 +66,8 @@ Monument m;
             while (rs.next()) {
 
               //Monument m=new Monument(rs.getString("monumento"));
+                //idmon=rs.getInt("idMonument");
+
                 monument = rs.getString("monumento");
 
                list.add(monument);
@@ -108,14 +111,19 @@ Monument m;
 
         User u = Singleton.getMyUser();
 
-        Monument m = new Monument(monument);
+
+
+
+
+ int idmon = findMonId(monument);
+        Monument m = new Monument(idmon,monument);
         Singleton.setMymonument(m);
 
 
              name=u.getNome();
 
 
-            System.out.println("Nome dopo scelta : "+name+"   "+m.getMonument());
+            System.out.println("Nome dopo scelta : "+name+" Monumento : "+m.getMonument()+" "+m.getId_monument());
 
         return "success";
 
@@ -124,6 +132,29 @@ Monument m;
     public String display (){
 
         return NONE;
+    }
+
+
+
+    public static int findMonId(String n_monumento)
+    {
+        int mId=0;
+        java.sql.Statement st = null;
+        try{
+
+            Connection con = DBUtility.getDBConnection();
+            st=con.createStatement();
+            String query = "select idMonument from Monument where monumento='"+n_monumento+"';";
+
+            ResultSet rs=st.executeQuery(query);
+
+            if (rs.next())
+            {
+                mId = rs.getInt("idMonument");
+            }
+        }catch(Exception e){e.printStackTrace();}
+
+        return mId;
     }
 }
 

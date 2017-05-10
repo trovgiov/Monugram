@@ -15,6 +15,11 @@ public class Monument {
         return id_monument;
     }
 
+    public Monument(int id_monument, String monument) {
+        this.id_monument = id_monument;
+        this.monument = monument;
+    }
+
     public void setId_monument(int id_monument) {
         this.id_monument = id_monument;
     }
