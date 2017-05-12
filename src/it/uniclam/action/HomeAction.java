@@ -1,13 +1,23 @@
 package it.uniclam.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import it.uniclam.db.DBUtility;
+import it.uniclam.model.Photo;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
+import org.apache.struts2.interceptor.ServletRequestAware;
+
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by GiovanniTrovini on 07/05/17.
  */
-public class HomeAction extends ActionSupport {
+public class HomeAction extends ActionSupport  implements
+        ServletRequestAware {
 
     private int iduser;
     private String nome;
@@ -38,7 +48,36 @@ public class HomeAction extends ActionSupport {
     }
 
 
-    public String execute (){
+    public ArrayList<Photo> getLista_foto() {
+        return lista_foto;
+    }
+
+    public void setLista_foto(ArrayList<Photo> lista_foto) {
+        this.lista_foto = lista_foto;
+    }
+
+    private ArrayList<Photo> lista_foto = new ArrayList<Photo>();
+
+    private String filepath;
+    private HttpServletRequest servletRequest;
+
+    public HttpServletRequest getServletRequest() {
+        return servletRequest;
+    }
+
+    public void setServletRequest(HttpServletRequest servletRequest) {
+        this.servletRequest = servletRequest;
+    }
+
+    public String getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
+    }
+
+    public String execute () throws SQLException {
 
 
         User u = Singleton.getMyUser();
@@ -46,6 +85,86 @@ public class HomeAction extends ActionSupport {
         iduser=u.getIduser();
         nome=u.getNome();
         cognome=u.getCognome();
+
+
+        setFilepath(servletRequest.getSession().getServletContext().getRealPath("/Monumenti/"));
+
+
+        System.out.println("filepath"+getFilepath());
+
+
+        try{
+        Connection con = DBUtility.getDBConnection();
+
+        String sql;
+
+        // sql = "select idPhoto,tag,Monument_idMonument,User_idUser from Photo order by idPhoto DESC";
+
+
+            sql="select u.nome,u.cognome,p.idPhoto,p.tag,p.Monument_idMonument,p.User_idUser from Photo p, User u\n" +
+                    "\n" +
+                    "where p.User_idUser=u.idUser\n" +
+                    "\n" +
+                    "\n" +
+                    " order by idPhoto DESC";
+        java.sql.Statement stmt = con.createStatement();
+
+        ResultSet rs = stmt.executeQuery(sql);
+
+        while (rs.next()) {
+
+
+            Connection con1 = DBUtility.getDBConnection();
+
+            String sql1;
+
+            sql1 = "select monumento from Monument  where idMonument='"+rs.getInt("p.Monument_idMonument")+"'";
+
+            java.sql.Statement stmt1 = con1.createStatement();
+
+            ResultSet rs1 = stmt1.executeQuery(sql1);
+
+            if(rs1.next()) {
+
+                String monumento = rs1.getString("monumento");
+
+                System.out.println(monumento);
+
+
+                String nome= rs.getString("u.nome");
+                String cognome=rs.getString("u.cognome");
+
+
+                Photo p = new Photo(rs.getInt("p.idPhoto"), rs.getString("p.tag"), monumento,nome,cognome);
+
+
+
+
+
+                lista_foto.add(p);
+
+            }
+         }
+
+        //controllo se l'utente esiste
+        // se check = false -> utente non esiste
+        //se check = true -> utente esiste
+
+
+
+
+
+        Singleton.setMyUser(u);
+
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+
+
+
+
 
 
 

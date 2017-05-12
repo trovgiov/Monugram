@@ -1,3 +1,4 @@
+<%@ page import="static org.apache.struts2.ServletActionContext.getServletContext" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -73,93 +74,80 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     <!-- Banner -->
     <section id="banner">
         <header>
-            <h2><!--[--><s:property value="nome"/>, take a look at <strong>your photos</strong>.<!--]--></h2>
+            <h2><!--[--><s:property value="nome"/>, take a look at <strong>our new photos</strong>.<!--]-->
+
+                <s:set var="path" value=" " />
+
+                <s:property value="path"></s:property>
+
+            </h2>
         </header>
     </section>
 
+
+
+
+
+         <!--
+        <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
+        <header>
+        <h3><a href="#">Pulvinar sagittis congue</a></h3>
+        </header>
+        <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
+
+        -->
+
+
+
+    <!--<img src="/Users/GiovanniTrovini/Desktop/01%20-%20Università/01%20-%20Magistrale/02%20ANNO/Secondo%20semestre/Monugram/out/artifacts/Progetto_war_exploded/Monumenti/Colosseo/GiovanniTrovini0.jpg"  width="100" height="100"/> -->
+   <!-- <img src="/Monumenti/Colosseo/GiovanniTrovini0.jpg"  width="100" height="100"/> -->
     <!-- Carousel -->
     <section class="carousel">
         <s:div class="reel">
 
+
+
+            <!--
             <article>
-                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
-                <header>
-                    <h3><a href="#">Pulvinar sagittis congue</a></h3>
-                </header>
-                <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
+                <s:iterator value="lista_foto">
+
+
+
+
+
+
+
+
+
+
+                     <header>
+                    <h3> <s:property value="filepath" /><s:property value="monument" />/<s:property value="title" /></h3>
+                    </header>
+                    <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
+
+
+
+
+                    <br>
+
+
+                </s:iterator>
+
             </article>
 
+
+-->
+            <s:iterator value="lista_foto">
             <article>
-                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
+                <a href="#" class="image featured"><img src="/Monumenti/<s:property value="monument"/>/<s:property value="title"/>"  width="336" height="189" alt="" /></a>
                 <header>
-                    <h3><a href="#">Fermentum sagittis proin</a></h3>
+                    <h3><a href="#"></a><s:property value="monument"/></h3>
                 </header>
-                <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
+                <p>Taken by : <s:property value="nome"></s:property>  <s:property value="cognome"></s:property>  </p>
             </article>
 
-            <article>
-                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
-                <header>
-                    <h3><a href="#">Sid quis rhoncus placerat</a></h3>
-                </header>
-                <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
-            </article>
+            </s:iterator>
 
-            <article>
-                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
-                <header>
-                    <h3><a href="#">Ultrices urna sit lobortis</a></h3>
-                </header>
-                <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
-            </article>
-
-            <article>
-                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
-                <header>
-                    <h3><a href="#">Varius magnis sollicitudin</a></h3>
-                </header>
-                <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
-            </article>
-
-            <article>
-                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
-                <header>
-                    <h3><a href="#">Pulvinar sagittis congue</a></h3>
-                </header>
-                <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
-            </article>
-
-            <article>
-                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
-                <header>
-                    <h3><a href="#">Fermentum sagittis proin</a></h3>
-                </header>
-                <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
-            </article>
-
-            <article>
-                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
-                <header>
-                    <h3><a href="#">Sed quis rhoncus placerat</a></h3>
-                </header>
-                <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
-            </article>
-
-            <article>
-                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
-                <header>
-                    <h3><a href="#">Ultrices urna sit lobortis</a></h3>
-                </header>
-                <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
-            </article>
-
-            <article>
-                <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
-                <header>
-                    <h3><a href="#">Varius magnis sollicitudin</a></h3>
-                </header>
-                <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
-            </article>
 
         </s:div>
     </section>
