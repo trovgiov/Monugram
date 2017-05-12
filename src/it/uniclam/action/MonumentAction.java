@@ -77,9 +77,6 @@ Monument m;
 
 
 
-
-
-
             // chiusura rs2 e stmt2
             rs.close();
             stmt.close();

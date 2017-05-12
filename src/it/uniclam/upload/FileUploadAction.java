@@ -30,8 +30,15 @@ public class FileUploadAction extends ActionSupport implements
     private HttpServletRequest servletRequest;
     private String monument;
 
+    public String getOfficial_title() {
+        return official_title;
+    }
 
+    public void setOfficial_title(String official_title) {
+        this.official_title = official_title;
+    }
 
+    private String official_title;
 
 
     private String filepath;
@@ -71,12 +78,11 @@ public class FileUploadAction extends ActionSupport implements
             User u = Singleton.getMyUser();
             Monument m = Singleton.getMymonument();
 
-
             //directory che contiene le foto
             // Possibile Sviluppo = Creare cartelle per ogni monumento
             // Per ora, le foto si trovano nella cartella $TOMCAT_HOME/out/uploadedPhoto
 
-             setFilepath(servletRequest.getSession().getServletContext().getRealPath("/Monumenti/" + m.getMonument()));
+            setFilepath(servletRequest.getSession().getServletContext().getRealPath("/Monumenti/" + m.getMonument()));
 
 
             System.out.println("Server path:" + getFilepath());
@@ -89,7 +95,6 @@ public class FileUploadAction extends ActionSupport implements
 
             // Titolo immagine di default
             String title = this.getUserImageFileName();
-
             // Divido la stringa ,  . è il carattere delimitatore
             String[] output = title.split("\\.");
 
@@ -102,33 +107,29 @@ public class FileUploadAction extends ActionSupport implements
 
             // Array per ospitare le variabili di ritorno
 
-            String [] final_title= new String[2];
-            final_title= (CheckName(user_info,m,u));
+            String[] final_title = new String[2];
+            final_title = (CheckName(user_info, m, u));
 
 
-            String official_title= final_title[0]+"."+estensione;
+            official_title = final_title[0] + "." + estensione;
             int contatore = Integer.parseInt(final_title[1]);
 
 
-            System.out.println("**** Nuovo Titolo : "+official_title);
-            System.out.println("**** Count : "+contatore);
-
+            System.out.println("**** Nuovo Titolo : " + official_title);
+            System.out.println("**** Count : " + contatore);
 
 
             File fileToCreate = new File(getFilepath(), official_title);
 
 
-
-
             FileUtils.copyFile(userImage, fileToCreate);
 
-            insert(m,official_title,contatore,u);
+            insert(m, official_title, contatore, u);
 
             System.out.println("\nFoto Inserita nel db");
 
             System.out.println("\nFoto caricata da : " + u.getNome());
             System.out.println("\nMonumento : " + m.getMonument());
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -172,23 +173,17 @@ public class FileUploadAction extends ActionSupport implements
 
     // RESTITUISCE IL NOME FILE
 
-    public String [] CheckName(String filename,Monument m, User u ) throws SQLException {
-
-
+    public String[] CheckName(String filename, Monument m, User u) throws SQLException {
 
 
         // Creo l'array per ospitare le variabili di ritorno
         // result[0] è il filename
         // result[1] è il count
 
-        String [] result= new String [2];
+        String[] result = new String[2];
         String out = null;
 
-        int count=0;
-
-
-
-
+        int count = 0;
 
 
         try {
@@ -198,8 +193,7 @@ public class FileUploadAction extends ActionSupport implements
             String sql;
 
 
-
-            sql = "SELECT tag from Photo WHERE  Monument_idMonument='"+m.getId_monument()+"' and User_idUser='"+u.getIduser()+"'";
+            sql = "SELECT tag from Photo WHERE  Monument_idMonument='" + m.getId_monument() + "' and User_idUser='" + u.getIduser() + "'";
 
             java.sql.Statement stmt = con.createStatement();
 
@@ -209,27 +203,20 @@ public class FileUploadAction extends ActionSupport implements
             String new_filename;
 
 
-
             // se è GIà PRESENTE IL FILE NAME, ALLORA AGGIUNGI IL CONTATORE
             if (rs.next()) {
 
 
-
-
-
-
                 new_filename = rs.getString("tag");
 
-                System.out.println("Filename già presente " +new_filename);
-
-
+                System.out.println("Filename già presente " + new_filename);
 
 
                 Connection con1 = DBUtility.getDBConnection();
 
                 String sql1;
 
-                sql1 = "SELECT max(counter) as counter from Photo WHERE Monument_idMonument='"+m.getId_monument()+"' and User_idUser='"+u.getIduser()+"'";
+                sql1 = "SELECT max(counter) as counter from Photo WHERE Monument_idMonument='" + m.getId_monument() + "' and User_idUser='" + u.getIduser() + "'";
                 java.sql.Statement stmt1 = con1.createStatement();
 
                 ResultSet rs1 = stmt1.executeQuery(sql1);
@@ -237,15 +224,12 @@ public class FileUploadAction extends ActionSupport implements
                 if (rs1.next()) {
 
                     count = rs1.getInt("counter");
-                    System.out.println("COUNT : "+count);
+                    System.out.println("COUNT : " + count);
 
-                    count=count+1;
+                    count = count + 1;
 
-                    System.out.println("COUNT +1: "+count);
-                    out = filename+""+count;
-
-
-
+                    System.out.println("COUNT +1: " + count);
+                    out = filename + "" + count;
 
 
                     System.out.println("Filename : " + out);
@@ -258,9 +242,8 @@ public class FileUploadAction extends ActionSupport implements
 
                 System.out.println("Filename non presente ");
 
-                count=0;
-                out = filename+""+count;
-
+                count = 0;
+                out = filename + "" + count;
 
 
             }
@@ -277,61 +260,48 @@ public class FileUploadAction extends ActionSupport implements
         }
 
 
-
         // ìnsert
 
 
+        result[0] = out;
 
 
+        result[1] = Integer.toString(count);
 
-
-result[0]=out;
-
-
-    result[1]= Integer.toString(count);
-
-    System.out.println("ritorno 0 : "+ out);
-        System.out.println("ritorno 1 : "+count);
-
-
-
-
+        System.out.println("ritorno 0 : " + out);
+        System.out.println("ritorno 1 : " + count);
 
 
         return result;
     }
 
 
-
-
-
-    public static int findMonId(String n_monumento)
-    {
-        int mId=0;
+    public static int findMonId(String n_monumento) {
+        int mId = 0;
         java.sql.Statement st = null;
-        try{
+        try {
 
             Connection con = DBUtility.getDBConnection();
-            st=con.createStatement();
-            String query = "select idMonument from Monument where monumento='"+n_monumento+"';";
+            st = con.createStatement();
+            String query = "select idMonument from Monument where monumento='" + n_monumento + "';";
 
-            ResultSet rs=st.executeQuery(query);
+            ResultSet rs = st.executeQuery(query);
 
-            if (rs.next())
-            {
+            if (rs.next()) {
                 mId = rs.getInt("idMonument");
             }
-        }catch(Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return mId;
     }
 
 
-    public void insert (Monument m,String final_filename,int count,User u) throws SQLException {
+    public void insert(Monument m, String final_filename, int count, User u) throws SQLException {
 
 
-
-        int id_monument= findMonId(m.getMonument());
+        int id_monument = findMonId(m.getMonument());
 
         Connection con = DBUtility.getDBConnection();
         PreparedStatement stmt = con.prepareStatement("insert into Photo (tag,Monument_idMonument,counter, User_idUser) values(?,?,?,?)");
@@ -348,8 +318,6 @@ result[0]=out;
         con.close();
 
     }
-
-
 
 
 }

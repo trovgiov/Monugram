@@ -22,7 +22,7 @@
 </head>
 
 <body>
-<s:div class="forms"><img src="./images/mon_icon.png" alt="monument icon" style="width:92px;height:92px;"><h3>Chose your monument!</h3>
+<s:div class="forms"><img src="./images/mon_icon.png" alt="monument icon" style="width:92px;height:92px;"><h3>Choose your monument!</h3>
 <s:form action="resultAction" class="forms">
     <s:select name="monument"
               list="list"/>

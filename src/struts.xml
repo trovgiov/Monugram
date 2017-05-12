@@ -72,7 +72,6 @@
         <interceptor-ref name="defaultStack"></interceptor-ref>
         <result name="success">successPhoto.jsp</result>
         <result name="input">message.jsp</result>
-
         </action>
 
         <action name="monument_drop" class="it.uniclam.action.MonumentAction" method="display">

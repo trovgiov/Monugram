@@ -48,7 +48,7 @@ h1#title {
 	max-width: 300px;
 	text-align: center;
 	position: relative;
-	top: 0px;
+	top: 0;
 }
 
 h1#title span span {
@@ -90,6 +90,7 @@ p.small {
 /* Layout */
 .container {
 	margin: 0;
+	margin-top: -124px;;
 }
 
 .top {
@@ -109,6 +110,23 @@ p.small {
 
 }
 
+.facebook {
+	height: 60px;
+	width: 110px;
+	border-radius: 25px;
+	border: 0;
+	color: white;
+	background: #3b5998;
+	margin: -20px -50px;
+	position:relative;
+	top:50%;
+	left:50%;
+	/*text-align:center;
+	margin: 10px auto;
+	position: relative;*/
+
+}
+
 .login-box {
 	background-color: white;
 	max-width: 340px;
@@ -119,6 +137,7 @@ p.small {
 	border-radius: 5px;
 	box-shadow: 0 5px 50px rgba(0,0,0,0.4);
 	text-align: center;
+	margin-top: -83px;
 }
 
 .login-box .box-header {
@@ -153,7 +172,7 @@ p.small {
 }
 
 .login-box button {
-	margin-top: 0px;
+	margin-top: 0;
 	border: 0;
 	border-radius: 2px;
 	color: white;
@@ -165,6 +184,40 @@ p.small {
 	background-color: #665851;
 	cursor:pointer;
 	outline: none;
+}
+
+/*button{
+	height:20px;
+	width:100px;
+	margin: -20px -50px;
+	position:relative;
+	top:50%;
+	left:50%;
+}*/
+
+button {
+	display: inline-block;
+	height: 134px;
+	padding: 0;
+	margin: 0;
+	vertical-align: top;
+	width: 104px;
+}
+
+#close-image img {
+	display: inline-block;
+	height: 55px;
+	padding: 0;
+	margin: 0;
+	vertical-align: top;
+	width: 104px;
+}
+
+#close-CSS {
+	background-image: url( '../../images/loginfb.png' );
+	background-size: 55px 120px;
+	height: 55px;
+	width: 120px;
 }
 
 .login-box button:hover {

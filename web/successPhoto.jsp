@@ -30,13 +30,13 @@
 <s:div class="logo"><img src="./images/success.png" alt="success" style="width:82px;height:82px;"></s:div>
 <s:div class="forms"><h3>Well Done! Your photo was successfully uploaded!!</h3>
 
-<button type="button" id="button" onclick="window.open('', '_self', ''); window.close();"><img src="./images/close.png" alt="success" style="width:192px;height:79px;"></button></s:div>
+    <img src="/Monumenti/<s:property value="monument"/>/<s:property value="official_title"/>>"/>
 
-<s:if test="hasActionMessages()">
-    <s:div class="mex">
-        <s:actionmessage/>
-    </s:div>
-</s:if>
+
+
+<!--<button type="button" id="button" onclick="window.open('', '_self', ''); window.close();"><img src="./images/close.png" alt="success" style="width:192px;height:79px;"></button>-->
+<a href="<s:url action="home"/>"><img src="./images/close.png" alt="Close" style="width:192px;height:79px;border:0; "></a>
+
 
 </body>
 </html>
