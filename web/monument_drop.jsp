@@ -8,8 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monugram - Chose your monument</title>
-    <meta http-equiv="refresh" content="300;url=teststatusManager.action" />
+    <title>Monugram - Choose your monument</title>
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
