@@ -82,5 +82,10 @@
             <result name="success">upload.jsp</result>
         </action>
 
+
+        <action name="monuview" class="it.uniclam.action.MonuViewAction" >
+            <result name="success">monu_view.jsp</result>
+        </action>
+
     </package>
 </struts>

@@ -2,6 +2,7 @@ package it.uniclam.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
+import it.uniclam.model.Monument;
 import it.uniclam.model.Photo;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
@@ -65,6 +66,14 @@ public class HomeAction extends ActionSupport  implements
         return servletRequest;
     }
 
+    public ArrayList<Monument> getLista_mon() {
+        return lista_mon;
+    }
+
+    public void setLista_mon(ArrayList<Monument> lista_mon) {
+        this.lista_mon = lista_mon;
+    }
+
     public void setServletRequest(HttpServletRequest servletRequest) {
         this.servletRequest = servletRequest;
     }
@@ -77,6 +86,7 @@ public class HomeAction extends ActionSupport  implements
         this.filepath = filepath;
     }
 
+    private ArrayList<Monument> lista_mon = new ArrayList<>();
     public String execute () throws SQLException {
 
 
@@ -144,6 +154,8 @@ public class HomeAction extends ActionSupport  implements
                 lista_foto.add(p);
 
             }
+             rs1.close();
+            stmt1.close();
          }
 
         //controllo se l'utente esiste
@@ -152,9 +164,62 @@ public class HomeAction extends ActionSupport  implements
 
 
 
+         rs.close();
+        stmt.close();
 
 
-        Singleton.setMyUser(u);
+        // Creo la lista per la scelta dinamica di monumenti
+
+
+
+            try{
+
+                Connection con2 = DBUtility.getDBConnection();
+
+                String sql2;
+
+                sql2 = "SELECT * from Monument";
+
+                java.sql.Statement stmt2 = con2.createStatement();
+
+                ResultSet rs2 = stmt2.executeQuery(sql2);
+
+
+                while (rs2.next()) {
+
+                    //Monument m=new Monument(rs.getString("monumento"));
+                    //idmon=rs.getInt("idMonument");
+
+
+                    Monument m = new Monument(rs2.getInt("idMonument"),rs2.getString("monumento"));
+
+                    lista_mon.add(m);
+
+
+
+
+                }
+
+
+
+                // chiusura rs2 e stmt2
+                 rs2.close();
+                stmt2.close();
+
+                // chiusura rs e stmt
+            }
+            catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+
+
+
+
+
+
+
+            Singleton.setMyUser(u);
 
 
     } catch (SQLException e) {

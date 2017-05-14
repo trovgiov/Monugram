@@ -16,10 +16,10 @@
     <title>Monugram - Upload Result</title>
     <meta http-equiv="refresh" content="300;url=teststatusManager.action" />
 
-    <!-- Google Fonts -->
+    <!— Google Fonts —>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
 
-    <!-- Custom Stylesheet -->
+    <!— Custom Stylesheet —>
     <link rel="stylesheet" href="./assets/css/upload_style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -30,13 +30,16 @@
 <s:div class="logo"><img src="./images/success.png" alt="success" style="width:82px;height:82px;"></s:div>
 <s:div class="forms"><h3>Well Done! Your photo was successfully uploaded!!</h3>
 
-    <img src="/Monumenti/<s:property value="monument"/>/<s:property value="official_title"/>>"/>
 
 
 
-<!--<button type="button" id="button" onclick="window.open('', '_self', ''); window.close();"><img src="./images/close.png" alt="success" style="width:192px;height:79px;"></button>-->
-<a href="<s:url action="home"/>"><img src="./images/close.png" alt="Close" style="width:192px;height:79px;border:0; "></a>
+    <button type="button" id="button" onclick="window.open('', '_self', ''); window.close();"><img src="./images/close.png" alt="success" style="width:192px;height:79px;"></button></s:div>
 
+<s:if test="hasActionMessages()">
+    <s:div class="mex">
+        <s:actionmessage/>
+    </s:div>
+</s:if>
 
 </body>
 </html>

@@ -46,21 +46,13 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <ul>
                 <li><a href="<s:url action="home"/>">Home</a></li>
                 <li>
-                    <a href="#main">How it works?</a>
+                    <a href="#main">Monuments</a>
+
                     <ul>
-                        <li><a href="#">Lorem ipsum dolor</a></li>
-                        <li><a href="#">Magna phasellus</a></li>
-                        <li><a href="#">Etiam dolore nisl</a></li>
-                        <li>
-                            <a href="#">And a submenu &hellip;</a>
-                            <ul>
-                                <li><a href="#">Lorem ipsum dolor</a></li>
-                                <li><a href="#">Phasellus consequat</a></li>
-                                <li><a href="#">Magna phasellus</a></li>
-                                <li><a href="#">Etiam dolore nisl</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Veroeros feugiat</a></li>
+                        <s:iterator value="lista_mon">
+                        <li><a href="<s:url action="monuview"/>?monumento=<s:property value="monument"/>"><s:property value="monument"></s:property></a></li>
+                        </s:iterator>
+
                     </ul>
                 </li>
                 <li><a href="left-sidebar.html">My Photos</a></li>
@@ -141,7 +133,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <article>
                 <a href="#" class="image featured"><img src="/Monumenti/<s:property value="monument"/>/<s:property value="title"/>"  width="336" height="189" alt="" /></a>
                 <header>
-                    <h3><a href="#"></a><s:property value="monument"/></h3>
+                    <h3><a href="<s:url action="monuview"/>?monumento=<s:property value="monument"/>"> <s:property value="monument"/> </a></h3>
                 </header>
                 <p>Taken by : <s:property value="nome"></s:property>  <s:property value="cognome"></s:property>  </p>
             </article>
@@ -154,24 +146,22 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
     <!-- Main -->
     <s:div class="wrapper style2">
-        <a href="#" class="image featured"><img src="./images/pic07.jpg" alt="" /></a>
+        <a href="#" class="image featured"><img src="/images/wim.jpg" alt="" /></a>
         <article id="main" class="container special">
             <header>
-                <h2><a href="#">Sed massa imperdiet magnis</a></h2>
+                <h2><a href="#">What's MONUgram</a></h2>
                 <p>
-                    Sociis aenean eu aenean mollis mollis facilisis primis ornare penatibus aenean. Cursus ac enim
-                    pulvinar curabitur morbi convallis. Lectus malesuada sed fermentum dolore amet.
+                    MONUgram is a mobile, desktop, and internet-based photo-sharing application and service that allows users to share pictures
+                    either publicly or privately.
                 </p>
             </header>
             <p>
-                Commodo id natoque malesuada sollicitudin elit suscipit. Curae suspendisse mauris posuere accumsan massa
-                posuere lacus convallis tellus interdum. Amet nullam fringilla nibh nulla convallis ut venenatis purus
-                sit arcu sociis. Nunc fermentum adipiscing tempor cursus nascetur adipiscing adipiscing. Primis aliquam
-                mus lacinia lobortis phasellus suscipit. Fermentum lobortis non tristique ante proin sociis accumsan
-                lobortis. Auctor etiam porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum
-                consequat integer interdum integer purus sapien. Nibh eleifend nulla nascetur pharetra commodo mi augue
-                interdum tellus. Ornare cursus augue feugiat sodales velit lorem. Semper elementum ullamcorper lacinia
-                natoque aenean scelerisque.
+                It was created by developers Giovanni Trovini, Addolorata Montaquila and Enea Marinelli, and launched in June 2017 as a free mobile app
+                and a web application.
+                MONUgram lets registered users upload monuments photos to the service. Users can connect their account to Facebook social profiles,
+                enabling them to share photos to those profiles as well. In June 2017, an "Explore" tab was introduced in the mobile apps,
+                showing users a variety of media, including (but not limited to) popular photos and photos taken at nearby locations,
+                trending tags and places, channels for recommended videos, and curated content.
             </p>
             <footer>
                 <a href="#" class="button">Continue Reading</a>
@@ -180,7 +170,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
     </s:div>
 
-    <!-- Features -->
+    <!-- Features
     <s:div class="wrapper style1">
 
         <section id="features" class="container special">
@@ -223,6 +213,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         </section>
 
     </s:div>
+
+    -->
 
     <!-- Footer -->
     <s:div id="footer">
