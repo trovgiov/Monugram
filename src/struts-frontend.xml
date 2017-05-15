@@ -1,0 +1,93 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+    <constant name="struts.multipart.maxSize" value="30000000" />
+
+    <package name="default" extends="struts-default" namespace="/">
+
+
+
+
+
+
+
+
+
+        <action name="register" class="it.uniclam.action.RegisterAction">
+            <result name="success">/private/register-success.jsp</result>
+            <result name="error">/error/register-error.jsp</result>
+            <result name="insert_error">/error/register-error_mail.jsp</result>
+            <result name="input">/public/register.jsp</result>
+        </action>
+
+        <action name="login">
+            <result>/public/login.jsp</result>
+        </action>
+
+
+        <action name="loginprocess" class="it.uniclam.action.Login">
+            <result name="success">/public/loginsuccess.jsp</result>
+            <result name="log_error">/public/login.jsp</result>
+            <result name="input">/public/login.jsp</result>
+        </action>
+
+
+        <action name="home" class="it.uniclam.action.HomeAction">
+            <result name="success">/private/user_page.jsp</result>
+        </action>
+
+
+        <action name="facebook_login" class="it.uniclam.action.FacebookLogin">
+            <result name="success">/public/loginsuccess.jsp</result>
+            <result name="no_mail">/public/no_email.jsp</result>
+        </action>
+
+        <action name="register_mail" class="it.uniclam.action.RegisterMail">
+            <result name="SUCCESS">/public/loginsuccess.jsp</result>
+        </action>
+
+        <action name="sendemail" class="it.uniclam.mail.SendMail">
+            <result name="success">/private/success_mail.jsp</result>
+            <result name="input">/private/mail.jsp</result>
+            <result name="error">error_mail.jsp</result>
+        </action>
+
+        <action name="back" class="it.uniclam.mail.Back">
+            <result>/private/mail.jsp</result>
+        </action>
+
+        <action name="uploadPhoto" class="it.uniclam.action.UploadAction">
+            <result name="SUCCESS">/private/upload.jsp</result>
+        </action>
+
+
+        <action name="userImage" class="it.uniclam.upload.FileUploadAction">
+        <interceptor-ref name="fileUpload">
+            <param name="maximumSize">20174560</param>
+
+            <param name="allowedTypes">
+                image/png,image/gif,image/jpeg,image/pjpeg
+            </param>
+        </interceptor-ref>
+        <interceptor-ref name="defaultStack"></interceptor-ref>
+        <result name="success">/private/successPhoto.jsp</result>
+        <result name="input">/private/message.jsp</result>
+        </action>
+
+        <action name="monument_drop" class="it.uniclam.action.MonumentAction" method="display">
+        <result name="none">/private/monument_drop.jsp</result>
+    </action>
+
+        <action name="resultAction" class="it.uniclam.action.MonumentAction" >
+            <result name="success">/private/upload.jsp</result>
+        </action>
+
+
+        <action name="monuview" class="it.uniclam.action.MonuViewAction" >
+            <result name="success">/private/monu_view.jsp</result>
+        </action>
+
+    </package>
+</struts>
