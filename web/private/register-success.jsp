@@ -26,7 +26,7 @@
     <h1 id="title" class="hidden"><span id="logo"><span>FANTASTIC!</span></br>YOU ARE REGISTERED TO</span></h1>
 </s:div>
 <s:div class="logo"> <img src="../images/logo_w.png" alt="Monugram logo" style="width:144px;height:196px;"></s:div></br>
-<s:div class="container"><h1>MONUgram</h1><a href="./login.jsp"><p class="small">SIGN IN</p></a></s:div>
+<s:div class="container"><h1>MONUgram</h1><a href="public/login.jsp"><p class="small">SIGN IN</p></a></s:div>
 
 
 

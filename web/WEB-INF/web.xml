@@ -8,6 +8,21 @@
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
     </filter>
 
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Private</web-resource-name>
+            <description>No direct access to JSP files</description>
+            <url-pattern>/private/*</url-pattern>
+            <http-method>POST</http-method>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description>No direct browser access to JSP files</description>
+         </auth-constraint>
+    </security-constraint>
+
+
+
 
 
     <filter-mapping>
