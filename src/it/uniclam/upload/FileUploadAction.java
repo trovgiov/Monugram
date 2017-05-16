@@ -18,6 +18,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 
 public class FileUploadAction extends ActionSupport implements
@@ -301,16 +302,20 @@ public class FileUploadAction extends ActionSupport implements
     public void insert(Monument m, String final_filename, int count, User u) throws SQLException {
 
 
+        java.util.Date today = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(today.getTime());
+
+
         int id_monument = findMonId(m.getMonument());
 
         Connection con = DBUtility.getDBConnection();
-        PreparedStatement stmt = con.prepareStatement("insert into Photo (tag,Monument_idMonument,counter, User_idUser) values(?,?,?,?)");
+        PreparedStatement stmt = con.prepareStatement("insert into Photo (tag,Monument_idMonument,counter, User_idUser,today) values(?,?,?,?,?)");
 
         stmt.setString(1, final_filename);
         stmt.setInt(2, id_monument);
         stmt.setInt(3, count);
         stmt.setInt(4, u.getIduser());
-
+stmt.setDate(5,sqlDate);
         int status;
         status = stmt.executeUpdate(); // execute query
 

@@ -4,6 +4,13 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+    <package name="default1" extends="struts-default" >
 
+    <action name="loginback" class="it.uniclam.action.backend.Login_back">
+        <result name="success">/private/backend/login_back_succ.jsp</result>
+        <result name="log_error">/public/backend/login_back.jsp</result>
+        <result name="input">/public/backend/login_back.jsp</result>
+    </action>
 
+    </package>
 </struts>
