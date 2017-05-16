@@ -71,7 +71,7 @@
                   <s:submit value="Login"></s:submit>
             </s:form>
 
-        <a href="facebook.html"><img src="../images/facebook-login-blue.png" alt="Facebook Login" style="width:152px;height:42px;border:0;"></a>
+        <a href="/public/facebook.html"><img src="../images/facebook-login-blue.png" alt="Facebook Login" style="width:152px;height:42px;border:0;"></a>
 
         <a href="../mail.jsp"><p class="small">Forgot your password?</p></a>
         <a href="register.jsp"><p class="small">Are you not registered? LOG ON!</p></a>
