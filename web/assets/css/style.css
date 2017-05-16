@@ -218,6 +218,18 @@ p.small {
 	color: #665851;
 }
 
+.tst {
+	text-align:center;
+	margin: 10px auto;
+	position: relative;
+	color: white;
+	margin-top: -25px;
+	margin-bottom: -25px;
+	background: #665851;
+	width: 150px;
+	border-radius: 5px;
+}
+
 .login-box button {
 	margin-top: 0;
 	border: 0;
