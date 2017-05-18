@@ -148,11 +148,13 @@ public class ControllerUser {
 
 	*/
 
+
 	/*
 	public String update() throws IOException {
-		Student student = new Student();
+		User user = new User();
 
-		student.setStudentId(studentId);
+		user.
+		student.setStudentId(id);
 		student.setName(name);
 		student.setDepartment(department);
 		student.setEmailId(emailId);
@@ -170,7 +172,7 @@ public class ControllerUser {
 	}
 
 
-	*/
+
 
 
 	/*
