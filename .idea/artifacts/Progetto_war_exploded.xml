@@ -12,10 +12,10 @@
           <element id="library" level="project" name="Spring-4.3.7.RELEASE" />
           <element id="library" level="application" name="mysql:mysql-connector-java:5.1.36" />
           <element id="library" level="project" name="javax.mail:mail:1.4" />
-          <element id="library" level="project" name="struts2-json-plugin-2.3.8" />
           <element id="library" level="project" name="JsonProcessing" />
           <element id="library" level="project" name="struts2-json-plugin-2.3.8 " />
           <element id="library" level="project" name="ojdbc14" />
+          <element id="library" level="project" name="mysql-connector-java-5.1.16-bin" />
         </element>
         <element id="library" level="application" name="mysql:mysql-connector-java:5.1.36" />
       </element>

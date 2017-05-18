@@ -26,7 +26,7 @@
 <s:div class="top">
     <h1 id="title" class="hidden"><span id="logo"><span>OH NO! :(</span></br>AN ERROR OCCURRED WITH YOUR EMAIL!</br>PLEASE TRY AGAIN</span></h1>
 </s:div>
-<s:div class="logo"><a href="../public/login.jsp"><img src="../images/back.png" alt="back" style="width:213px;height:125px;"></a></s:div>
+<s:div class="logo"><a href="../public/frontend/login.jsp"><img src="../images/back.png" alt="back" style="width:213px;height:125px;"></a></s:div>
 
 </body>
 

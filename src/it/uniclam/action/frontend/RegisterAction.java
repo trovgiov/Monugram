@@ -1,4 +1,4 @@
-package it.uniclam.action;
+package it.uniclam.action.frontend;
 
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.RegisterDAO;

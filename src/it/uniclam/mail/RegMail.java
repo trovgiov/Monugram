@@ -4,7 +4,7 @@ package it.uniclam.mail;
  * Created by Enifix on 28/04/2017.
  */
 import com.opensymphony.xwork2.ActionSupport;
-import it.uniclam.action.RegisterAction;
+import it.uniclam.action.frontend.RegisterAction;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
 import javax.mail.*;

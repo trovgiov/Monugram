@@ -1,4 +1,4 @@
-package it.uniclam.action;
+package it.uniclam.action.frontend;
 
 /**
  * Created by GiovanniTrovini on 21/04/17.

@@ -7,45 +7,37 @@
 
     <package name="default" extends="struts-default" namespace="/">
 
-
-
-
-
-
-
-
-
-        <action name="register" class="it.uniclam.action.RegisterAction">
+        <action name="register" class="it.uniclam.action.frontend.RegisterAction">
             <result name="success">/private/register-success.jsp</result>
             <result name="error">/error/register-error.jsp</result>
             <result name="insert_error">/error/register-error_mail.jsp</result>
-            <result name="input">/public/register.jsp</result>
+            <result name="input">/public/frontend/register.jsp</result>
         </action>
 
         <action name="login">
-            <result>/public/login.jsp</result>
+            <result>/public/frontend/login.jsp</result>
         </action>
 
 
-        <action name="loginprocess" class="it.uniclam.action.Login">
-            <result name="success">/public/loginsuccess.jsp</result>
-            <result name="log_error">/public/login.jsp</result>
-            <result name="input">/public/login.jsp</result>
+        <action name="loginprocess" class="it.uniclam.action.frontend.Login">
+            <result name="success">/public/frontend/loginsuccess.jsp</result>
+            <result name="log_error">/public/frontend/login.jsp</result>
+            <result name="input">/public/frontend/login.jsp</result>
         </action>
 
 
-        <action name="home" class="it.uniclam.action.HomeAction">
+        <action name="home" class="it.uniclam.action.frontend.HomeAction">
             <result name="success">/private/user_page.jsp</result>
         </action>
 
 
-        <action name="facebook_login" class="it.uniclam.action.FacebookLogin">
-            <result name="success">/public/loginsuccess.jsp</result>
-            <result name="no_mail">/public/no_email.jsp</result>
+        <action name="facebook_login" class="it.uniclam.action.frontend.FacebookLogin">
+            <result name="success">/public/frontend/loginsuccess.jsp</result>
+            <result name="no_mail">/public/frontend/no_email.jsp</result>
         </action>
 
-        <action name="register_mail" class="it.uniclam.action.RegisterMail">
-            <result name="SUCCESS">/public/loginsuccess.jsp</result>
+        <action name="register_mail" class="it.uniclam.action.frontend.RegisterMail">
+            <result name="SUCCESS">/public/frontend/loginsuccess.jsp</result>
         </action>
 
         <action name="sendemail" class="it.uniclam.mail.SendMail">
@@ -58,7 +50,7 @@
             <result>/private/mail.jsp</result>
         </action>
 
-        <action name="uploadPhoto" class="it.uniclam.action.UploadAction">
+        <action name="uploadPhoto" class="it.uniclam.action.frontend.UploadAction">
             <result name="SUCCESS">/private/upload.jsp</result>
         </action>
 
@@ -76,16 +68,16 @@
         <result name="input">/private/message.jsp</result>
         </action>
 
-        <action name="monument_drop" class="it.uniclam.action.MonumentAction" method="display">
+        <action name="monument_drop" class="it.uniclam.action.frontend.MonumentAction" method="display">
         <result name="none">/private/monument_drop.jsp</result>
     </action>
 
-        <action name="resultAction" class="it.uniclam.action.MonumentAction" >
+        <action name="resultAction" class="it.uniclam.action.frontend.MonumentAction" >
             <result name="success">/private/upload.jsp</result>
         </action>
 
 
-        <action name="monuview" class="it.uniclam.action.MonuViewAction" >
+        <action name="monuview" class="it.uniclam.action.frontend.MonuViewAction" >
             <result name="success">/private/monu_view.jsp</result>
         </action>
 

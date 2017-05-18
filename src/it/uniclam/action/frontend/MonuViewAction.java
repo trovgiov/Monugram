@@ -1,4 +1,4 @@
-package it.uniclam.action;
+package it.uniclam.action.frontend;
 
 import it.uniclam.db.DBUtility;
 import it.uniclam.model.Photo;

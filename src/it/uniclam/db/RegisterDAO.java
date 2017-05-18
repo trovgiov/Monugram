@@ -1,6 +1,6 @@
 package it.uniclam.db;
 
-import it.uniclam.action.RegisterAction;
+import it.uniclam.action.frontend.RegisterAction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

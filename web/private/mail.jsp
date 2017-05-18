@@ -66,7 +66,7 @@
             <s:submit value="SEND PASSWORD"></s:submit>
         </s:form>
 
-        <a href="../public/login.jsp"><p class="small">Back to LOGIN</p></a>
+        <a href="../public/frontend/login.jsp"><p class="small">Back to LOGIN</p></a>
     </s:div>
 </s:div>
 </body>

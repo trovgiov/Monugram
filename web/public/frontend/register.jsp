@@ -13,15 +13,15 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="../assets/css/animate.css">
+    <link rel="stylesheet" href="../../assets/css/animate.css">
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 
 
-    <script type = "text/javascript" src="../js/facebook_login.js"></script>
+    <script type = "text/javascript" src="../../js/facebook_login.js"></script>
 
     <style>
 
@@ -44,7 +44,7 @@
 
 <body>
 <!-- ATTENTION! THIS CODE IS FOR BACKGROUND VIDEO! -->
-<video poster="../images/photo_bg.jpg" id="bgvid" playsinline autoplay muted loop>
+<video poster="../../images/photo_bg.jpg" id="bgvid" playsinline autoplay muted loop>
     <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
     <!--<source src="../images/videobg_hd.mp4" type="video/mp4">-->
 </video>
@@ -77,7 +77,7 @@
             <s:submit value="REGISTER"></s:submit>
         </s:form>
 
-        <a href="facebook.html"><img src="../images/facebook-login-blue.png" alt="Facebook Login" style="width:152px;height:42px;border:0;"></a>
+        <a href="facebook.html"><img src="../../images/facebook-login-blue.png" alt="Facebook Login" style="width:152px;height:42px;border:0;"></a>
 
         <a href="login.jsp"><p class="small">Already registered? SIGN IN</p></a>
     </s:div>
