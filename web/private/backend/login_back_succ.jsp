@@ -74,7 +74,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="../../table.html">
                         <i class="ti-view-list-alt"></i>
                         <p>Table List</p>
                     </a>

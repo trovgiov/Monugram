@@ -11,6 +11,40 @@ public class User {
     private String email;
     private String password;
     private int point;
+    private String login_type;
+
+    public User(String idsession) {
+        this.idsession = idsession;
+    }
+
+    public String getIdsession() {
+        return idsession;
+    }
+
+    public void setIdsession(String idsession) {
+        this.idsession = idsession;
+    }
+
+    private String idsession;
+
+    //Costruttore per il backend
+    public User(int iduser, String nome, String cognome, String email, int point, String login_type) {
+        this.iduser = iduser;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
+         this.point = point;
+        this.login_type = login_type;
+    }
+
+    public String getLogin_type() {
+
+        return login_type;
+    }
+
+    public void setLogin_type(String login_type) {
+        this.login_type = login_type;
+    }
 
     public User() {
     }

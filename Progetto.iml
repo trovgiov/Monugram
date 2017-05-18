@@ -17,6 +17,7 @@
             <file>jar://$MODULE_DIR$/lib/struts2-core.jar!/struts-default.xml</file>
             <file>file://$MODULE_DIR$/src/struts-backend.xml</file>
             <file>file://$MODULE_DIR$/src/struts.xml</file>
+            <file>jar://$MODULE_DIR$/../../../../../struts2-json-plugin-2.3.8.jar!/struts-plugin.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
@@ -36,22 +37,12 @@
     <orderEntry type="library" name="Struts 2-2.3.20.1" level="project" />
     <orderEntry type="library" name="Spring-4.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="mysql:mysql-connector-java:5.1.36" level="application" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/mysql-connector-java-5.1.6.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="mysql:mysql-connector-java:5.1.6" level="application" />
-    <orderEntry type="library" name="java-json" level="project" />
-    <orderEntry type="library" name="com.google.code.gson:gson:2.0" level="project" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
-    <orderEntry type="library" name="javax.mail:mail:1.4.6" level="application" />
-    <orderEntry type="library" exported="" name="Java EE 6-Java EE 6" level="project" />
-    <orderEntry type="library" name="Java EE 6-Java EE 6 (2)" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" name="javax.mail:mail:1.4" level="project" />
+    <orderEntry type="library" name="struts2-json-plugin-2.3.8" level="project" />
+    <orderEntry type="library" name="JsonProcessing" level="project" />
+    <orderEntry type="library" name="struts2-json-plugin-2.3.8 " level="project" />
+    <orderEntry type="library" name="ojdbc14" level="project" />
   </component>
 </module>

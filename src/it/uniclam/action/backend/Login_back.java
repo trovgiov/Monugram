@@ -7,6 +7,8 @@ package it.uniclam.action.backend;
 
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.LoginDAO_back;
+import it.uniclam.model.Singleton;
+import it.uniclam.model.User;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
@@ -57,6 +59,13 @@ public  class Login_back extends ActionSupport implements SessionAware {
 
             // chiusura rs e stmt
 
+            String id = req.getRequestedSessionId();
+
+
+             User u = new User(id);
+            Singleton.setMyUser(u);
+
+            System.out.println(" id session " +id);
 
             return "success";
         } else {
