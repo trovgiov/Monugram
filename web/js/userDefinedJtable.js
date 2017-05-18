@@ -8,7 +8,7 @@ $(document).ready(function() {
 		fields : {
 			iduser : {
 				title : 'Id User',
-				width : '10%',
+				width : '5%',
 				key : true,
 				list : true,
 				edit : false,

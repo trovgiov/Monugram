@@ -14,6 +14,15 @@ public class Singleton {
 
     private static User myUser;
     private static Monument mymonument;
+    private static Session mysession;
+
+    public static Session getMysession() {
+        return mysession;
+    }
+
+    public static void setMysession(Session mysession) {
+        Singleton.mysession = mysession;
+    }
 
     public static Monument getMymonument() {
         return mymonument;

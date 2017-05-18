@@ -8,6 +8,7 @@ package it.uniclam.action;
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
 import it.uniclam.db.LoginDAO;
+import it.uniclam.model.Session;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
 import org.apache.struts2.ServletActionContext;
@@ -87,8 +88,14 @@ public  class Login extends ActionSupport implements SessionAware  {
          if(LoginDAO.validate(email, password)){
 
 
+             String id = req.getRequestedSessionId();
 
-            try{
+             Session s = new Session(id);
+
+             Singleton.setMysession(s);
+
+
+             try{
 
                 Connection con = DBUtility.getDBConnection();
 

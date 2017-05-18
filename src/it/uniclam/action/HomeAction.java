@@ -2,10 +2,7 @@ package it.uniclam.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
-import it.uniclam.model.Monument;
-import it.uniclam.model.Photo;
-import it.uniclam.model.Singleton;
-import it.uniclam.model.User;
+import it.uniclam.model.*;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +20,8 @@ public class HomeAction extends ActionSupport  implements
     private int iduser;
     private String nome;
     private String cognome;
+
+
 
     public int getIduser() {
         return iduser;
@@ -90,7 +89,9 @@ public class HomeAction extends ActionSupport  implements
     public String execute () throws SQLException {
 
 
-        User u = Singleton.getMyUser();
+        Session s = Singleton.getMysession();
+
+         User u = Singleton.getMyUser();
 
         iduser=u.getIduser();
         nome=u.getNome();
