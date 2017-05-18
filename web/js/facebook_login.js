@@ -16,11 +16,7 @@ window.fbAsyncInit = function() {
     FB.getLoginStatus(function (response) {
 
              if (response.status=='connected'){
-
-
                 document.getElementById('status').innerHTML = 'We are Connected';
-
-
 
 
 
@@ -62,9 +58,7 @@ function login(){
 
         if (response.status=='connected'){
 
-
             document.getElementById('status').innerHTML = 'We are Connected';
-
 
 
 
