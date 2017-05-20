@@ -2,6 +2,8 @@ package it.uniclam.action.frontend;
 
 import it.uniclam.db.DBUtility;
 import it.uniclam.model.Photo;
+import it.uniclam.model.Session;
+import it.uniclam.model.Singleton;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -35,6 +37,8 @@ public class MonuViewAction {
     public String execute(){
 
 
+        Session s = Singleton.getMysession();
+        System.out.println("Session id "+s.getId());
 
         try{
 

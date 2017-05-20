@@ -3,6 +3,7 @@ package it.uniclam.action.frontend;
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
 import it.uniclam.model.Monument;
+import it.uniclam.model.Session;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
 
@@ -48,6 +49,8 @@ Monument m;
 
     public MonumentAction (){
 
+        Session s = Singleton.getMysession();
+        System.out.println("Session id "+s.getId());
 
 
         try{

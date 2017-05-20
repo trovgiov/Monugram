@@ -2,9 +2,12 @@ package it.uniclam.action.frontend;
 
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
+import it.uniclam.model.Session;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
+import org.apache.struts2.ServletActionContext;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -55,6 +58,8 @@ User u;
     }
 
 
+    HttpServletRequest req = ServletActionContext.getRequest();
+
     public String execute() {
 
 
@@ -100,13 +105,20 @@ User u;
 
 
 
+                    String id = req.getRequestedSessionId();
+
+                    Session s = new Session(id);
+                    System.out.println("Session id "+id);
+
+                    Singleton.setMysession(s);
                     email = rs3.getString("email");
 
 
                      u = new User(rs3.getInt("idUser"), rs3.getString("nome"), rs3.getString("cognome"), email, "encrypted", rs3.getInt("point"));
 
 
-                     Singleton.setMyUser(u);
+
+                    Singleton.setMyUser(u);
 
 
 
@@ -217,6 +229,12 @@ User u;
                 // se check = false -> utente non esiste
                 //se check = true -> utente esiste
 
+                String id = req.getRequestedSessionId();
+
+                Session s = new Session(id);
+
+                Singleton.setMysession(s);
+                System.out.println("Session id "+id);
 
 
                 Singleton.setMyUser(u);

@@ -94,6 +94,8 @@ public  class Login extends ActionSupport implements SessionAware  {
 
              Singleton.setMysession(s);
 
+             System.out.println("Session id "+id);
+
 
              try{
 

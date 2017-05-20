@@ -7,6 +7,7 @@ package it.uniclam.upload;
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
 import it.uniclam.model.Monument;
+import it.uniclam.model.Session;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
 import org.apache.commons.io.FileUtils;
@@ -75,7 +76,8 @@ public class FileUploadAction extends ActionSupport implements
     public String execute() {
         try {
 
-
+            Session s = Singleton.getMysession();
+            System.out.println("Session id "+s.getId());
             User u = Singleton.getMyUser();
             Monument m = Singleton.getMymonument();
 
