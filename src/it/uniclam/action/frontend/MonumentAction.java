@@ -11,9 +11,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-/**
- * Created by GiovanniTrovini on 03/05/17.
- */
 public class MonumentAction extends ActionSupport{
      private ArrayList<String> list = new ArrayList<String>();
     private String monument;
@@ -45,14 +42,7 @@ Monument m;
         this.monument = monument;
     }
 
-
-
     public MonumentAction (){
-
-        Session s = Singleton.getMysession();
-        System.out.println("Session id "+s.getId());
-
-
         try{
 
             Connection con = DBUtility.getDBConnection();
@@ -64,22 +54,14 @@ Monument m;
             java.sql.Statement stmt = con.createStatement();
 
             ResultSet rs = stmt.executeQuery(sql);
-
-
             while (rs.next()) {
 
               //Monument m=new Monument(rs.getString("monumento"));
                 //idmon=rs.getInt("idMonument");
 
                 monument = rs.getString("monumento");
-
                list.add(monument);
-
-
             }
-
-
-
             // chiusura rs2 e stmt2
             rs.close();
             stmt.close();
@@ -88,12 +70,6 @@ Monument m;
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-
-
-
-
-
     }
 
     public String getName() {
@@ -105,35 +81,24 @@ Monument m;
     }
 
     public String execute (){
-
-
-
-
         User u = Singleton.getMyUser();
+        Session s = Singleton.getMysession();
 
-
-
-
-
- int idmon = findMonId(monument);
+        int idmon = findMonId(monument);
         Monument m = new Monument(idmon,monument);
         Singleton.setMymonument(m);
 
-
              name=u.getNome();
 
-
-            System.out.println("Nome dopo scelta : "+name+" Monumento : "+m.getMonument()+" "+m.getId_monument());
+            //System.out.println("Nome dopo scelta : "+name+" Monumento : "+m.getMonument()+" "+m.getId_monument());
 
         return "success";
-
     }
 
     public String display (){
 
         return NONE;
     }
-
 
 
     public static int findMonId(String n_monumento)
@@ -157,4 +122,3 @@ Monument m;
         return mId;
     }
 }
-

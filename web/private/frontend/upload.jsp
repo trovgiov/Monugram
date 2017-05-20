@@ -26,18 +26,18 @@
 <s:div class="forms"> <h3>OK, <s:property value="name"></s:property>, upload or take your photo at  <s:property value="monument"></s:property>!</h3>
 
 
-<s:form action="userImage" method="post" enctype="multipart/form-data" class="login">
+    <s:form action="userImage" method="post" enctype="multipart/form-data" class="login">
 
 
 
 
-    <s:hidden value="monument"/>
+        <s:hidden value="monument"/>
 
-    <s:file name="userImage" accept="image/*" id="capture" capture="camera" />
+        <s:file name="userImage" accept="image/*" id="capture" capture="camera" />
 
-    <s:div><button type="submit" id="button"><img src="../images/camera.png" alt="up icon" value="Upload" style="width:80px;height:80px;border:0;"/><br/>Upload</button></s:div>
+        <s:div><button type="submit" id="button"><img src="../images/camera.png" alt="up icon" value="Upload" style="width:80px;height:80px;border:0;"/><br/>Upload</button></s:div>
 
-</s:form>
+    </s:form>
 </s:div>
 </body>
 </html>

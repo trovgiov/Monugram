@@ -2,8 +2,6 @@ package it.uniclam.action.frontend;
 
 import it.uniclam.db.DBUtility;
 import it.uniclam.model.Photo;
-import it.uniclam.model.Session;
-import it.uniclam.model.Singleton;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -35,11 +33,6 @@ public class MonuViewAction {
     }
 
     public String execute(){
-
-
-        Session s = Singleton.getMysession();
-        System.out.println("Session id "+s.getId());
-
         try{
 
             Connection con = DBUtility.getDBConnection();
@@ -61,10 +54,7 @@ public class MonuViewAction {
                 //Monument m=new Monument(rs.getString("monumento"));
                 //idmon=rs.getInt("idMonument");
 
-
                 Photo p = new Photo(rs.getInt("p.idPhoto"), rs.getString("p.tag"),getMonumento(),rs.getString("u.nome"),rs.getString("u.cognome"));
-
-
                 lista.add(p);
 
             }
@@ -79,11 +69,6 @@ public class MonuViewAction {
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-
-
-
-
 
         return "success";
     }

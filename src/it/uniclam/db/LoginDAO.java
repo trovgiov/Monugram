@@ -32,7 +32,7 @@ private static String user_email;
 
             user_email=email;
 
-            System.out.println("Email "+getUser_email());
+            //System.out.println("Email "+getUser_email());
             status=rs.next();
          }catch(Exception e){e.printStackTrace();}
         return status;
