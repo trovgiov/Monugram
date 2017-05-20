@@ -34,7 +34,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <!-- Inner -->
         <s:div class="inner">
             <header>
-                <h1><img src="../images/logo_w.png" alt="Monugram logo" style="width:82px;height:106px;"><a href="user_page.jsp" id="logo"> WELCOME INTO MONUgram!</a></h1>
+                <h1><img src="../../images/logo_w.png" alt="Monugram logo" style="width:82px;height:106px;"><a href="user_page.jsp" id="logo"> WELCOME INTO MONUgram!</a></h1>
                 <hr />
                 <p>Hi, <s:property value="nome"/>, let's start to capture or upload your FANTASTIC monument photos!</p>
             </header>
@@ -49,8 +49,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <ul>
                 <li><a href="<s:url action="home"/>">Home</a></li>
                 <li>
-                    <a href="#main">Monuments</a>
-
+                    Monuments
                     <ul>
                         <s:iterator value="lista_mon">
                         <li><a href="<s:url action="monuview"/>?monumento=<s:property value="monument"/>"><s:property value="monument"></s:property></a></li>
@@ -58,9 +57,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                     </ul>
                 </li>
-                <li><a href="left-sidebar.html">My Photos</a></li>
+
+                <li><a href="<s:url action="monuuserview"/>?utente=<s:property value="nome"/>">My Photos</a></li>
+
                 <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                <li><a href="no-sidebar.html">Contact Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
             </ul>
         </nav>
 
@@ -78,8 +79,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </h2>
         </header>
     </section>
-
-
 
 
 
@@ -107,34 +106,22 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 <s:iterator value="lista_foto">
 
 
-
-
-
-
-
-
-
-
                      <header>
                     <h3> <s:property value="filepath" /><s:property value="monument" />/<s:property value="title" /></h3>
                     </header>
                     <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
 
 
-
-
                     <br>
-
 
                 </s:iterator>
 
             </article>
 
-
 -->
             <s:iterator value="lista_foto">
             <article>
-                <a href="#" class="image featured"><img src="/Monumenti/<s:property value="monument"/>/<s:property value="title"/>"  width="336" height="189" alt="" /></a>
+                <s:div><a href="/Monumenti/<s:property value="monument"/>/<s:property value="title"/>" class="image featured"></s:div><img src="/Monumenti/<s:property value="monument"/>/<s:property value="title"/>"  width="336" height="189" alt="" /></a>
                 <header>
                     <h3><a href="<s:url action="monuview"/>?monumento=<s:property value="monument"/>"> <s:property value="monument"/> </a></h3>
                 </header>
@@ -167,7 +154,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 trending tags and places, channels for recommended videos, and curated content.
             </p>
             <footer>
-                <a href="#" class="button">Continue Reading</a>
+                <a href="<s:url action="monument_drop"/>" class="button"target="popup" onclick="window.open(this.href,'Upload','width=450,height=400'); return false;">Start taking your photos!</a>
             </footer>
         </article>
 
@@ -333,9 +320,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <!-- Contact -->
                     <section class="contact">
                         <header>
-                            <h3>Nisl turpis nascetur interdum?</h3>
+                            <h3>Do you like this project? Have you some suggestions?</h3>
                         </header>
-                        <p>Urna nisl non quis interdum mus ornare ridiculus egestas ridiculus lobortis vivamus tempor aliquet.</p>
+                        <p>Keep in touch with MONUgram!</p>
                         <ul class="icons">
                             <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
                             <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -349,7 +336,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <!-- Copyright -->
                     <s:div class="copyright">
                         <ul class="menu">
-                            <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                            <li>&copy; Untitled. All rights reserved.</li><li>Developed by: G. Trovini, E. Marinelli and A.Montaquila</a></li>
                         </ul>
                     </s:div>
 

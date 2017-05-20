@@ -33,9 +33,6 @@ public class MonuViewAction {
     }
 
     public String execute(){
-
-
-
         try{
 
             Connection con = DBUtility.getDBConnection();
@@ -57,10 +54,7 @@ public class MonuViewAction {
                 //Monument m=new Monument(rs.getString("monumento"));
                 //idmon=rs.getInt("idMonument");
 
-
                 Photo p = new Photo(rs.getInt("p.idPhoto"), rs.getString("p.tag"),getMonumento(),rs.getString("u.nome"),rs.getString("u.cognome"));
-
-
                 lista.add(p);
 
             }
@@ -75,11 +69,6 @@ public class MonuViewAction {
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-
-
-
-
 
         return "success";
     }

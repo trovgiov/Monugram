@@ -8,7 +8,7 @@
     <package name="default" extends="struts-default" namespace="/">
 
         <action name="register" class="it.uniclam.action.frontend.RegisterAction">
-            <result name="success">/private/register-success.jsp</result>
+            <result name="success">/private/frontend/register-success.jsp</result>
             <result name="error">/error/register-error.jsp</result>
             <result name="insert_error">/error/register-error_mail.jsp</result>
             <result name="input">/public/frontend/register.jsp</result>
@@ -27,7 +27,7 @@
 
 
         <action name="home" class="it.uniclam.action.frontend.HomeAction">
-            <result name="success">/private/user_page.jsp</result>
+            <result name="success">/private/frontend/user_page.jsp</result>
         </action>
 
 
@@ -41,17 +41,17 @@
         </action>
 
         <action name="sendemail" class="it.uniclam.mail.SendMail">
-            <result name="success">/private/success_mail.jsp</result>
-            <result name="input">/private/mail.jsp</result>
+            <result name="success">/private/frontend/success_mail.jsp</result>
+            <result name="input">/public/frontend/mail.jsp</result>
             <result name="error">error_mail.jsp</result>
         </action>
 
         <action name="back" class="it.uniclam.mail.Back">
-            <result>/private/mail.jsp</result>
+            <result>/public/frontend/mail.jsp</result>
         </action>
 
         <action name="uploadPhoto" class="it.uniclam.action.frontend.UploadAction">
-            <result name="SUCCESS">/private/upload.jsp</result>
+            <result name="SUCCESS">/private/frontend/upload.jsp</result>
         </action>
 
 
@@ -64,21 +64,25 @@
             </param>
         </interceptor-ref>
         <interceptor-ref name="defaultStack"></interceptor-ref>
-        <result name="success">/private/successPhoto.jsp</result>
-        <result name="input">/private/message.jsp</result>
+        <result name="success">/private/frontend/successPhoto.jsp</result>
+        <result name="input">/private/frontend/message.jsp</result>
         </action>
 
         <action name="monument_drop" class="it.uniclam.action.frontend.MonumentAction" method="display">
-        <result name="none">/private/monument_drop.jsp</result>
+        <result name="none">/private/frontend/monument_drop.jsp</result>
     </action>
 
         <action name="resultAction" class="it.uniclam.action.frontend.MonumentAction" >
-            <result name="success">/private/upload.jsp</result>
+            <result name="success">/private/frontend/upload.jsp</result>
         </action>
 
 
         <action name="monuview" class="it.uniclam.action.frontend.MonuViewAction" >
-            <result name="success">/private/monu_view.jsp</result>
+            <result name="success">/private/frontend/monu_view.jsp</result>
+        </action>
+
+        <action name="monuuserview" class="it.uniclam.action.frontend.MonuViewUserAction" >
+            <result name="success">/private/frontend/monu_user_view.jsp</result>
         </action>
 
     </package>
