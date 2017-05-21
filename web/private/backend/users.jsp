@@ -8,8 +8,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="assets_back/img/apple-icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="assets_back/img/favicon.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../../assets_back/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../../assets_back/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>Paper Dashboard by Creative Tim</title>
@@ -27,21 +27,21 @@
 
     <!-- User defined Jtable js file -->
      <!-- Bootstrap core CSS     -->
-    <link href="assets_back/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../assets_back/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
-    <link href="assets_back/css/animate.min.css" rel="stylesheet"/>
+    <link href="../../assets_back/css/animate.min.css" rel="stylesheet"/>
 
     <!--  Paper Dashboard core CSS    -->
-    <link href="assets_back/css/paper-dashboard.css" rel="stylesheet"/>
+    <link href="../../assets_back/css/paper-dashboard.css" rel="stylesheet"/>
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets_back/css/demo.css" rel="stylesheet" />
+    <link href="../../assets_back/css/demo.css" rel="stylesheet" />
 
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
-    <link href="assets_back/css/themify-icons.css" rel="stylesheet">
+    <link href="../../assets_back/css/themify-icons.css" rel="stylesheet">
 
 </head>
 <body>
@@ -56,25 +56,24 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
-                </a>
+ Monugram
             </div>
 
             <ul class="nav">
                 <li>
-                    <a href="dashboard.html">
+                    <a href="<s:url action="home_back"/>">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
-                    <a href="table.jsp">
+                <li class="active">
+
+                    <a href="<s:url action="users"/>">
                         <i class="ti-user"></i>
-                        <p>Utenti</p>
+                        <p>Users</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="table.html">
                         <i class="ti-view-list-alt"></i>
                         <p>Foto</p>
@@ -154,7 +153,7 @@
                                 <h4 class="title">Utenti Iscritti</h4>
                              </div>
 
-                                    <h3>User </h3>
+
                                     <div id="StudentTableContainer"></div>
 
 
@@ -206,26 +205,26 @@
 </body>
 
     <!--   Core JS Files   -->
-    <script src="assets_back/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="assets_back/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../assets_back/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="../../assets_back/js/bootstrap.min.js" type="text/javascript"></script>
 
 	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src="assets_back/js/bootstrap-checkbox-radio.js"></script>
+	<script src="../../assets_back/js/bootstrap-checkbox-radio.js"></script>
 
 	<!--  Charts Plugin -->
-	<script src="assets_back/js/chartist.min.js"></script>
+	<script src="../../assets_back/js/chartist.min.js"></script>
 
     <!--  Notifications Plugin    -->
-    <script src="assets_back/js/bootstrap-notify.js"></script>
+    <script src="../../assets_back/js/bootstrap-notify.js"></script>
 
     <!--  Google Maps Plugin    -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-	<script src="assets_back/js/paper-dashboard.js"></script>
+	<script src="../../assets_back/js/paper-dashboard.js"></script>
 
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-	<script src="assets_back/js/demo.js"></script>
+	<script src="../../assets_back/js/demo.js"></script>
 <!-- jTable script file. -->
  <script src="/js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
 <script src="/js/jquery.jtable.js" type="text/javascript"></script>

@@ -13,28 +13,20 @@ public class User {
     private int point;
     private String login_type;
 
-    public User(String idsession) {
-        this.idsession = idsession;
+    //Backend
+    private String username;
+
+    public User(String username) {
+        this.username = username;
     }
 
-    public String getIdsession() {
-        return idsession;
+    //frontend
+    public String getUsername() {
+        return username;
     }
 
-    public void setIdsession(String idsession) {
-        this.idsession = idsession;
-    }
-
-    private String idsession;
-
-    //Costruttore per il backend
-    public User(int iduser, String nome, String cognome, String email, int point, String login_type) {
-        this.iduser = iduser;
-        this.nome = nome;
-        this.cognome = cognome;
-        this.email = email;
-         this.point = point;
-        this.login_type = login_type;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getLogin_type() {

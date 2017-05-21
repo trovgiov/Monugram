@@ -83,6 +83,7 @@
 
         <action name="monuuserview" class="it.uniclam.action.frontend.MonuViewUserAction" >
             <result name="success">/private/frontend/monu_user_view.jsp</result>
+            <result name="error">/error/error.jsp</result>
         </action>
 
     </package>

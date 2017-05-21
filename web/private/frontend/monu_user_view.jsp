@@ -20,6 +20,10 @@
     <!--[if lte IE 9]><link rel="stylesheet" href="assets_mon/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="assets_mon/css/ie8.css" /><![endif]-->
 
+
+
+
+
 </head>
 <body>
 
@@ -61,7 +65,7 @@
 
 </div>
 
-<!-- Scripts -->
+        <!-- Scripts -->
 <script src="assets_mon/js/jquery.min.js"></script>
 <script src="assets_mon/js/jquery.poptrox.min.js"></script>
 <script src="assets_mon/js/skel.min.js"></script>

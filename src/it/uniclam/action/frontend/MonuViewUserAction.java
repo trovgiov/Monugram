@@ -15,6 +15,15 @@ import java.util.ArrayList;
         User u;
         private int idusr;
 
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+
+        private String status;
         public String getMonumento() {
             return monumento;
         }
@@ -38,12 +47,21 @@ import java.util.ArrayList;
         public String execute(){
             try{
                 Session s = Singleton.getMysession();
-                u = Singleton.getMyUser();
+
+                if(s.getId().equals("null")){
+
+
+                    return "error";
+                }
+
+                 u = Singleton.getMyUser();
                 idusr = u.getIduser();
                 Connection con = DBUtility.getDBConnection();
                 String sql;
+
+                System.out.println("Status : "+getStatus());
                 sql = "SELECT p.idPhoto,p.tag,p.Monument_idMonument,m.Monumento FROM Photo p, Monument m \n"+
-                        "WHERE p.User_idUser='"+idusr+"' AND p.Monument_idMonument=m.idMonument ORDER BY today DESC";
+                        "WHERE p.User_idUser='"+idusr+"' AND p.Monument_idMonument=m.idMonument  and p.status='"+getStatus()+"' ORDER BY today DESC";
 
                 java.sql.Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(sql);

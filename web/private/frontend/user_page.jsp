@@ -58,7 +58,13 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     </ul>
                 </li>
 
-                <li><a href="<s:url action="monuuserview"/>?utente=<s:property value="nome"/>">My Photos</a></li>
+                <li> My Photos
+                <ul>
+                <li><a href="<s:url action="monuuserview"/>?status=checked">Checked</a></li>
+                <li><a href="<s:url action="monuuserview"/>?status=unchecked">Unchecked</a></li>
+                </ul>
+
+                </li>
 
                 <li><a href="right-sidebar.html">Right Sidebar</a></li>
                 <li><a href="#contact">Contact Us</a></li>
@@ -336,7 +342,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <!-- Copyright -->
                     <s:div class="copyright">
                         <ul class="menu">
-                            <li>&copy; Untitled. All rights reserved.</li><li>Developed by: G. Trovini, E. Marinelli and A.Montaquila</a></li>
+                            <li>&copy; Untitled. All rights reserved.</li><li>Developed by: G. Trovini, E. Marinelli and A.Montaquila</li>
                         </ul>
                     </s:div>
 

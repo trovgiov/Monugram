@@ -75,7 +75,9 @@
 
         <a href="/public/frontend/mail.jsp"><p class="small">Forgot your password?</p></a>
         <a href="register.jsp"><p class="small">Are you not registered? LOG ON!</p></a>
-</s:div>
+        <a href="/public/backend/login_back.jsp"><p class="small">Admin panel</p></a>
+
+    </s:div>
 </s:div>
 </body>
 
