@@ -2,7 +2,8 @@ $(document).ready(function() {
 	$('#StudentTableContainer').jtable({
 		title : 'Students List',
 		actions : {
-			listAction : 'people_list'
+			listAction : 'people_list',
+			updateAction:'people_update.action'
 		},
 
 		fields : {
@@ -17,12 +18,12 @@ $(document).ready(function() {
 			nome : {
 				title : 'Name',
 				width : '20%',
-				edit : true
+                edit : false
 			},
 			cognome : {
 				title : 'Cognome',
 				width : '20%',
-				edit : true
+                edit : false
 			},
 			email : {
 				title : 'Email',
@@ -40,7 +41,7 @@ $(document).ready(function() {
             login_type : {
                 title : 'Tipo di accesso',
                 width : '20%',
-                edit : true
+                edit : false
             }
 
 

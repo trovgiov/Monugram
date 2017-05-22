@@ -50,28 +50,25 @@ public class CrudDao {
 
 
 
-    /*
-    public void updatePersona(Persona persona) {
-        String updateQuery = "UPDATE people SET categoria = ?, nome=?,  cognome=?, telefono=?, email=?, foto=?, descrizione=?   WHERE idPeople = ?";
+
+    public void updateUser(User user) {
+        String updateQuery = "UPDATE User SET  email = ?, point = ? WHERE idUser = ?";
         try {
             pStmt = dbConnection.prepareStatement(updateQuery);
 
-            pStmt.setString(1, persona.getCategoria());
-            pStmt.setString(2, persona.getNome());
-            pStmt.setString(3, persona.getCognome());
-            pStmt.setString(4, persona.getTelefono());
-            pStmt.setString(5, persona.getEmail());
-            pStmt.setString(6, persona.getFoto());
-            pStmt.setString(7, persona.getDescrizione());
-            pStmt.setInt(8, persona.getIdPeople());
+
+            pStmt.setString(1, user.getEmail());
+            pStmt.setInt(2, user.getPoint());
+            pStmt.setInt(3, user.getIduser());
+
 
             pStmt.executeUpdate();
-
+System.out.println("Email"+user.getEmail());
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
     }
 
 
-*/
+
 }

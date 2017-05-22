@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.Action;
 import it.uniclam.action.backend.Crud.CrudDao;
 import it.uniclam.model.User;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ControllerUser {
@@ -149,19 +150,18 @@ public class ControllerUser {
 	*/
 
 
-	/*
+
 	public String update() throws IOException {
 		User user = new User();
 
-		user.
-		student.setStudentId(id);
-		student.setName(name);
-		student.setDepartment(department);
-		student.setEmailId(emailId);
+
+		user.setEmail(getEmail());
+		user.setPoint(getPoint());
+
 
 		try {
 			// Update existing record
-			dao.updateStudent(student);
+			dao.updateUser(user);
 			result = "OK";
 		} catch (Exception e) {
 			result = "ERROR";

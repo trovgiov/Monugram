@@ -23,6 +23,10 @@
 
         </action>
 
+        <action name="people_update" method="update" class="it.uniclam.action.backend.Controller.ControllerUser">
+            <result type="json"></result>
+        </action>
+
         <action name="home_back" class="it.uniclam.action.backend.home_back">
             <result>/private/backend/dashboard.jsp</result>
 
