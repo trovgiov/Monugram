@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><s:property value="monumento"></s:property></title>
+    <title><s:property value="monument"></s:property></title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <!--[if lte IE 8]><script src="assets_mon/js/ie/html5shiv.js"></script><![endif]-->
@@ -32,7 +32,7 @@
 
     <!-- Header -->
     <header id="header">
-        <h1><strong>MY PHOTOS - <s:property value="nome"> </s:property><s:property value="cognome"></s:property></strong></h1>
+        <h1><strong>MY PHOTOS - <s:property value="nome"></s:property><s:property value="cognome"></s:property></strong></h1>
         <nav>
             <ul>
                 <li><a href="<s:url action="home"/> " class="icon fa-info-circle">Home</a></li>
