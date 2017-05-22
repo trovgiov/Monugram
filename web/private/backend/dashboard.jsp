@@ -12,6 +12,12 @@
 <!doctype html>
 <html lang="en">
 <head>
+
+    <script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
+    <script src="/js/liquidFillGauge.js" language="JavaScript"></script>
+    <style>
+        .liquidFillGaugeText { font-family: Helvetica; font-weight: bold; }
+    </style>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="assets_back/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="assets_back/img/favicon.png">
@@ -129,7 +135,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="ti-panel"></i>
                                 <p>Stats</p>
-                            </a>
+
+
+
+                        </a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -411,5 +420,8 @@
 
     });
 </script>
+
+
+
 
 </html>

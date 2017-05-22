@@ -43,5 +43,6 @@
     <orderEntry type="library" name="struts2-json-plugin-2.3.8 " level="project" />
     <orderEntry type="library" name="ojdbc14" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.16-bin" level="application" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.16-bin" level="project" />
   </component>
 </module>

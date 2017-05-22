@@ -32,7 +32,7 @@
 
     <!-- Header -->
     <header id="header">
-        <h1><strong>MY PHOTOS - <s:property value="nome"></s:property><s:property value="cognome"></s:property></strong></h1>
+        <h1><strong>MY PHOTOS - <s:property value="nome"> </s:property><s:property value="cognome"></s:property></strong></h1>
         <nav>
             <ul>
                 <li><a href="<s:url action="home"/> " class="icon fa-info-circle">Home</a></li>

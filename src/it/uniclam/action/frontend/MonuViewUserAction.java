@@ -44,6 +44,25 @@ import java.util.ArrayList;
             this.lista = lista;
         }
 
+        private String nome;
+        private String cognome;
+
+        public String getNome() {
+            return nome;
+        }
+
+        public void setNome(String nome) {
+            this.nome = nome;
+        }
+
+        public String getCognome() {
+            return cognome;
+        }
+
+        public void setCognome(String cognome) {
+            this.cognome = cognome;
+        }
+
         public String execute(){
             try{
                 Session s = Singleton.getMysession();
@@ -73,6 +92,9 @@ import java.util.ArrayList;
                     //idmon=rs.getInt("idMonument");
 
                     Photo p = new Photo(rs.getInt("p.idPhoto"), rs.getString("p.tag"),rs.getString("m.Monumento"),u.getNome(),u.getCognome());
+
+                   nome=u.getNome();
+                   cognome=u.getCognome();
                     lista.add(p);
                 }
 
