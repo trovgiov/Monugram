@@ -74,7 +74,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="<s:url action="photoview"/>">
                         <i class="ti-view-list-alt"></i>
                         <p>Foto</p>
                     </a>

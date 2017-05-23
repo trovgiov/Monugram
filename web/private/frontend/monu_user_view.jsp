@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><s:property value="monumento"></s:property></title>
+    <title><s:property value="monument"></s:property></title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <!--[if lte IE 8]><script src="assets_mon/js/ie/html5shiv.js"></script><![endif]-->

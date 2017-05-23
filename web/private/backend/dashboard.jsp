@@ -12,6 +12,12 @@
 <!doctype html>
 <html lang="en">
 <head>
+
+    <script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
+    <script src="/js/liquidFillGauge.js" language="JavaScript"></script>
+    <style>
+        .liquidFillGaugeText { font-family: Helvetica; font-weight: bold; }
+    </style>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="assets_back/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="assets_back/img/favicon.png">
@@ -55,58 +61,36 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                 Monugram
+                Monugram
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="<s:url action="home_back"/>">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
+
                     <a href="<s:url action="users"/>">
                         <i class="ti-user"></i>
                         <p>Users</p>
                     </a>
                 </li>
                 <li>
-                    <a href="../../table.html">
+                    <a href="<s:url action="photoview"/>">
                         <i class="ti-view-list-alt"></i>
-                        <p>Table List</p>
+                        <p>Foto</p>
                     </a>
                 </li>
                 <li>
                     <a href="typography.html">
                         <i class="ti-text"></i>
-                        <p>Typography</p>
+                        <p>Monumenti</p>
                     </a>
                 </li>
-                <li>
-                    <a href="icons.html">
-                        <i class="ti-pencil-alt2"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="ti-map"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="ti-bell"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
-                <li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="ti-export"></i>
-                        <p>Upgrade to PRO</p>
-                    </a>
-                </li>
+
             </ul>
         </div>
     </div>
@@ -129,7 +113,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="ti-panel"></i>
                                 <p>Stats</p>
-                            </a>
+
+
+
+                        </a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -411,5 +398,8 @@
 
     });
 </script>
+
+
+
 
 </html>

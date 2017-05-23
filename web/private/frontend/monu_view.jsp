@@ -32,10 +32,12 @@
         <h1><strong><s:property value="monumento"></s:property></strong> - MONUgram</h1>
         <nav>
             <ul>
+                <li><a href="<s:url action="monuprogress"/>?monumento=<s:property value="monumento"/>" class="icon fa-info-circle">Progress</a></li>
                 <li><a href="<s:url action="home"/> " class="icon fa-info-circle">Home</a></li>
             </ul>
         </nav>
     </header>
+
 
     <!-- Main -->
     <div id="main">

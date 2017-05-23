@@ -17,7 +17,17 @@
             <result type="json"></result>
         </action>
 
+        <action name="photo_list" method="list" class="it.uniclam.action.backend.Controller.ControllerPhoto">
+            <result type="json"></result>
+        </action>
 
+
+
+        <action name="photoview">
+
+            <result>/private/backend/photoview.jsp</result>
+
+        </action>
         <action name="users">
             <result>/private/backend/users.jsp</result>
 

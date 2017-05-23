@@ -149,7 +149,7 @@ public class HomeAction extends ActionSupport  implements
                     //Monument m=new Monument(rs.getString("monumento"));
                     //idmon=rs.getInt("idMonument");
 
-                    Monument m = new Monument(rs2.getInt("idMonument"),rs2.getString("monumento"));
+                    Monument m = new Monument(rs2.getInt("idMonument"),rs2.getString("monumento"),rs2.getInt("progress"));
 
                     lista_mon.add(m);
                 }

@@ -86,5 +86,10 @@
             <result name="error">/error/error.jsp</result>
         </action>
 
+
+        <action name="monuprogress" class="it.uniclam.action.frontend.MonuProgressAction" >
+            <result name="success">/private/frontend/objectives.jsp</result>
+        </action>
+
     </package>
 </struts>

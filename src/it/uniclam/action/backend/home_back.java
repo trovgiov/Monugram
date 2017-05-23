@@ -10,7 +10,16 @@ import it.uniclam.model.User;
  */
 public class home_back extends ActionSupport {
 
+private int valore;
 
+
+    public int getValore() {
+        return valore;
+    }
+
+    public void setValore(int valore) {
+        this.valore = valore;
+    }
 
     public String execute (){
 
@@ -19,6 +28,8 @@ public class home_back extends ActionSupport {
         Session s = Singleton.getMysession();
         System.out.println("Session id " +s.getId());
 
+
+        valore = 50;
         User u = Singleton.getMyUser();
         System.out.println("Username " +u.getUsername());
 

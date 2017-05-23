@@ -66,7 +66,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                 </li>
 
-                <li><a href="right-sidebar.html">Right Sidebar</a></li>
+
+
                 <li><a href="#contact">Contact Us</a></li>
             </ul>
         </nav>
