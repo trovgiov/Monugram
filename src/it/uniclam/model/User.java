@@ -5,13 +5,25 @@ package it.uniclam.model;
  */
 public class User {
 
-    private int iduser;
+    private int idUser;
     private String nome;
     private String cognome;
     private String email;
     private String password;
     private int point;
     private String login_type;
+
+    public int getStats() {
+        return stats;
+    }
+
+    public void setStats(int stats) {
+        this.stats = stats;
+    }
+
+    private int stats;
+
+
 
     //Backend
     private String username;
@@ -42,21 +54,20 @@ public class User {
     }
 
     public User(int iduser, String nome, String cognome, String email, String password, int point) {
-        this.iduser = iduser;
+        this.idUser = iduser;
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
         this.password = password;
-
         this.point = point;
     }
 
-    public int getIduser() {
-        return iduser;
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setIduser(int iduser) {
-        this.iduser = iduser;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     public String getNome() {

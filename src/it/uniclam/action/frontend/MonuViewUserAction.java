@@ -74,7 +74,7 @@ import java.util.ArrayList;
                 }
 
                  u = Singleton.getMyUser();
-                idusr = u.getIduser();
+                idusr = u.getIdUser();
                 Connection con = DBUtility.getDBConnection();
                 String sql;
 

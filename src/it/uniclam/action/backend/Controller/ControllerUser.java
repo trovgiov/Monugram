@@ -150,8 +150,6 @@ public class ControllerUser {
 
 	*/
 
-
-
 	public String update() throws IOException {
 		record = new User();
 
@@ -173,6 +171,11 @@ public class ControllerUser {
 		}
 		return SUCCESS;
 	}
+
+    public String showUserConn() throws Exception {
+	    dao.showUserConn(record);
+        return SUCCESS;
+    }
 
 
 

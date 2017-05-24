@@ -90,7 +90,7 @@ public class HomeAction extends ActionSupport  implements
         Session s = Singleton.getMysession();
          User u = Singleton.getMyUser();
 
-        iduser=u.getIduser();
+        iduser=u.getIdUser();
         nome=u.getNome();
         cognome=u.getCognome();
 

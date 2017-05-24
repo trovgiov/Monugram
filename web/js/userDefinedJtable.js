@@ -8,7 +8,7 @@ $(document).ready(function() {
 		},
 
 		fields : {
-			iduser : {
+			idUser : {
 				title : 'Id User',
 				width : '5%',
 				key : true,

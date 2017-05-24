@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="assets_back/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Paper Dashboard by Creative Tim</title>
+    <title>MonuGRAM Dashboard</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -155,20 +155,20 @@
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-warning text-center">
-                                            <i class="ti-server"></i>
+                                            <img src="/images/users.png" alt="Users" style="width:60px;height:60px;">
                                         </div>
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Capacity</p>
-                                            105GB
+                                            <p>Utenti Attivi</p>
+                                            <s:property value="uconn"></s:property>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="footer">
                                     <hr />
                                     <div class="stats">
-                                        <i class="ti-reload"></i> Updated now
+                                        <i class="ti-reload"></i> Totali
                                     </div>
                                 </div>
                             </div>
@@ -180,75 +180,75 @@
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-success text-center">
-                                            <i class="ti-wallet"></i>
+                                            <img src="/images/photo_un.png" alt="Users" style="width:75px;height:60px;">
                                         </div>
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Revenue</p>
-                                            $1,345
+                                            <p>Foto non Controllate</p>
+                                            <s:property value="totPh"></s:property>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="footer">
                                     <hr />
                                     <div class="stats">
-                                        <i class="ti-calendar"></i> Last day
+                                        <i class="ti-calendar"></i> Nell'ultima ora
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-xs-5">
+                                            <div class="icon-big icon-info text-center">
+                                                <img src="/images/photo_ch.png" alt="Users" style="width:75px;height:60px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <div class="numbers">
+                                                <p>Foto Controllate</p>
+                                                <s:property value="pcheck"></s:property>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <hr />
+                                        <div class="stats">
+                                            <i class="ti-reload"></i> Totali
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="card">
                             <div class="content">
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-danger text-center">
-                                            <i class="ti-pulse"></i>
+                                            <img src="/images/monument_icon.png" alt="Users" style="width:60px;height:60px;">
                                         </div>
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Errors</p>
-                                            23
+                                            <p>Monumenti nel sistema</p>
+                                            <s:property value="totMon"></s:property>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="footer">
                                     <hr />
                                     <div class="stats">
-                                        <i class="ti-timer"></i> In the last hour
+                                        <i class="ti-timer"></i> Nell'ultma ora
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="content">
-                                <div class="row">
-                                    <div class="col-xs-5">
-                                        <div class="icon-big icon-info text-center">
-                                            <i class="ti-twitter-alt"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-7">
-                                        <div class="numbers">
-                                            <p>Followers</p>
-                                            +45
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="footer">
-                                    <hr />
-                                    <div class="stats">
-                                        <i class="ti-reload"></i> Updated now
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
                 </div>
                 <div class="row">
 
@@ -268,7 +268,7 @@
                                     </div>
                                     <hr>
                                     <div class="stats">
-                                        <i class="ti-reload"></i> Updated 3 minutes ago
+                                        <i class="ti-reload"></i> Aggiornato 3 ore fa
                                     </div>
                                 </div>
                             </div>
@@ -388,8 +388,8 @@
         demo.initChartist();
 
         $.notify({
-            icon: 'ti-gift',
-            message: "Welcome to <b>Paper Dashboard</b> - a beautiful Bootstrap freebie for your next project."
+            icon: 'ti-face-smile',
+            message: "Benvenuto nella <b>monuGRAM Dashboard</b> - Da qui puoi gestire tutti gli utenti e le foto presenti nel sistema!"
 
         },{
             type: 'success',

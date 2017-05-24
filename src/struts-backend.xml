@@ -37,6 +37,12 @@
             <result type="json"></result>
         </action>
 
+
+        <action name="showStats" class="it.uniclam.action.backend.home_back">
+            <result>/private/backend/dashboard.jsp</result>
+        </action>
+
+
         <action name="home_back" class="it.uniclam.action.backend.home_back">
             <result>/private/backend/dashboard.jsp</result>
 
