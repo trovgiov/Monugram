@@ -96,6 +96,9 @@ public class home_back extends ActionSupport {
             if (rs1.next()) {
                 stat = rs1.getInt("UtentiAttivi");
             }
+            rs1.close();
+            st.close();
+            con.close();
         }
         catch (SQLException e)
         {
@@ -117,6 +120,9 @@ public class home_back extends ActionSupport {
             if (rs1.next()) {
                 ph = rs1.getInt("unchecked");
             }
+            rs1.close();
+            st.close();
+            con.close();
         }
         catch (SQLException e)
         {
@@ -138,6 +144,9 @@ public class home_back extends ActionSupport {
             if (rs1.next()) {
                 tmon = rs1.getInt("totMon");
             }
+            rs1.close();
+            st.close();
+            con.close();
         }
         catch (SQLException e)
         {
@@ -159,11 +168,18 @@ public class home_back extends ActionSupport {
             if (rs1.next()) {
                 pch = rs1.getInt("status");
             }
+
+            rs1.close();
+            st.close();
+            con.close();
         }
         catch (SQLException e)
         {
             System.err.println(e.getMessage());
         }
+
+
+
         return pch;
     }
 }

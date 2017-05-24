@@ -13,18 +13,6 @@ public class User {
     private int point;
     private String login_type;
 
-    public int getStats() {
-        return stats;
-    }
-
-    public void setStats(int stats) {
-        this.stats = stats;
-    }
-
-    private int stats;
-
-
-
     //Backend
     private String username;
 
@@ -53,12 +41,13 @@ public class User {
     public User() {
     }
 
-    public User(int iduser, String nome, String cognome, String email, String password, int point) {
-        this.idUser = iduser;
+    public User(int idUser, String nome, String cognome, String email, String password, int point) {
+        this.idUser = idUser;
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
         this.password = password;
+
         this.point = point;
     }
 

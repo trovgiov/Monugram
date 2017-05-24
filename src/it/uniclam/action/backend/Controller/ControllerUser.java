@@ -151,18 +151,19 @@ public class ControllerUser {
 	*/
 
 	public String update() throws IOException {
-		record = new User();
+		User u = new User();
 
 
-		record.setEmail(email);
-		record.setPoint(point);
+		u.setIdUser(idUser);
+		u.setEmail(email);
+		u.setPoint(point);
 
-        System.out.println("Crud Email"+record.getEmail());
+        System.out.println("Crud Email"+u.getEmail());
 
 
         try {
 			// Update existing record
-			dao.updateUser(record);
+			dao.updateUser(u);
 			result = "OK";
 		} catch (Exception e) {
 			result = "ERROR";
@@ -171,12 +172,6 @@ public class ControllerUser {
 		}
 		return SUCCESS;
 	}
-
-    public String showUserConn() throws Exception {
-	    dao.showUserConn(record);
-        return SUCCESS;
-    }
-
 
 
 

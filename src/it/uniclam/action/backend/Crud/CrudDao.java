@@ -16,6 +16,8 @@ public class CrudDao {
         dbConnection = DBUtility.getDBConnection();
     }
 
+
+
     public List<User> getAllPeople() {
         List<User> users = new ArrayList<User>();
 
@@ -46,37 +48,27 @@ public class CrudDao {
         return users;
     }
 
+
+
+
     public void updateUser(User u) {
         String updateQuery = "UPDATE User SET email = ? , point = ? WHERE idUser = ?";
         try {
             pStmt = dbConnection.prepareStatement(updateQuery);
 
+
             pStmt.setString(1, u.getEmail());
             pStmt.setInt(2, u.getPoint());
             pStmt.setInt(3, u.getIdUser());
 
+
             pStmt.executeUpdate();
-            System.out.println("Crud Email "+u.getEmail());
+System.out.println("Crud Email"+u.getEmail());
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
     }
 
-    public void showUserConn(User u)
-    {
-        String statQuery = "SELECT COUNT(\"idUser\") as UtentiAttivi FROM User;";
-        try
-        {
-            Statement stmt1 = dbConnection.createStatement();
-            ResultSet rs1 = stmt1.executeQuery(statQuery);
-            if (rs1.next()) {
-                u.setStats(rs1.getInt("UtentiAttivi"));
-            }
-        }
-        catch (SQLException e)
-        {
-            System.err.println(e.getMessage());
-        }
-        System.out.println("USER ATT: "+u.getStats());
-    }
+
+
 }
