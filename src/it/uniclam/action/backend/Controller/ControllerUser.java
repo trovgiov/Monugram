@@ -1,11 +1,12 @@
 package it.uniclam.action.backend.Controller;
 
-import com.opensymphony.xwork2.Action;
 import it.uniclam.action.backend.Crud.CrudDao;
 import it.uniclam.model.User;
 
 import java.io.IOException;
 import java.util.List;
+
+import static com.opensymphony.xwork2.Action.SUCCESS;
 
 public class ControllerUser {
 
@@ -121,7 +122,7 @@ public class ControllerUser {
             message = e.getMessage();
             System.err.println(e.getMessage());
         }
-        return Action.SUCCESS;
+        return SUCCESS;
     }
 
 	/*
@@ -152,23 +153,25 @@ public class ControllerUser {
 
 
 	public String update() throws IOException {
-		User user = new User();
+		record = new User();
 
 
-		user.setEmail(getEmail());
-		user.setPoint(getPoint());
+		record.setEmail(email);
+		record.setPoint(point);
+
+        System.out.println("Crud Email"+record.getEmail());
 
 
-		try {
+        try {
 			// Update existing record
-			dao.updateUser(user);
+			dao.updateUser(record);
 			result = "OK";
 		} catch (Exception e) {
 			result = "ERROR";
 			message = e.getMessage();
 			System.err.println(e.getMessage());
 		}
-		return Action.SUCCESS;
+		return SUCCESS;
 	}
 
 

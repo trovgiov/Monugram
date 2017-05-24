@@ -51,19 +51,19 @@ public class CrudDao {
 
 
 
-    public void updateUser(User user) {
-        String updateQuery = "UPDATE User SET  email = ?, point = ? WHERE idUser = ?";
+    public void updateUser(User u) {
+        String updateQuery = "UPDATE User SET email = ? , point = ? WHERE idUser = ?";
         try {
             pStmt = dbConnection.prepareStatement(updateQuery);
 
 
-            pStmt.setString(1, user.getEmail());
-            pStmt.setInt(2, user.getPoint());
-            pStmt.setInt(3, user.getIduser());
+            pStmt.setString(1, u.getEmail());
+            pStmt.setInt(2, u.getPoint());
+            pStmt.setInt(3, u.getIduser());
 
 
             pStmt.executeUpdate();
-System.out.println("Email"+user.getEmail());
+System.out.println("Crud Email"+u.getEmail());
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }

@@ -3,7 +3,8 @@ $(document).ready(function() {
 		title : 'Students List',
 		actions : {
 			listAction : 'people_list',
-			updateAction:'people_update.action'
+            createAction : '',
+			updateAction:'people_update'
 		},
 
 		fields : {
@@ -30,7 +31,6 @@ $(document).ready(function() {
 				width : '20%',
 				edit : true
 			},
-
 
             point : {
                 title : 'Punti',
