@@ -48,6 +48,10 @@
 
         </action>
 
+        <action name="photo_manage" class="it.uniclam.action.backend.PhotoManageAction">
+            <result name="success">/photo_manage.jsp</result>
+
+        </action>
 
     </package>
 </struts>

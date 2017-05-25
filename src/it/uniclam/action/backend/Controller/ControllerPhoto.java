@@ -107,13 +107,23 @@ public class ControllerPhoto {
 
     private String stato;
 
+    private boolean IsActive;
+
+    public boolean isActive() {
+        return IsActive;
+    }
+
+    public void setActive(boolean active) {
+        IsActive = active;
+    }
 
     public String list(){
+
 
         try{
 
             records=dao.getAllPhotos();
-            result="OK";
+             result="OK";
 
 
 

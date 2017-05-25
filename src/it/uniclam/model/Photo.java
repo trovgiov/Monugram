@@ -7,7 +7,7 @@ public class Photo {
 
 
 
-    private int id_photo;
+    private int idPhoto;
     private String title;
 
     public String getNome() {
@@ -29,8 +29,8 @@ public class Photo {
     private String nome;
     private String cognome;
 
-    public Photo(int id_photo, String title, String monument,String nome,String cognome) {
-        this.id_photo = id_photo;
+    public Photo(int idPhoto, String title, String monument, String nome, String cognome) {
+        this.idPhoto = idPhoto;
         this.title = title;
         this.monument = monument;
         this.nome=nome;
@@ -49,12 +49,12 @@ public class Photo {
     private String monument;
 
 
-    public int getId_photo() {
-        return id_photo;
+    public int getIdPhoto() {
+        return idPhoto;
     }
 
-    public void setId_photo(int id_photo) {
-        this.id_photo = id_photo;
+    public void setIdPhoto(int idPhoto) {
+        this.idPhoto = idPhoto;
     }
 
     public String getTitle() {
