@@ -37,6 +37,9 @@
             <result type="json"></result>
         </action>
 
+        <action name="people_delete" method="delete" class="it.uniclam.action.backend.Controller.ControllerUser">
+            <result type="json"></result>
+        </action>
 
         <action name="showStats" class="it.uniclam.action.backend.home_back">
             <result>/private/backend/dashboard.jsp</result>
@@ -52,6 +55,21 @@
             <result name="success">/photo_manage.jsp</result>
 
         </action>
+
+
+        <action name="monument_list" method="list" class="it.uniclam.action.backend.Controller.ControllerMonument">
+            <result type="json"></result>
+        </action>
+
+        <action name="monumentview" >
+            <result>/private/backend/monuments.jsp</result>
+
+        </action>
+
+        <action name="monument_create" method="create" class="it.uniclam.action.backend.Controller.ControllerMonument">
+            <result type="json"></result>
+        </action>
+
 
     </package>
 </struts>

@@ -2,7 +2,6 @@ package it.uniclam.action.backend.Crud;
 
 import it.uniclam.db.DBUtility;
 import it.uniclam.model.Monument;
-import it.uniclam.model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,6 +15,10 @@ public class CrudDao_Monument {
     private Connection dbConnection;
     private PreparedStatement pStmt;
 
+    public CrudDao_Monument() {
+        dbConnection = DBUtility.getDBConnection();
+    }
+
 
     public List<Monument> getAllMonuments() {
         List<Monument> monuments = new ArrayList<Monument>();
@@ -27,11 +30,14 @@ public class CrudDao_Monument {
             while (rs.next()) {
                Monument monument = new Monument();
 
-                monument.setId_monument(rs.getInt("idMonument"));
-                monument.setMonument(rs.getString("monument"));
+                monument.setIdMonument(rs.getInt("idMonument"));
+                monument.setMonument(rs.getString("monumento"));
                 monument.setProgress(rs.getInt("progress"));
                 monuments.add(monument);
             }
+
+            rs.close();
+            stmt.close();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
@@ -39,7 +45,7 @@ public class CrudDao_Monument {
     }
 
     public void addMonument(Monument monument) {
-        String insertQuery = "INSERT INTO Monument(monument, progress) VALUES (?,?,?)";
+        String insertQuery = "INSERT INTO Monument(monumento, progress) VALUES (?,?)";
         try {
                 pStmt = dbConnection.prepareStatement(insertQuery);
                 pStmt.setString(1, monument.getMonument());
@@ -55,7 +61,7 @@ public class CrudDao_Monument {
                         "monument = ?, progress = ? WHERE idMonument = ?";
         try {
                 pStmt = dbConnection.prepareStatement(updateQuery);
-                pStmt.setInt(1, monument.getId_monument());
+                pStmt.setInt(1, monument.getIdMonument());
                 pStmt.setString(2, monument.getMonument());
                 pStmt.setInt(4, monument.getProgress());
                 pStmt.executeUpdate();

@@ -85,8 +85,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
-                        <i class="ti-text"></i>
+                    <a href="<s:url action="monumentview"/>">
+                         <i class="ti-text"></i>
                         <p>Monumenti</p>
                     </a>
                 </li>

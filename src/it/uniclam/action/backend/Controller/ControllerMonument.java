@@ -19,7 +19,7 @@ public class ControllerMonument {
     private String message;
     private Monument record;
 
-    private int id_monument;
+    private int idMonument;
     private String monument;
     private int progress;
 
@@ -63,12 +63,12 @@ public class ControllerMonument {
         this.record = record;
     }
 
-    public int getId_monument() {
-        return id_monument;
+    public int getIdMonument() {
+        return idMonument;
     }
 
-    public void setId_monument(int id_monument) {
-        this.id_monument = id_monument;
+    public void setIdMonument(int idMonument) {
+        this.idMonument = idMonument;
     }
 
     public String getMonument() {
@@ -104,7 +104,6 @@ public class ControllerMonument {
     public String create() throws IOException {
         record = new Monument();
 
-        record.setId_monument(id_monument);
         record.setMonument(monument);
         record.setProgress(progress);
 
@@ -144,7 +143,7 @@ public class ControllerMonument {
     public String delete() throws IOException {
         // Delete record
         try {
-            dao.deleteMonument(id_monument);
+            dao.deleteMonument(idMonument);
             result = "OK";
         } catch (Exception e) {
             result = "ERROR";

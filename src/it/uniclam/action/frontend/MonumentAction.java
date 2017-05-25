@@ -90,7 +90,7 @@ Monument m;
 
              name=u.getNome();
 
-            //System.out.println("Nome dopo scelta : "+name+" Monumento : "+m.getMonument()+" "+m.getId_monument());
+            //System.out.println("Nome dopo scelta : "+name+" Monumento : "+m.getMonument()+" "+m.getIdMonument());
 
         return "success";
     }

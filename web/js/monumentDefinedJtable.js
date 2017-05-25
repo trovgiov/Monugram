@@ -6,8 +6,8 @@ $(document).ready(function() {
     $('#MonumentTableContainer').jtable({
         title : 'Monuments List',
         actions : {
-            listAction : 'monuments_list',
-            createAction : 'monuments_create.action',
+            listAction : 'monument_list',
+            createAction : 'monument_create',
             deleteAction : 'monuments_delete.action',
             updateAction:'monuments_update.action'
         },
@@ -19,7 +19,7 @@ $(document).ready(function() {
                 key : true,
                 list : true,
                 edit : false,
-                create : true
+                create : false
             },
             monument : {
                 title : 'Monument',
@@ -31,7 +31,7 @@ $(document).ready(function() {
             },
             progress : {
                 title : 'Progress',
-                width : '20%',
+                width : '10%',
                 key : true,
                 list : true,
                 edit : true,

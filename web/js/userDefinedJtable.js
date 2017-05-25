@@ -4,7 +4,8 @@ $(document).ready(function() {
 		actions : {
 			listAction : 'people_list',
             createAction : '',
-			updateAction:'people_update'
+			updateAction:'people_update',
+			deleteAction:'people_delete'
 		},
 
 		fields : {
@@ -28,7 +29,7 @@ $(document).ready(function() {
 			},
 			email : {
 				title : 'Email',
-				width : '20%',
+				width : '10%',
 				edit : true
 			},
 
@@ -40,7 +41,7 @@ $(document).ready(function() {
 
             login_type : {
                 title : 'Tipo di accesso',
-                width : '20%',
+                width : '10%%',
                 edit : false
             }
 
