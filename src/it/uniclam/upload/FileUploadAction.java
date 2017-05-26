@@ -196,7 +196,7 @@ public class FileUploadAction extends ActionSupport implements
             String sql;
 
 
-            sql = "SELECT tag from Photo WHERE  Monument_idMonument='" + m.getId_monument() + "' and User_idUser='" + u.getIdUser() + "'";
+            sql = "SELECT tag from Photo WHERE  Monument_idMonument='" + m.getIdMonument() + "' and User_idUser='" + u.getIdUser() + "'";
 
             java.sql.Statement stmt = con.createStatement();
 
@@ -219,7 +219,7 @@ public class FileUploadAction extends ActionSupport implements
 
                 String sql1;
 
-                sql1 = "SELECT max(counter) as counter from Photo WHERE Monument_idMonument='" + m.getId_monument() + "' and User_idUser='" + u.getIdUser() + "'";
+                sql1 = "SELECT max(counter) as counter from Photo WHERE Monument_idMonument='" + m.getIdMonument() + "' and User_idUser='" + u.getIdUser() + "'";
                 java.sql.Statement stmt1 = con1.createStatement();
 
                 ResultSet rs1 = stmt1.executeQuery(sql1);

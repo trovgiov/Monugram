@@ -67,6 +67,19 @@ public class CrudDao {
         }
     }
 
+    public void deleteStudent(int userId) {
+        String deleteQuery = "DELETE FROM User WHERE idUser = ?";
+        try {
+            pStmt = dbConnection.prepareStatement(deleteQuery);
+            pStmt.setInt(1, userId);
+            pStmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+
+
 
 
 }

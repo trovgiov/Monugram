@@ -1,5 +1,6 @@
 package it.uniclam.action.backend.Controller;
 
+import com.opensymphony.xwork2.Action;
 import it.uniclam.action.backend.Crud.CrudDao;
 import it.uniclam.model.User;
 
@@ -176,11 +177,11 @@ public class ControllerUser {
 
 
 
-	/*
+
 	public String delete() throws IOException {
 		// Delete record
 		try {
-			dao.deleteStudent(studentId);
+			dao.deleteStudent(idUser);
 			result = "OK";
 		} catch (Exception e) {
 			result = "ERROR";
@@ -190,5 +191,5 @@ public class ControllerUser {
 		return Action.SUCCESS;
 	}
 
-*/
+
 }

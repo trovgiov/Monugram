@@ -71,8 +71,8 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
 
+                    <li>
                     <a href="<s:url action="users"/>">
                         <i class="ti-user"></i>
                         <p>Users</p>
@@ -80,13 +80,13 @@
                 </li>
                 <li>
                     <a href="<s:url action="photoview"/>">
-                        <i class="ti-image"></i>
+                        <i class="ti-view-list-alt"></i>
                         <p>Foto</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
-                        <i class="ti-location-pin"></i>
+                    <a href="<s:url action="monumentview"/>">
+                         <i class="ti-text"></i>
                         <p>Monumenti</p>
                     </a>
                 </li>
@@ -105,29 +105,38 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="/private/backend/dashboard.jsp">Dashboard</a>
+                    <a class="navbar-brand" href="#">Dashboard</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-panel"></i>
+                                <p>Stats</p>
+
+
+
+                        </a>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="ti-bell"></i>
                                 <p class="notification">5</p>
-                                <p>Notifiche</p>
+                                <p>Notifications</p>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Notifica 1</a></li>
-                                <li><a href="#">Notifica 2</a></li>
-                                <li><a href="#">Notifica 3</a></li>
-                                <li><a href="#">Notifica 4</a></li>
-                                <li><a href="#">Altre notifiche</a></li>
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#">
-                                <i class="ti-power-off"></i>
-                                <p>Logout</p>
+                                <i class="ti-settings"></i>
+                                <p>Settings</p>
                             </a>
                         </li>
                     </ul>
@@ -324,23 +333,23 @@
 
                         <li>
                             <a href="http://www.creative-tim.com">
-                                monuGRAM TEAM
+                                Creative Tim
                             </a>
                         </li>
                         <li>
-                            <a href="http://google.com">
+                            <a href="http://blog.creative-tim.com">
                                 Blog
                             </a>
                         </li>
                         <li>
-                            <a href="http://www.google.it">
-                                Licenze
+                            <a href="http://www.creative-tim.com/license">
+                                Licenses
                             </a>
                         </li>
                     </ul>
                 </nav>
                 <div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Giovanni, Enea e Addolorata
+                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
                 </div>
             </div>
         </footer>
