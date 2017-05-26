@@ -80,12 +80,13 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="typography.html">
+ <li>
+                     <a href="<s:url action="monumentview"/>">
                         <i class="ti-text"></i>
                         <p>Monumenti</p>
                     </a>
                 </li>
+
 
             </ul>
         </div>

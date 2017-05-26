@@ -122,14 +122,15 @@ public class ControllerMonument {
 
 
     public String update() throws IOException {
-        Monument monument = new Monument();
+        Monument monumento = new Monument();
 
-        monument.setMonument(getMonument());
-        monument.setProgress(getProgress());
+        monumento.setIdMonument(idMonument);
+        monumento.setMonument(monument);
+        monumento.setProgress(progress);
 
         try {
             // Update existing record
-            dao.updateMonument(monument);
+            dao.updateMonument(monumento);
             result = "OK";
         } catch (Exception e) {
             result = "ERROR";

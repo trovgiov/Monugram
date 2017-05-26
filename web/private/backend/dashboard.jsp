@@ -65,14 +65,14 @@
             </div>
 
             <ul class="nav">
-                <li>
+                <li class="active">
                     <a href="<s:url action="home_back"/>">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="active">
 
+                    <li>
                     <a href="<s:url action="users"/>">
                         <i class="ti-user"></i>
                         <p>Users</p>

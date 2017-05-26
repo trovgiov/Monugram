@@ -57,7 +57,7 @@ public class CrudDao_Monument {
     }
 
     public void updateMonument(Monument monument) {
-       String updateQuery = "UPDATE Monument SET monument = ?, progress = ? WHERE idMonument = ?";
+       String updateQuery = "UPDATE Monument SET monumento = ?, progress = ? WHERE idMonument = ?";
         try {
                 pStmt = dbConnection.prepareStatement(updateQuery);
                 pStmt.setString(1, monument.getMonument());

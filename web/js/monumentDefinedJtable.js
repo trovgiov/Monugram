@@ -9,15 +9,15 @@ $(document).ready(function() {
             listAction : 'monument_list',
             createAction : 'monument_create',
             deleteAction : 'monument_delete',
-            updateAction:'monuments_update'
+            updateAction:'monument_update'
         },
 
         fields : {
             idMonument : {
                 title : 'IdMonument',
-                width : '5%',
+                width : '0%',
                 key : true,
-                list : true,
+                list : false,
                 edit : false,
                 create : false
             },

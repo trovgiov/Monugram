@@ -72,7 +72,6 @@
                     <p>Users</p>
                 </a>
                 <li>
-                <li class="active">
 
                     <a href="<s:url action="photoview"/>">
                         <i class="ti-view-list-alt"></i>
@@ -80,7 +79,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li class="active">
                     <a href="<s:url action="monumentview"/>">
                         <i class="ti-text"></i>
                         <p>Monumenti</p>
