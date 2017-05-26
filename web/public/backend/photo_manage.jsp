@@ -30,17 +30,17 @@
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="assets_back/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets_back/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
-    <link href="assets_back/css/animate.min.css" rel="stylesheet"/>
+    <link href="/assets_back/css/animate.min.css" rel="stylesheet"/>
 
     <!--  Paper Dashboard core CSS    -->
-    <link href="assets_back/css/paper-dashboard.css" rel="stylesheet"/>
+    <link href="/assets_back/css/paper-dashboard.css" rel="stylesheet"/>
 
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets_back/css/demo.css" rel="stylesheet" />
+    <link href="/assets_back/css/demo.css" rel="stylesheet" />
 
 
     <!--  Fonts and icons     -->
@@ -65,22 +65,21 @@
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="<s:url action="home_back"/>">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-
                     <a href="<s:url action="users"/>">
                         <i class="ti-user"></i>
                         <p>Users</p>
                     </a>
                 </li>
-                <li>
+                <li  class="active">
                     <a href="<s:url action="photoview"/>">
-                        <i class="ti-image"></i>
+                        <i class="ti-view-list-alt"></i>
                         <p>Foto</p>
                     </a>
                 </li>
@@ -109,6 +108,15 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-panel"></i>
+                                <p>Stats</p>
+
+
+
+                            </a>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="ti-bell"></i>
@@ -117,16 +125,16 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Notifica 1</a></li>
-                                <li><a href="#">Notifica 2</a></li>
-                                <li><a href="#">Notifica 3</a></li>
-                                <li><a href="#">Notifica 4</a></li>
-                                <li><a href="#">Altre notifiche</a></li>
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="ti-power-off"></i>
+                            <a href="/public/frontend/login.jsp">
+                                <i class="ti-shift-left "></i>
                                 <p>Logout</p>
                             </a>
                         </li>
@@ -139,6 +147,29 @@
 
         <div class="content">
             <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Foto: <s:property value ="idreceived"></s:property></h4>
+                                <p class="category">Stato Foto: <s:property value ="statoFoto"></s:property> -  Monumento: <s:property value ="monu"></s:property></p>
+                            </div>
+                                    <img src="/Monumenti/<s:property value="monu"/>/<s:property value="photoname"/>" alt="Photo" style="width:100%;height:100%;">
+                                </div>
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="ti-reload"></i> Aggiornato 3 ore fa
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
                         <div class="card">
@@ -146,21 +177,17 @@
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-warning text-center">
-                                            <img src="/images/users.png" alt="Users" style="width:60px;height:60px;">
+                                            <a href="<s:url action="updateStatus"/>?idPhoto=<s:property value="idreceived"></s:property> "><img src="/images/OK.png" alt="Users" style="width:60px;height:60px;"></a>
                                         </div>
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Utenti Attivi</p>
-                                            <s:property value="uconn"></s:property>
+                                            <p>Approva Foto</p>
+
                                         </div>
                                     </div>
                                 </div>
                                 <div class="footer">
-                                    <hr />
-                                    <div class="stats">
-                                        <i class="ti-reload"></i> Totali
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -171,148 +198,66 @@
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-success text-center">
-                                            <img src="/images/photo_un.png" alt="Users" style="width:75px;height:60px;">
+                                            <a href="<s:url action="home_back"/>"><img src="/images/no.png" alt="Users" style="width:60px;height:60px;"></a>
                                         </div>
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Foto non Controllate</p>
-                                            <s:property value="totPh"></s:property>
+                                            <a href="<s:url action="home_back"/>"><p>Rifiuta Foto</p></a>
+
                                         </div>
                                     </div>
                                 </div>
                                 <div class="footer">
-                                    <hr />
-                                    <div class="stats">
-                                        <i class="ti-calendar"></i> Nell'ultima ora
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
-                            <div class="card">
-                                <div class="content">
-                                    <div class="row">
-                                        <div class="col-xs-5">
-                                            <div class="icon-big icon-info text-center">
-                                                <img src="/images/photo_ch.png" alt="Users" style="width:75px;height:60px;">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-7">
-                                            <div class="numbers">
-                                                <p>Foto Controllate</p>
-                                                <s:property value="pcheck"></s:property>
-                                            </div>
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <div class="icon-big icon-info text-center">
+                                            <img src="/images/mail_icon.png" alt="Users" style="width:70px;height:50px;">
                                         </div>
                                     </div>
-                                    <div class="footer">
-                                        <hr />
-                                        <div class="stats">
-                                            <i class="ti-reload"></i> Totali
+                                    <div class="col-xs-7">
+                                        <div class="numbers">
+                                            <p>Contatta l'utente</p>
+
                                         </div>
                                     </div>
                                 </div>
+                                <div class="footer">
+                                </div>
                             </div>
                         </div>
+                    </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="card">
                             <div class="content">
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-danger text-center">
-                                            <img src="/images/monument_icon.png" alt="Users" style="width:60px;height:60px;">
+                                            <img src="/images/delete.png" alt="Users" style="width:60px;height:60px;">
                                         </div>
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Monumenti nel sistema</p>
-                                            <s:property value="totMon"></s:property>
+                                            <p>Cancella la foto</p>
+
                                         </div>
                                     </div>
                                 </div>
                                 <div class="footer">
-                                    <hr />
-                                    <div class="stats">
-                                        <i class="ti-timer"></i> Nell'ultma ora
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                </div>
-                <div class="row">
-
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Users Behavior</h4>
-                                <p class="category">24 Hours performance</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartHours" class="ct-chart"></div>
-                                <div class="footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Click
-                                        <i class="fa fa-circle text-warning"></i> Click Second Time
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="ti-reload"></i> Aggiornato 3 ore fa
-                                    </div>
-                                </div>
+                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Email Statistics</h4>
-                                <p class="category">Last Campaign Performance</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
 
-                                <div class="footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Bounce
-                                        <i class="fa fa-circle text-warning"></i> Unsubscribe
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="ti-timer"></i> Campaign sent 2 days ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card ">
-                            <div class="header">
-                                <h4 class="title">2015 Sales</h4>
-                                <p class="category">All products including Taxes</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartActivity" class="ct-chart"></div>
 
-                                <div class="footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="ti-check"></i> Data information certified
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -352,44 +297,26 @@
 </body>
 
 <!--   Core JS Files   -->
-<script src="assets_back/js/jquery-1.10.2.js" type="text/javascript"></script>
-<script src="assets_back/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/assets_back/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="/assets_back/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!--  Checkbox, Radio & Switch Plugins -->
-<script src="assets_back/js/bootstrap-checkbox-radio.js"></script>
+<script src="/assets_back/js/bootstrap-checkbox-radio.js"></script>
 
 <!--  Charts Plugin -->
-<script src="assets_back/js/chartist.min.js"></script>
+<script src="/assets_back/js/chartist.min.js"></script>
 
 <!--  Notifications Plugin    -->
-<script src="assets_back/js/bootstrap-notify.js"></script>
+<script src="/assets_back/js/bootstrap-notify.js"></script>
 
 <!--  Google Maps Plugin    -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
 <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-<script src="assets_back/js/paper-dashboard.js"></script>
+<script src="/assets_back/js/paper-dashboard.js"></script>
 
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-<script src="assets_back/js/demo.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-
-        demo.initChartist();
-
-        $.notify({
-            icon: 'ti-face-smile',
-            message: "Benvenuto nella <b>monuGRAM Dashboard</b> - Da qui puoi gestire tutti gli utenti e le foto presenti nel sistema!"
-
-        },{
-            type: 'success',
-            timer: 4000
-        });
-
-    });
-</script>
-
+<script src="/assets_back/js/demo.js"></script>
 
 
 

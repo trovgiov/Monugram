@@ -10,6 +10,16 @@ public class Photo {
     private int idPhoto;
     private String title;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    private String status;
+
     public String getNome() {
         return nome;
     }
@@ -29,6 +39,15 @@ public class Photo {
     private String nome;
     private String cognome;
 
+    public Photo(int idPhoto, String title, String status, String nome, String cognome, String monument) {
+        this.idPhoto = idPhoto;
+        this.title = title;
+        this.status = status;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.monument = monument;
+    }
+
     public Photo(int idPhoto, String title, String monument, String nome, String cognome) {
         this.idPhoto = idPhoto;
         this.title = title;
@@ -36,6 +55,8 @@ public class Photo {
         this.nome=nome;
         this.cognome=cognome;
     }
+
+    public Photo(){}
 
     public String getMonument() {
         return monument;

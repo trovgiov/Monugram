@@ -60,7 +60,7 @@ $(document).ready(function() {
                     $img.click(function () {
                         //window.location.href = "/Monugram/facebook_login.action?nome=" + response.first_name + "&cognome=" + response.last_name + "&email=" + response.email;
 
-                        window.location.href = "/Monugram/photo_manage.action?idPhoto="+photomanage.record.idPhoto;
+                        window.location.href = "/Monugram/photo_manage.action?idPhoto="+photomanage.record.idPhoto+"&monumento="+photomanage.record.monumento;
 
                     });
                     //Return image to show on the person row

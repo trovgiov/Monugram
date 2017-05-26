@@ -2,10 +2,15 @@ package it.uniclam.action.backend.Controller;
 
 import com.opensymphony.xwork2.Action;
 import it.uniclam.action.backend.Crud.CrudDao_Photo;
+import it.uniclam.model.Photo;
 import it.uniclam.model.PhotoView;
+import it.uniclam.model.User;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
+
+import static com.opensymphony.xwork2.Action.SUCCESS;
 
 /**
  * Created by GiovanniTrovini on 22/05/17.
@@ -15,7 +20,7 @@ public class ControllerPhoto {
 
     private List<PhotoView> records;
     private String result;
-
+    private String message;
 
     private int idPhoto;
     private String titolo;
@@ -118,24 +123,14 @@ public class ControllerPhoto {
     }
 
     public String list(){
-
-
         try{
-
             records=dao.getAllPhotos();
              result="OK";
-
-
-
         }
 
         catch(Exception e){
-
             result="ERROR";
          }
-
-
-
         return Action.SUCCESS;
     }
 }

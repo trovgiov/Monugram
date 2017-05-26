@@ -177,9 +177,6 @@ public class home_back extends ActionSupport {
         {
             System.err.println(e.getMessage());
         }
-
-
-
         return pch;
     }
 }

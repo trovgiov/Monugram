@@ -49,8 +49,6 @@ public class CrudDao {
     }
 
 
-
-
     public void updateUser(User u) {
         String updateQuery = "UPDATE User SET email = ? , point = ? WHERE idUser = ?";
         try {
@@ -63,7 +61,7 @@ public class CrudDao {
 
 
             pStmt.executeUpdate();
-System.out.println("Crud Email"+u.getEmail());
+            System.out.println("Crud Email"+u.getEmail());
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }

@@ -1,6 +1,7 @@
 package it.uniclam.action.backend.Crud;
 
 import it.uniclam.db.DBUtility;
+import it.uniclam.model.Photo;
 import it.uniclam.model.PhotoView;
 
 import java.sql.*;
@@ -43,7 +44,7 @@ public class CrudDao_Photo {
 
 
 
-photos.add(p);
+                photos.add(p);
 
             }
         } catch (SQLException e) {
@@ -51,7 +52,6 @@ photos.add(p);
         }
         return photos;
     }
-
 
 
     /*

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#StudentTableContainer').jtable({
-		title : 'Students List',
+		title : 'User List',
 		actions : {
 			listAction : 'people_list',
             createAction : '',

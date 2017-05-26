@@ -8,7 +8,7 @@
     <package name="default" extends="struts-default" namespace="/">
 
         <action name="register" class="it.uniclam.action.frontend.RegisterAction">
-            <result name="success">/private/frontend/register-success.jsp</result>
+            <result name="success">/public/frontend/register-success.jsp</result>
             <result name="error">/error/register-error.jsp</result>
             <result name="insert_error">/error/register-error_mail.jsp</result>
             <result name="input">/public/frontend/register.jsp</result>

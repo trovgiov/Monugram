@@ -42,6 +42,9 @@
             <result>/private/backend/dashboard.jsp</result>
         </action>
 
+        <action name="updateStatus" class="it.uniclam.action.backend.UpdateStatus">
+            <result name="success">/private/backend/photoview.jsp</result>
+        </action>
 
         <action name="home_back" class="it.uniclam.action.backend.home_back">
             <result>/private/backend/dashboard.jsp</result>
@@ -49,7 +52,7 @@
         </action>
 
         <action name="photo_manage" class="it.uniclam.action.backend.PhotoManageAction">
-            <result name="success">/photo_manage.jsp</result>
+            <result name="success">/public/backend/photo_manage.jsp</result>
 
         </action>
 
