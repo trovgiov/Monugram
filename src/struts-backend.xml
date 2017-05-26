@@ -70,6 +70,14 @@
             <result type="json"></result>
         </action>
 
+        <action name="monument_update" method="update" class="it.uniclam.action.backend.Controller.ControllerMonument">
+            <result type="json"></result>
+        </action>
+
+        <action name="monument_delete" method="delete" class="it.uniclam.action.backend.Controller.ControllerMonument">
+            <result type="json"></result>
+        </action>
+
 
     </package>
 </struts>

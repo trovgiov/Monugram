@@ -57,13 +57,12 @@ public class CrudDao_Monument {
     }
 
     public void updateMonument(Monument monument) {
-        String updateQuery = "UPDATE Monument SET idMonument = ?, " +
-                        "monument = ?, progress = ? WHERE idMonument = ?";
+       String updateQuery = "UPDATE Monument SET monument = ?, progress = ? WHERE idMonument = ?";
         try {
                 pStmt = dbConnection.prepareStatement(updateQuery);
-                pStmt.setInt(1, monument.getIdMonument());
-                pStmt.setString(2, monument.getMonument());
-                pStmt.setInt(4, monument.getProgress());
+                pStmt.setString(1, monument.getMonument());
+                pStmt.setInt(2, monument.getProgress());
+                pStmt.setInt(3, monument.getIdMonument());
                 pStmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -71,11 +70,12 @@ public class CrudDao_Monument {
         }
     }
 
-    public void deleteMonument(int id_monument) {
+    public void deleteMonument(int idMonument) {
+
         String deleteQuery = "DELETE FROM Monument WHERE idMonument = ?";
-        try {
+        try{
                 pStmt = dbConnection.prepareStatement(deleteQuery);
-                pStmt.setInt(1, id_monument);
+                pStmt.setInt(1, idMonument);
                 pStmt.executeUpdate();
         } catch (SQLException e) {
                 System.err.println(e.getMessage());

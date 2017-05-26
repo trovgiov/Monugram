@@ -8,8 +8,8 @@ $(document).ready(function() {
         actions : {
             listAction : 'monument_list',
             createAction : 'monument_create',
-            deleteAction : 'monuments_delete.action',
-            updateAction:'monuments_update.action'
+            deleteAction : 'monument_delete',
+            updateAction:'monuments_update'
         },
 
         fields : {
@@ -24,7 +24,6 @@ $(document).ready(function() {
             monument : {
                 title : 'Monument',
                 width : '20%',
-                key : true,
                 list : true,
                 edit : true,
                 create : true
@@ -32,7 +31,6 @@ $(document).ready(function() {
             progress : {
                 title : 'Progress',
                 width : '10%',
-                key : true,
                 list : true,
                 edit : true,
                 create : true

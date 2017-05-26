@@ -25,9 +25,9 @@ public class Monument {
         this.progress = progress;
     }
 
-    public Monument(String monument) {
+/*    public Monument() {
         this.monument = monument;
-    }
+    }*/
 
     public int getIdMonument() {
         return idMonument;
