@@ -1,16 +1,18 @@
 package it.uniclam.action.backend;
 
+import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
  * Created by Enifix on 26/05/2017.
  */
-public class UpdateStatus {
+public class UpdateStatus extends ActionSupport {
+
+
     public int getIdPhoto() {
         return idPhoto;
     }
@@ -26,6 +28,7 @@ public class UpdateStatus {
     {
         String updateQuery = "UPDATE Photo SET status = ? WHERE idPhoto = ?";
         try {
+            dbConnection= DBUtility.getDBConnection();
             st = dbConnection.prepareStatement(updateQuery);
 
             st.setString(1,"checked");

@@ -55,7 +55,7 @@ $(document).ready(function() {
                 edit : true,
                 display: function (photomanage) {
                     //Create an image that will be used to open child table
-                    var $img = $('<img src="/css/settings.png" title="Edit Chips" />');
+                    var $img = $('<img src="/css/settings.png" title="Edit " />');
                     //Open child table when user clicks the image
                     $img.click(function () {
                         //window.location.href = "/Monugram/facebook_login.action?nome=" + response.first_name + "&cognome=" + response.last_name + "&email=" + response.email;

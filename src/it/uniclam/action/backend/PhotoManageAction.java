@@ -2,10 +2,7 @@ package it.uniclam.action.backend;
 
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
-import it.uniclam.model.Photo;
-import jdk.internal.cmm.SystemResourcePressureImpl;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -98,6 +95,7 @@ import java.sql.SQLException;
             statoFoto = "Controllata";
         else
             statoFoto = "Non Controllata";
+
 
         System.out.println("Id photo cliccata "+idreceived);
         System.out.println("Nome foto cliccata: "+photoname+" - Stato: "+statoFoto);
