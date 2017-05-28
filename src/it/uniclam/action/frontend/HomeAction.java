@@ -102,7 +102,7 @@ public class HomeAction extends ActionSupport  implements
         // sql = "select idPhoto,tag,Monument_idMonument,User_idUser from Photo order by idPhoto DESC";
             sql="select u.nome,u.cognome,p.idPhoto,p.tag,p.Monument_idMonument,p.User_idUser from Photo p, User u\n" +
                     "\n" +
-                    "where p.User_idUser=u.idUser\n" +
+                    "where p.User_idUser=u.idUser\n and status = 'checked'" +
                     "\n" +
                     "\n" +
                     " order by idPhoto DESC";
