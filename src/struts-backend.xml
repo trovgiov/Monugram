@@ -21,6 +21,9 @@
             <result type="json"></result>
         </action>
 
+        <action name="photo_checked_list" method="list" class="it.uniclam.action.backend.Controller.ControllerPhotoChecked">
+            <result type="json"></result>
+        </action>
 
 
         <action name="photoview">
@@ -55,7 +58,7 @@
         </action>
 
         <action name="photo_manage" class="it.uniclam.action.backend.PhotoManageAction">
-            <result name="success">/public/backend/photo_manage.jsp</result>
+            <result name="success">/private/backend/photo_manage.jsp</result>
 
         </action>
 

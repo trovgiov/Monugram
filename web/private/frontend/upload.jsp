@@ -8,14 +8,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monugram - Upload Photos</title>
-    <meta http-equiv="refresh" content="300;url=teststatusManager.action" />
+    <title>HeGO - Upload Photos</title>
 
     <!-- Google Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
 
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="../assets/css/upload_style.css">
+    <link rel="stylesheet" href="./assets/css/upload_style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -27,17 +26,12 @@
 
 
     <s:form action="userImage" method="post" enctype="multipart/form-data" class="login">
-
-
-
-
         <s:hidden value="monument"/>
-
-        <s:file name="userImage" accept="image/*" id="capture" capture="camera" />
-
-        <s:div><button type="submit" id="button"><img src="../images/camera.png" alt="up icon" value="Upload" style="width:80px;height:80px;border:0;"/><br/>Upload</button></s:div>
+        <s:div class="forms"><s:file name="userImage" accept="image/*" class="image-button" id="capture" capture="camera"/></s:div>
+        <s:submit value="submit" name="UPLOAD" id="button"/>
 
     </s:form>
+
 </s:div>
 </body>
 </html>

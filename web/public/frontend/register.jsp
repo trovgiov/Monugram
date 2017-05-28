@@ -8,10 +8,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monugram - Registration Successfull</title>
+    <title>HeGO - Registration</title>
 
     <!-- Google Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="../../assets/css/animate.css">
     <!-- Custom Stylesheet -->
@@ -44,7 +44,7 @@
 
 <body>
 <!-- ATTENTION! THIS CODE IS FOR BACKGROUND VIDEO! -->
-<video poster="../../images/photo_bg.jpg" id="bgvid" playsinline autoplay muted loop>
+<video poster="../../images/tst.jpg" id="bgvid" playsinline autoplay muted loop>
     <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
     <!--<source src="../images/videobg_hd.mp4" type="video/mp4">-->
 </video>

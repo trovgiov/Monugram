@@ -1,11 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600");
+@import url("https://fonts.googleapis.com/css?family=Muli:400,300");
 @import url("font-awesome.min.css");
 
-/*
-	Helios by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
 
 /* Reset */
 
@@ -16,6 +12,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	font-family: 'Muli', Arial, sans-serif;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -1555,7 +1552,7 @@ body {
 	color: #5b5b5b;
 	font-size: 15pt;
 	line-height: 1.85em;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Muli', Arial, sans-serif;
 	font-weight: 300;
 }
 
@@ -1573,7 +1570,7 @@ body.is-loading *, body.is-loading *:after, body.is-loading *:before {
 input, textarea, select {
 	font-size: 15pt;
 	line-height: 1.85em;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Muli', Arial, sans-serif;
 	font-weight: 300;
 }
 
@@ -2049,7 +2046,7 @@ button.alt:hover,
 
 .icon:before {
 	display: inline-block;
-	font-family: FontAwesome;
+	font-family: 'Muli', Arial, sans-serif;
 	font-size: 1.25em;
 	text-decoration: none;
 	font-style: normal;
@@ -2811,7 +2808,7 @@ body.homepage.is-loading #header:after {
 	}
 
 	#navButton .toggle:before {
-		font-family: FontAwesome;
+		font-family: 'Muli', Arial, sans-serif;
 		text-decoration: none;
 		font-style: normal;
 		font-weight: normal;
@@ -4596,7 +4593,7 @@ body {
 	color: #5b5b5b;
 	font-size: 15pt;
 	line-height: 1.85em;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Muli', Arial, sans-serif;
 	font-weight: 300;
 }
 
@@ -4614,7 +4611,7 @@ body.is-loading *, body.is-loading *:after, body.is-loading *:before {
 input, textarea, select {
 	font-size: 15pt;
 	line-height: 1.85em;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Muli', Arial, sans-serif;
 	font-weight: 300;
 }
 
@@ -5090,7 +5087,7 @@ button.alt:hover,
 
 .icon:before {
 	display: inline-block;
-	font-family: FontAwesome;
+	font-family: 'Muli', Arial, sans-serif;
 	font-size: 1.25em;
 	text-decoration: none;
 	font-style: normal;
@@ -5852,7 +5849,7 @@ body.homepage.is-loading #header:after {
 	}
 
 	#navButton .toggle:before {
-		font-family: FontAwesome;
+		font-family: 'Muli', Arial, sans-serif;
 		text-decoration: none;
 		font-style: normal;
 		font-weight: normal;

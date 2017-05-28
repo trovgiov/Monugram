@@ -66,22 +66,21 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-
-                <a href="<s:url action="users"/>">
-                    <i class="ti-user"></i>
-                    <p>Users</p>
-                </a>
                 <li>
-
+                    <a href="<s:url action="users"/>">
+                        <i class="ti-user"></i>
+                        <p>Users</p>
+                    </a>
+                </li>
+                <li>
                     <a href="<s:url action="photoview"/>">
-                        <i class="ti-view-list-alt"></i>
+                        <i class="ti-gallery"></i>
                         <p>Foto</p>
                     </a>
                 </li>
-
                 <li class="active">
                     <a href="<s:url action="monumentview"/>">
-                        <i class="ti-text"></i>
+                        <i class="ti-location-pin"></i>
                         <p>Monumenti</p>
                     </a>
                 </li>

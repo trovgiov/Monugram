@@ -12,7 +12,7 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="../../assets_back/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Paper Dashboard by Creative Tim</title>
+	<title>HeGO - Photo Managment</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -56,7 +56,7 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                Monugram
+                He<em>GO</em>
             </div>
 
             <ul class="nav">
@@ -69,7 +69,7 @@
 
                     <a href="<s:url action="users"/>">
                         <i class="ti-user"></i>
-                        <p>Users</p>
+                        <p>Utenti</p>
                     </a>
                 <li>
                 <li class="active">
@@ -102,35 +102,28 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Table List</a>
+                    <a class="navbar-brand" href="#">Dashboard</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="ti-panel"></i>
-								<p>Stats</p>
-                            </a>
-                        </li>
                         <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="ti-bell"></i>
-                                    <p class="notification">5</p>
-									<p>Notifications</p>
-									<b class="caret"></b>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-bell"></i>
+                                <p class="notification">5</p>
+                                <p>Notifiche</p>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Notifica 1</a></li>
+                                <li><a href="#">Notifica 2</a></li>
+                                <li><a href="#">Notifica 3</a></li>
+                                <li><a href="#">Notifica 4</a></li>
+                            </ul>
                         </li>
-						<li>
-                            <a href="#">
-								<i class="ti-settings"></i>
-								<p>Settings</p>
+                        <li>
+                            <a href="/public/frontend/login.jsp">
+                                <i class="ti-power-off"></i>
+                                <p>Logout</p>
                             </a>
                         </li>
                     </ul>
@@ -152,13 +145,10 @@
 
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Utenti Iscritti</h4>
+                                <h4 class="title">Foto</h4>
                              </div>
-
-
                                     <div id="PhotoTableContainer"></div>
-
-
+                                    <div id="PhotoCheckedTableContainer"></div>
 
                             </div>
                         </div>
@@ -194,7 +184,7 @@
                     </ul>
                 </nav>
 				<div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
+                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Giovanni, Enea e Addolorata
                 </div>
             </div>
         </footer>
@@ -231,6 +221,6 @@
  <script src="/js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
 <script src="/js/jquery.jtable.js" type="text/javascript"></script>
 <script src="/js/photolist.js" type="text/javascript"></script>
-
+<script src="/js/photochecked.js" type="text/javascript"></script>
 
 </html>

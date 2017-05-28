@@ -6,19 +6,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
-<!--
-Helios by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 <head>
-    <title>Monugram User Page</title>
-    <meta http-equiv="refresh" content="300;url=teststatusManager.action" />
+    <title>HeGO User Page</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 
+    <!-- USED FONT -->
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/main.css"/>
 
@@ -34,7 +31,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <!-- Inner -->
         <s:div class="inner">
             <header>
-                <h1><img src="../../images/logo_w.png" alt="Monugram logo" style="width:82px;height:106px;"><a href="user_page.jsp" id="logo"> WELCOME INTO MONUgram!</a></h1>
+                <h1><img src="../../images/hego_logo.png" alt="logo" style="width:110px;height:110px;"></br><a href="user_page.jsp" id="logo"> WELCOME TO He<em>GO</em>!</a></h1>
                 <hr />
                 <p>Hi, <s:property value="nome"/>, let's start to capture or upload your FANTASTIC monument photos!</p>
             </header>
@@ -146,16 +143,16 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <a href="#" class="image featured"><img src="/images/wim.jpg" alt="" /></a>
         <article id="main" class="container special">
             <header>
-                <h2><a href="#">What's MONUgram</a></h2>
+                <h2><a href="#">What's He<em>GO</em></a></h2>
                 <p>
-                    MONUgram is a mobile, desktop, and internet-based photo-sharing application and service that allows users to share pictures
+                    He<em>GO</em> is a mobile, desktop, and internet-based photo-sharing application and service that allows users to share pictures
                     either publicly or privately.
                 </p>
             </header>
             <p>
                 It was created by developers Giovanni Trovini, Addolorata Montaquila and Enea Marinelli, and launched in June 2017 as a free mobile app
                 and a web application.
-                MONUgram lets registered users upload monuments photos to the service. Users can connect their account to Facebook social profiles,
+                He<em>GO</em> lets registered users upload monuments photos to the service. Users can connect their account to Facebook social profiles,
                 enabling them to share photos to those profiles as well. In June 2017, an "Explore" tab was introduced in the mobile apps,
                 showing users a variety of media, including (but not limited to) popular photos and photos taken at nearby locations,
                 trending tags and places, channels for recommended videos, and curated content.
@@ -215,112 +212,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
     <!-- Footer -->
     <s:div id="footer">
-        <div class="container">
-            <s:div class="row">
-
-                <!-- Tweets -->
-                <section class="4u 12u(mobile)">
-                    <header>
-                        <h2 class="icon fa-twitter circled"><span class="label">Tweets</span></h2>
-                    </header>
-                    <ul class="divided">
-                        <li>
-                            <article class="tweet">
-                                Amet nullam fringilla nibh nulla convallis tique ante sociis accumsan.
-                                <span class="timestamp">5 minutes ago</span>
-                            </article>
-                        </li>
-                        <li>
-                            <article class="tweet">
-                                Hendrerit rutrum quisque.
-                                <span class="timestamp">30 minutes ago</span>
-                            </article>
-                        </li>
-                        <li>
-                            <article class="tweet">
-                                Curabitur donec nulla massa laoreet nibh. Lorem praesent montes.
-                                <span class="timestamp">3 hours ago</span>
-                            </article>
-                        </li>
-                        <li>
-                            <article class="tweet">
-                                Lacus natoque cras rhoncus curae dignissim ultricies. Convallis orci aliquet.
-                                <span class="timestamp">5 hours ago</span>
-                            </article>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- Posts -->
-                <section class="4u 12u(mobile)">
-                    <header>
-                        <h2 class="icon fa-file circled"><span class="label">Posts</span></h2>
-                    </header>
-                    <ul class="divided">
-                        <li>
-                            <article class="post stub">
-                                <header>
-                                    <h3><a href="#">Nisl fermentum integer</a></h3>
-                                </header>
-                                <span class="timestamp">3 hours ago</span>
-                            </article>
-                        </li>
-                        <li>
-                            <article class="post stub">
-                                <header>
-                                    <h3><a href="#">Phasellus portitor lorem</a></h3>
-                                </header>
-                                <span class="timestamp">6 hours ago</span>
-                            </article>
-                        </li>
-                        <li>
-                            <article class="post stub">
-                                <header>
-                                    <h3><a href="#">Magna tempus consequat</a></h3>
-                                </header>
-                                <span class="timestamp">Yesterday</span>
-                            </article>
-                        </li>
-                        <li>
-                            <article class="post stub">
-                                <header>
-                                    <h3><a href="#">Feugiat lorem ipsum</a></h3>
-                                </header>
-                                <span class="timestamp">2 days ago</span>
-                            </article>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- Photos -->
-                <section class="4u 12u(mobile)">
-                    <header>
-                        <h2 class="icon fa-camera circled"><span class="label">Photos</span></h2>
-                    </header>
-                    <s:div class="row 25%">
-                        <s:div class="6u">
-                            <a href="#" class="image fit"><img src="images/pic10.jpg" alt="" /></a>
-                        </s:div>
-                        <s:div class="6u$">
-                            <a href="#" class="image fit"><img src="images/pic11.jpg" alt="" /></a>
-                        </s:div>
-                        <s:div class="6u">
-                            <a href="#" class="image fit"><img src="images/pic12.jpg" alt="" /></a>
-                        </s:div>
-                        <s:div class="6u$">
-                            <a href="#" class="image fit"><img src="images/pic13.jpg" alt="" /></a>
-                        </s:div>
-                        <s:div class="6u">
-                            <a href="#" class="image fit"><img src="images/pic14.jpg" alt="" /></a>
-                        </s:div>
-                        <s:div class="6u$">
-                            <a href="#" class="image fit"><img src="images/pic15.jpg" alt="" /></a>
-                        </s:div>
-                    </s:div>
-                </section>
-
-            </s:div>
-            <hr />
             <s:div class="row">
                 <s:div class="12u">
 
@@ -329,7 +220,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         <header>
                             <h3>Do you like this project? Have you some suggestions?</h3>
                         </header>
-                        <p>Keep in touch with MONUgram!</p>
+                        <p>Keep in touch with He<em>GO</em>!</p>
                         <ul class="icons">
                             <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
                             <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>

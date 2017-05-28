@@ -26,7 +26,8 @@
     <s:select name="monument"
               list="list"/>
 
-    <s:submit value="submit" name="submit" />
+    </p>
+    <s:submit value="submit" name="SUBMIT" id="button"/>
 </s:form></s:div>
 </body>
 </html>

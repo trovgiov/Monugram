@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  background: #000; 
+  background: #000;
+	font-family: 'Muli', Arial, sans-serif;
 }
 
 /* THIS CODE IS FOR BACKGROUND VIDEO! */
@@ -15,8 +16,8 @@ video {
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
  	background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
-  background-size: cover;
-  transition: 1s opacity;
+  	background-size: cover;
+  	transition: 1s opacity;
 }
 .stopfade { 
    opacity: .5;
@@ -38,7 +39,7 @@ body {
 
 /* Typography */
 h1#title {
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Muli', Arial, sans-serif;
 	font-weight: 300;
 	font-size: 3.2em;
 	color: white;
@@ -188,7 +189,7 @@ p.small {
 }
 
 .login-box .box-header {
-	background-color: #665851;
+	background-color: #161D5C;
 	margin-top: 0;
 	border-radius: 5px 5px 0 0;
 }

@@ -8,10 +8,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monugram - Log IN</title>
+    <title>HeGo - Log IN</title>
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+    <!-- USED FONT -->
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="../../assets/css/animate.css">
     <!-- Custom Stylesheet -->
@@ -34,7 +37,7 @@
             background-color: aqua;
         }
         #text{
-            font-family: verdana;
+            font-family: 'Muli', Arial, sans-serif;
             font-size: smaller;
             font-weight: lighter;
             margin:0 25% 0 25%;
@@ -45,16 +48,15 @@
 
 <body>
 <!-- ATTENTION! THIS CODE IS FOR BACKGROUND VIDEO! -->
-    <video poster="../../images/photo_bg.jpg" id="bgvid" playsinline autoplay muted loop>
+    <video poster="../../images/tst.jpg" id="bgvid" playsinline autoplay muted loop>
     <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
-    <source src="../../images/videobg_hd.mp4" type="video/mp4">
+    <source src="../../images/montecassino.mp4" type="video/mp4">
     </video>
 <!-- ATTENTION! THIS CODE IS FOR BACKGROUND VIDEO! -->
 
-
 <s:div class="container">
     <s:div class="top">
-        <h1 id="title" class="hidden"><span id="logo">Monu<span>GRAM</span></span></h1><br>
+        <h1 id="title" class="hidden"><img src="../../images/hego_logo.png" alt="logo" style="width:60px;height:60px;border:0;"><span id="logo">He<span><em>GO</em></span></span></h1><br>
     </s:div>
     <s:div><h3>The world at your fingertips!</h3></s:div>
     <s:div class="login-box animated fadeInUp">

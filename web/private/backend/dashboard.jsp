@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="assets_back/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>MonuGRAM Dashboard</title>
+    <title>HeGO Dashboard</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -61,7 +61,7 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                Monugram
+                He<em>GO</em>
             </div>
 
             <ul class="nav">
@@ -71,22 +71,21 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-
                     <li>
                     <a href="<s:url action="users"/>">
                         <i class="ti-user"></i>
-                        <p>Users</p>
+                        <p>Utenti</p>
                     </a>
                 </li>
                 <li>
                     <a href="<s:url action="photoview"/>">
-                        <i class="ti-view-list-alt"></i>
+                        <i class="ti-gallery"></i>
                         <p>Foto</p>
                     </a>
                 </li>
                 <li>
                     <a href="<s:url action="monumentview"/>">
-                         <i class="ti-text"></i>
+                         <i class="ti-location-pin"></i>
                         <p>Monumenti</p>
                     </a>
                 </li>
@@ -109,34 +108,24 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="ti-panel"></i>
-                                <p>Stats</p>
-
-
-
-                        </a>
-                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="ti-bell"></i>
                                 <p class="notification">5</p>
-                                <p>Notifications</p>
+                                <p>Notifiche</p>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
+                                <li><a href="#">Notifica 1</a></li>
+                                <li><a href="#">Notifica 2</a></li>
+                                <li><a href="#">Notifica 3</a></li>
+                                <li><a href="#">Notifica 4</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="ti-settings"></i>
-                                <p>Settings</p>
+                            <a href="/public/frontend/login.jsp">
+                                <i class="ti-power-off"></i>
+                                <p>Logout</p>
                             </a>
                         </li>
                     </ul>

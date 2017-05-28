@@ -68,9 +68,6 @@ $(document).ready(function() {
                 }
             }
             }
-
-
-
 	});
 	$('#PhotoTableContainer').jtable('load');
 });
