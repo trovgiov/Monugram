@@ -54,9 +54,10 @@
 		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
 	-->
 
-    	<div class="sidebar-wrapper">
+
+        <div class="sidebar-wrapper">
             <div class="logo">
- Monugram
+                He<em>GO</em>
             </div>
 
             <ul class="nav">
@@ -67,31 +68,30 @@
                     </a>
                 </li>
                 <li class="active">
-
                     <a href="<s:url action="users"/>">
                         <i class="ti-user"></i>
-                        <p>Users</p>
+                        <p>Utenti</p>
                     </a>
                 </li>
                 <li>
                     <a href="<s:url action="photoview"/>">
-                        <i class="ti-view-list-alt"></i>
+                        <i class="ti-gallery"></i>
                         <p>Foto</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
-                        <i class="ti-text"></i>
+                    <a href="<s:url action="monumentview"/>">
+                        <i class="ti-location-pin"></i>
                         <p>Monumenti</p>
                     </a>
                 </li>
 
             </ul>
-    	</div>
+        </div>
     </div>
 
     <div class="main-panel">
-		<nav class="navbar navbar-default">
+        <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle">
@@ -100,35 +100,28 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Table List</a>
+                    <a class="navbar-brand" href="#">Dashboard</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="ti-panel"></i>
-								<p>Stats</p>
-                            </a>
-                        </li>
                         <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="ti-bell"></i>
-                                    <p class="notification">5</p>
-									<p>Notifications</p>
-									<b class="caret"></b>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-bell"></i>
+                                <p class="notification">5</p>
+                                <p>Notifiche</p>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Notifica 1</a></li>
+                                <li><a href="#">Notifica 2</a></li>
+                                <li><a href="#">Notifica 3</a></li>
+                                <li><a href="#">Notifica 4</a></li>
+                            </ul>
                         </li>
-						<li>
-                            <a href="#">
-								<i class="ti-settings"></i>
-								<p>Settings</p>
+                        <li>
+                            <a href="/public/frontend/login.jsp">
+                                <i class="ti-power-off"></i>
+                                <p>Logout</p>
                             </a>
                         </li>
                     </ul>

@@ -144,12 +144,12 @@
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-warning text-center">
-                                            <img src="/images/users.png" alt="Users" style="width:60px;height:60px;">
+                                            <a href="<s:url action="users"/>"><img src="/images/users.png" alt="Users" style="width:60px;height:60px;"></a>
                                         </div>
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Utenti Attivi</p>
+                                            <p><a href="<s:url action="users"/>">Utenti Attivi</a></p>
                                             <s:property value="uconn"></s:property>
                                         </div>
                                     </div>
@@ -169,12 +169,12 @@
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-success text-center">
-                                            <img src="/images/photo_un.png" alt="Users" style="width:75px;height:60px;">
+                                            <a href="<s:url action="photoview"/>"><img src="/images/photo_un.png" alt="Users" style="width:75px;height:60px;"></a>
                                         </div>
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Foto non Controllate</p>
+                                            <p><a href="<s:url action="photoview"/>">Foto non Controllate</a></p>
                                             <s:property value="totPh"></s:property>
                                         </div>
                                     </div>
@@ -194,12 +194,12 @@
                                     <div class="row">
                                         <div class="col-xs-5">
                                             <div class="icon-big icon-info text-center">
-                                                <img src="/images/photo_ch.png" alt="Users" style="width:75px;height:60px;">
+                                                <a href="<s:url action="photoview"/>"><img src="/images/photo_ch.png" alt="Users" style="width:75px;height:60px;"></a>
                                             </div>
                                         </div>
                                         <div class="col-xs-7">
                                             <div class="numbers">
-                                                <p>Foto Controllate</p>
+                                                <p><a href="<s:url action="photoview"/>">Foto Controllate</a></p>
                                                 <s:property value="pcheck"></s:property>
                                             </div>
                                         </div>
@@ -219,12 +219,12 @@
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-danger text-center">
-                                            <img src="/images/monument_icon.png" alt="Users" style="width:60px;height:60px;">
+                                            <a href="<s:url action="monumentview"/>"><img src="/images/monument_icon.png" alt="Users" style="width:60px;height:60px;"></a>
                                         </div>
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Monumenti nel sistema</p>
+                                            <p><a href="<s:url action="monumentview"/>">Monumenti nel sistema</a></p>
                                             <s:property value="totMon"></s:property>
                                         </div>
                                     </div>

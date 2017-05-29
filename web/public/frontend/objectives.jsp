@@ -29,7 +29,6 @@
 
 <h1 id="title" class="hidden"><img src="../../images/hego_logo.png" alt="logo" style="width:60px;height:60px;border:0;"></br> CONSTRUCTION PROGRESS OF <s:property value="monumento"></s:property></h1>
 
-
 <svg id="fillgauge1" width="97%" height="250"></svg>
 
 <script language="JavaScript">
@@ -37,10 +36,10 @@
     var value = '<s:property value="progress"/>';
     var gauge1 = loadLiquidFillGauge("fillgauge1", value);
     var config1 = liquidFillGaugeDefaultSettings();
-    config1.circleColor = "#FF7777";
-    config1.textColor = "#FF4444";
-    config1.waveTextColor = "#FFAAAA";
-    config1.waveColor = "#FFDDDD";
+    config1.circleColor = "#FFF";
+    config1.textColor = "#FFF";
+    config1.waveTextColor = "#FFF";
+    config1.waveColor = "#FFF";
     config1.circleThickness = 0.2;
     config1.textVertPosition = 0.2;
     config1.waveAnimateTime = 1000;

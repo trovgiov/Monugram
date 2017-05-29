@@ -43,6 +43,22 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="../../assets_back/css/themify-icons.css" rel="stylesheet">
 
+    <!-- ACCORDION CODE -->
+    <link rel="stylesheet" href="../../assets_back/css/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="../../assets_back/css/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#accordion" ).accordion({
+                collapsible: true,
+                heightStyle: "content"
+            });
+        });
+
+    </script>
+
+
 </head>
 <body>
 
@@ -53,6 +69,7 @@
 		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
 		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
 	-->
+
 
         <div class="sidebar-wrapper">
             <div class="logo">
@@ -66,34 +83,31 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-
+                <li>
                     <a href="<s:url action="users"/>">
                         <i class="ti-user"></i>
                         <p>Utenti</p>
                     </a>
-                <li>
+                </li>
                 <li class="active">
-
-                <a href="<s:url action="photoview"/>">
-                        <i class="ti-view-list-alt"></i>
+                    <a href="<s:url action="photoview"/>">
+                        <i class="ti-gallery"></i>
                         <p>Foto</p>
                     </a>
                 </li>
-
- <li>
-                     <a href="<s:url action="monumentview"/>">
-                        <i class="ti-text"></i>
+                <li>
+                    <a href="<s:url action="monumentview"/>">
+                        <i class="ti-location-pin"></i>
                         <p>Monumenti</p>
                     </a>
                 </li>
-
 
             </ul>
         </div>
     </div>
 
     <div class="main-panel">
-		<nav class="navbar navbar-default">
+        <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle">
@@ -136,8 +150,6 @@
         <div class="content">
 
 
-
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -147,8 +159,26 @@
                             <div class="header">
                                 <h4 class="title">Foto</h4>
                              </div>
-                                    <div id="PhotoTableContainer"></div>
-                                    <div id="PhotoCheckedTableContainer"></div>
+                            <div id="accordion">
+                                <h3>Foto Non Approvate</h3>
+                                <div style="height: auto">
+                                    <p>
+                                        <div id="PhotoTableContainer"></div>
+                                    </p>
+                                </div>
+                                <h3>Foto Approvate</h3>
+                                <div style="height: auto">
+                                    <p>
+                                        <div id="PhotoCheckedTableContainer"></div>
+                                    </p>
+                                </div>
+                                <h3>Foto Ignorate</h3>
+                                <div style="height: auto">
+                                    <p>
+                                        <h3>Qui Andranno le foto ignorate</h3>
+                                    </p>
+                                </div>
+                            </div>
 
                             </div>
                         </div>
