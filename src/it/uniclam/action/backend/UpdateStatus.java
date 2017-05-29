@@ -40,4 +40,23 @@ public class UpdateStatus extends ActionSupport {
         }
         return "success";
     }
+
+    public String ignore(){
+        String updateQuery = "UPDATE Photo SET status = ? WHERE idPhoto = ?";
+        try {
+            dbConnection= DBUtility.getDBConnection();
+            st = dbConnection.prepareStatement(updateQuery);
+
+            st.setString(1,"ignored");
+            st.setInt(2,getIdPhoto());
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+
+
+
+        return "success";
+    }
 }

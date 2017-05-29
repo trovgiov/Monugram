@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('#PhotoCheckedTableContainer').jtable({
-        title : 'Cheched Photo List',
+        title : 'Checked Photo List',
         selecting: true, //Enable selecting
         multiselect: false, //Allow multiple selecting
         selectingCheckboxes: false, //Show checkboxes on first column
@@ -48,6 +48,24 @@ $(document).ready(function() {
                 title: 'Status',
                 width: '10%',
                 edit: true
+            },
+            settings : {
+                title : 'settings',
+                width : '20%',
+                edit : true,
+                display: function (photomanage) {
+                    //Create an image that will be used to open child table
+                    var $img = $('<img src="/css/settings.png" title="Edit " />');
+                    //Open child table when user clicks the image
+                    $img.click(function () {
+                        //window.location.href = "/Monugram/facebook_login.action?nome=" + response.first_name + "&cognome=" + response.last_name + "&email=" + response.email;
+
+                        window.location.href = "/Monugram/photo_manage.action?idPhoto="+photomanage.record.idPhoto+"&monumento="+photomanage.record.monumento;
+
+                    });
+                    //Return image to show on the person row
+                    return $img;
+                }
             }
         }
     });

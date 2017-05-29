@@ -203,7 +203,7 @@
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <a href="<s:url action="home_back"/>"><p>Rifiuta Foto</p></a>
+                                            <a href="<s:url action="photo_ignore"/>?idPhoto=<s:property value="idreceived"></s:property> "><p>Rifiuta Foto</p></a>
 
                                         </div>
                                     </div>
@@ -240,7 +240,11 @@
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-danger text-center">
+                                            <a href="<s:url action="delete_photo"/>?idPhoto=<s:property value="idreceived"></s:property> ">
+
                                             <img src="/images/delete.png" alt="Users" style="width:60px;height:60px;">
+
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="col-xs-7">

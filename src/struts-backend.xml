@@ -84,6 +84,15 @@
             <result type="json"></result>
         </action>
 
+        <action name="photo_ignore" method="ignore" class="it.uniclam.action.backend.UpdateStatus">
+            <result name="success">/private/backend/photo_manage.jsp</result>
+        </action>
+
+        <action name="delete_photo" method="execute" class="it.uniclam.action.backend.DeletePhoto">
+            <result name="success">/private/backend/dashboard.jsp</result>
+        </action>
+
+
 
     </package>
 </struts>

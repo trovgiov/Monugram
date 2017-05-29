@@ -2,10 +2,10 @@
   <artifact type="exploded-war" name="Progetto:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/Progetto_war_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="Progetto/web/Web" />
+      <element id="javaee-facet-resources" facet="heGO/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="Progetto" />
+          <element id="module-output" name="heGO" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Struts 2-2.3.20.1" />

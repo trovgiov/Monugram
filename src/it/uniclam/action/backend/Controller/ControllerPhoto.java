@@ -2,15 +2,10 @@ package it.uniclam.action.backend.Controller;
 
 import com.opensymphony.xwork2.Action;
 import it.uniclam.action.backend.Crud.CrudDao_Photo;
-import it.uniclam.model.Photo;
 import it.uniclam.model.PhotoView;
-import it.uniclam.model.User;
 
-import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
-
-import static com.opensymphony.xwork2.Action.SUCCESS;
 
 /**
  * Created by GiovanniTrovini on 22/05/17.
@@ -133,4 +128,6 @@ public class ControllerPhoto {
          }
         return Action.SUCCESS;
     }
+
+
 }
