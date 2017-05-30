@@ -17,8 +17,10 @@
     <link rel="stylesheet" href="./assets/css/upload_style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/exif.js"></script>
 
 </head>
+
 
 <body>
 
@@ -34,4 +36,29 @@
 
 </s:div>
 </body>
+
+
+<script language="JavaScript">
+     $('#capture').onloadend = function() {
+
+        var exif = EXIF.readFromBinaryFile(new BinaryFile(this.result));
+
+        switch (exif.Orientation) {
+
+            case 8:
+                ctx.rotate(90 * Math.PI / 180);
+                break;
+            case 3:
+                ctx.rotate(180 * Math.PI / 180);
+                break;
+            case 6:
+                ctx.rotate(-90 * Math.PI / 180);
+                break;
+
+
+        }
+
+    };
+
+</script>
 </html>

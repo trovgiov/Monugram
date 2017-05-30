@@ -41,7 +41,7 @@ public class MonuViewAction {
 
             sql = "select u.nome,u.cognome,p.idPhoto,p.tag,p.Monument_idMonument,p.User_idUser,m.monumento from Photo p, User u,Monument m\n" +
                     "where p.User_idUser=u.idUser and p.Monument_idMonument=m.idMonument\n" +
-                    "and m.monumento='"+getMonumento()+"'\n" +
+                    "and m.monumento='"+getMonumento()+"'\n and p.status='checked'" +
                     "order by idPhoto DESC";
 
             java.sql.Statement stmt = con.createStatement();

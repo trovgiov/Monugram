@@ -156,8 +156,10 @@
                                 <h4 class="title">Foto: <s:property value ="idreceived"></s:property></h4>
                                 <p class="category">Stato Foto: <s:property value ="statoFoto"></s:property> -  Monumento: <s:property value ="monu"></s:property></p>
                             </div>
-                                    <img src="/Monumenti/<s:property value="monu"/>/<s:property value="photoname"/>" alt="Photo" style="width:100%;height:100%;">
-                                </div>
+                                    <img src="/Monumenti/<s:property value="monu"/>/<s:property value="photoname"/>" id=image-original"  style="display: none;" alt="Photo">
+                                    <img id=image-reset" src="#" alt="Photo" style="width:100%;height:100%;">
+
+                        </div>
                                 <div class="footer">
                                     <hr>
                                     <div class="stats">
@@ -322,6 +324,56 @@
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="/assets_back/js/demo.js"></script>
 
+
+<script>
+    function resetOrientation(srcBase64, srcOrientation, callback) {
+        var img = new Image();
+
+        img.onload = function() {
+            var width = img.width,
+                height = img.height,
+                canvas = document.createElement('canvas'),
+                ctx = canvas.getContext("2d");
+
+// set proper canvas dimensions before transform & export
+            if ([5,6,7,8].indexOf(srcOrientation) > -1) {
+                canvas.width = height;
+                canvas.height = width;
+            } else {
+                canvas.width = width;
+                canvas.height = height;
+            }
+
+// transform context before drawing image
+            switch (srcOrientation) {
+                case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;
+                case 3: ctx.transform(-1, 0, 0, -1, width, height ); break;
+                case 4: ctx.transform(1, 0, 0, -1, 0, height ); break;
+                case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
+                case 6: ctx.transform(0, 1, -1, 0, height , 0); break;
+                case 7: ctx.transform(0, -1, -1, 0, height , width); break;
+                case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
+                default: ctx.transform(1, 0, 0, 1, 0, 0);
+            }
+
+// draw image
+            ctx.drawImage(img, 0, 0);
+
+// export base64
+            callback(canvas.toDataURL());
+        };
+
+        img.src = srcBase64;
+    }
+
+    var originalImage = document.getElementById("image-original"),
+        resetImage = document.getElementById("image-reset");
+
+    resetOrientation(originalImage.src, 5, function(resetBase64Image) {
+        resetImage.src = resetBase64Image;
+    });
+
+</script>
 
 
 </html>
