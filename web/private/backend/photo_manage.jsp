@@ -235,12 +235,14 @@
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-info text-center">
-                                            <img src="/images/mail_icon.png" alt="Users" style="width:70px;height:50px;">
+                                            <a href="<s:url action="sendusermail"/>" target="popup" onclick="window.open(this.href,'Upload','width=640,height=400'); return false;">
+                                                <img src="/images/mail_icon.png" alt="Users" style="width:70px;height:50px;">
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Contatta l'utente</p>
+                                            <p><a href="<s:url action="sendusermail"/>" target="popup" onclick="window.open(this.href,'Upload','width=640,height=400'); return false;">Contatta l'utente</a></p>
 
                                         </div>
                                     </div>

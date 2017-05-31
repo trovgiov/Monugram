@@ -92,6 +92,13 @@
             <result name="success">/private/backend/dashboard.jsp</result>
         </action>
 
+        <action name="sendusermail" method="execute" class="it.uniclam.mail.SendUserMail">
+            <result name="input">/public/backend/user_mail.jsp</result>
+            <result name="success">/private/backend/success_mail.jsp</result>
+            <result name="error">/error_mail.jsp</result>
+        </action>
+
+
 
 
     </package>
