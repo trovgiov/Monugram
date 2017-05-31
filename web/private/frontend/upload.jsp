@@ -15,10 +15,15 @@
 
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="./assets/css/upload_style.css">
+    <link rel="stylesheet" href="/css/adblock.css">
 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/exif.js"></script>
 
 </head>
+
 
 <body>
 
@@ -27,11 +32,22 @@
 
     <s:form action="userImage" method="post" enctype="multipart/form-data" class="login">
         <s:hidden value="monument"/>
+        <label for="capture" class="custom-file-upload">
+            <i class="fa fa-camera"></i> TAKE A PICTURE
+        </label>
+
         <s:div class="forms"><s:file name="userImage" accept="image/*" class="image-button" id="capture" capture="camera"/></s:div>
-        <s:submit value="submit" name="UPLOAD" id="button"/>
+
+        <label for="submit" class="custom-file-upload">
+            <i class="fa fa-institution"></i> SUBMIT
+        </label>
+        <s:submit value="submit" name="UPLOAD" id="submit"/>
 
     </s:form>
 
 </s:div>
 </body>
+
+
+
 </html>

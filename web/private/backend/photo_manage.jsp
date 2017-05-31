@@ -28,8 +28,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-
-    <!-- Bootstrap core CSS     -->
+     <!-- Bootstrap core CSS     -->
     <link href="/assets_back/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
@@ -47,6 +46,10 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="/assets_back/css/themify-icons.css" rel="stylesheet">
+
+<script src="/js/exif.js"></script>
+
+
 
 </head>
 <body>
@@ -156,9 +159,21 @@
                                 <h4 class="title">Foto: <s:property value ="idreceived"></s:property></h4>
                                 <p class="category">Stato Foto: <s:property value ="statoFoto"></s:property> -  Monumento: <s:property value ="monu"></s:property></p>
                             </div>
-                                    <img id="image-original" src="/Monumenti/<s:property value="monu"/>/<s:property value="photoname"/>" alt="Photo" style="width:100%;height:100%; display: none">
-                                    <img id="image-reset" src="" style="width:100%;height:100%">
-                                </div>
+
+
+                            <h3></h3>
+                            <img id="image-original" src="/Monumenti/<s:property value="monu"/>/<s:property value="photoname"/>" style="display:none;">
+
+                            <h3></h3>
+                            <img id="image-reset" src="" style="width:100%; height:100%;" />
+
+
+
+
+
+
+
+                        </div>
                                 <div class="footer">
                                     <hr>
                                     <div class="stats">
@@ -301,62 +316,78 @@
 
 </body>
 
+<!--   Core JS Files   -->
+<script src="/assets_back/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="/assets_back/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="/assets_back/js/bootstrap-checkbox-radio.js"></script>
+
+<!--  Charts Plugin -->
+<script src="/assets_back/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="/assets_back/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+<!-- Paper Dashboard Core javascript and methods for Demo purpose -->
+<script src="/assets_back/js/paper-dashboard.js"></script>
+
+<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+<script src="/assets_back/js/demo.js"></script>
+
 <script>
+
+
+
+
     function resetOrientation(srcBase64, srcOrientation, callback) {
         var img = new Image();
 
-        img.onload = function() {
+        img.onload = function () {
             var width = img.width,
                 height = img.height,
                 canvas = document.createElement('canvas'),
                 ctx = canvas.getContext("2d");
-
             // set proper canvas dimensions before transform & export
-            if ([5,6,7,8].indexOf(srcOrientation) > -1) {
+            if ([5, 6, 7, 8].indexOf(srcOrientation) > -1) {
                 canvas.width = height;
                 canvas.height = width;
-            } else {
+            }
+
+            else {
                 canvas.width = width;
                 canvas.height = height;
             }
+
             // transform context before drawing image
+            console.log("Orientamento" + srcOrientation);
             switch (srcOrientation) {
                 case 2:
-                    // horizontal flip
-                    ctx.translate(width, 0)
-                    ctx.scale(-1, 1)
-                    break
+                    ctx.transform(-1, 0, 0, 1, width, 0);
+                    break;
                 case 3:
-                    // 180° rotate left
-                    ctx.translate(width, height)
-                    ctx.rotate(Math.PI)
-                    break
+                    ctx.transform(-1, 0, 0, -1, width, height);
+                    break;
                 case 4:
-                    // vertical flip
-                    ctx.translate(0, height)
-                    ctx.scale(1, -1)
-                    break
+                    ctx.transform(1, 0, 0, -1, 0, height);
+                    break;
                 case 5:
-                    // vertical flip + 90 rotate right
-                    ctx.rotate(0.5 * Math.PI)
-                    ctx.scale(1, -1)
-                    break
+                    ctx.transform(0, 1, 1, 0, 0, 0);
+                    break;
                 case 6:
-                    // 90° rotate right
-                    ctx.rotate(0.5 * Math.PI)
-                    ctx.translate(0, -height)
-                    break
+                    ctx.transform(0, 1, -1, 0, height, 0);
+                    break;
                 case 7:
-                    // horizontal flip + 90 rotate right
-                    ctx.rotate(0.5 * Math.PI)
-                    ctx.translate(width, -height)
-                    ctx.scale(-1, 1)
-                    break
+                    ctx.transform(0, -1, -1, 0, height, width);
+                    break;
                 case 8:
-                    // 90° rotate left
-                    ctx.rotate(-0.5 * Math.PI)
-                    ctx.translate(-width, 0)
-                    break
+                    ctx.transform(0, -1, 1, 0, 0, width);
+                    break;
+                case 0:
+                    ctx.transform(1, 0, 0, 1, 0, 0);
             }
 
             // draw image
@@ -372,29 +403,23 @@
     var originalImage = document.getElementById("image-original"),
         resetImage = document.getElementById("image-reset");
 
-    resetOrientation(originalImage.src, 5, function(resetBase64Image) {
-        resetImage.src = resetBase64Image;
+
+
+    var target_image = document.getElementById("image-original");
+
+    var mario=0;
+    EXIF.getData(target_image, function() {
+        mario= EXIF.getTag(this, "Orientation");
+
+        resetOrientation(originalImage.src, mario, function (resetBase64Image) {
+            resetImage.src = resetBase64Image;
+        });
     });
+
+
+
+
 </script>
-
-<!--   Core JS Files   -->
-<script src="/assets_back/js/jquery-1.10.2.js" type="text/javascript"></script>
-<script src="/assets_back/js/bootstrap.min.js" type="text/javascript"></script>
-
-<!--  Checkbox, Radio & Switch Plugins -->
-<script src="/assets_back/js/bootstrap-checkbox-radio.js"></script>
-
-<!--  Charts Plugin -->
-<script src="/assets_back/js/chartist.min.js"></script>
-
-<!--  Notifications Plugin    -->
-<script src="/assets_back/js/bootstrap-notify.js"></script>
-
-<!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-<script src="/assets_back/js/paper-dashboard.js"></script>
-
-<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-<script src="/assets_back/js/demo.js"></script>
 
 
 
