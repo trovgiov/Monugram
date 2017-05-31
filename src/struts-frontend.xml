@@ -52,6 +52,7 @@
 
         <action name="uploadPhoto" class="it.uniclam.action.frontend.UploadAction">
             <result name="SUCCESS">/private/frontend/upload.jsp</result>
+            <result name="error">/error_mail.jsp</result>
         </action>
 
 

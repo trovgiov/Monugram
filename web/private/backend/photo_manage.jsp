@@ -46,7 +46,7 @@
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
-    <link href="assets_back/css/themify-icons.css" rel="stylesheet">
+    <link href="/assets_back/css/themify-icons.css" rel="stylesheet">
 
 </head>
 <body>
@@ -156,7 +156,8 @@
                                 <h4 class="title">Foto: <s:property value ="idreceived"></s:property></h4>
                                 <p class="category">Stato Foto: <s:property value ="statoFoto"></s:property> -  Monumento: <s:property value ="monu"></s:property></p>
                             </div>
-                                    <img src="/Monumenti/<s:property value="monu"/>/<s:property value="photoname"/>" alt="Photo" style="width:100%;height:100%;">
+                                    <img id="image-original" src="/Monumenti/<s:property value="monu"/>/<s:property value="photoname"/>" alt="Photo" style="width:100%;height:100%; display: none">
+                                    <img id="image-reset" src="" style="width:100%;height:100%">
                                 </div>
                                 <div class="footer">
                                     <hr>
@@ -300,6 +301,82 @@
 
 </body>
 
+<script>
+    function resetOrientation(srcBase64, srcOrientation, callback) {
+        var img = new Image();
+
+        img.onload = function() {
+            var width = img.width,
+                height = img.height,
+                canvas = document.createElement('canvas'),
+                ctx = canvas.getContext("2d");
+
+            // set proper canvas dimensions before transform & export
+            if ([5,6,7,8].indexOf(srcOrientation) > -1) {
+                canvas.width = height;
+                canvas.height = width;
+            } else {
+                canvas.width = width;
+                canvas.height = height;
+            }
+            // transform context before drawing image
+            switch (srcOrientation) {
+                case 2:
+                    // horizontal flip
+                    ctx.translate(width, 0)
+                    ctx.scale(-1, 1)
+                    break
+                case 3:
+                    // 180° rotate left
+                    ctx.translate(width, height)
+                    ctx.rotate(Math.PI)
+                    break
+                case 4:
+                    // vertical flip
+                    ctx.translate(0, height)
+                    ctx.scale(1, -1)
+                    break
+                case 5:
+                    // vertical flip + 90 rotate right
+                    ctx.rotate(0.5 * Math.PI)
+                    ctx.scale(1, -1)
+                    break
+                case 6:
+                    // 90° rotate right
+                    ctx.rotate(0.5 * Math.PI)
+                    ctx.translate(0, -height)
+                    break
+                case 7:
+                    // horizontal flip + 90 rotate right
+                    ctx.rotate(0.5 * Math.PI)
+                    ctx.translate(width, -height)
+                    ctx.scale(-1, 1)
+                    break
+                case 8:
+                    // 90° rotate left
+                    ctx.rotate(-0.5 * Math.PI)
+                    ctx.translate(-width, 0)
+                    break
+            }
+
+            // draw image
+            ctx.drawImage(img, 0, 0);
+
+            // export base64
+            callback(canvas.toDataURL());
+        };
+
+        img.src = srcBase64;
+    }
+
+    var originalImage = document.getElementById("image-original"),
+        resetImage = document.getElementById("image-reset");
+
+    resetOrientation(originalImage.src, 5, function(resetBase64Image) {
+        resetImage.src = resetBase64Image;
+    });
+</script>
+
 <!--   Core JS Files   -->
 <script src="/assets_back/js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="/assets_back/js/bootstrap.min.js" type="text/javascript"></script>
@@ -312,9 +389,6 @@
 
 <!--  Notifications Plugin    -->
 <script src="/assets_back/js/bootstrap-notify.js"></script>
-
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
 <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 <script src="/assets_back/js/paper-dashboard.js"></script>

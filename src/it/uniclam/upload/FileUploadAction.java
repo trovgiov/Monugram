@@ -99,6 +99,10 @@ public class FileUploadAction extends ActionSupport implements
             // Titolo immagine di default
             String title = this.getUserImageFileName();
             // Divido la stringa ,  . è il carattere delimitatore
+            if(title.isEmpty())
+            {
+                return "error";
+            }
             String[] output = title.split("\\.");
 
             String titolo = output[0];
