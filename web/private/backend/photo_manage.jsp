@@ -28,8 +28,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-
-    <!-- Bootstrap core CSS     -->
+     <!-- Bootstrap core CSS     -->
     <link href="/assets_back/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
@@ -46,7 +45,11 @@
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
-    <link href="assets_back/css/themify-icons.css" rel="stylesheet">
+    <link href="/assets_back/css/themify-icons.css" rel="stylesheet">
+
+<script src="/js/exif.js"></script>
+
+
 
 </head>
 <body>
@@ -156,8 +159,19 @@
                                 <h4 class="title">Foto: <s:property value ="idreceived"></s:property></h4>
                                 <p class="category">Stato Foto: <s:property value ="statoFoto"></s:property> -  Monumento: <s:property value ="monu"></s:property></p>
                             </div>
-                                    <img src="/Monumenti/<s:property value="monu"/>/<s:property value="photoname"/>" id=image-original"  style="display: none;" alt="Photo">
-                                    <img id=image-reset" src="#" alt="Photo" style="width:100%;height:100%;">
+
+
+                            <h3></h3>
+                            <img id="image-original" src="/Monumenti/<s:property value="monu"/>/<s:property value="photoname"/>" style="display:none;">
+
+                            <h3></h3>
+                            <img id="image-reset" src="" style="width:100%; height:100%;" />
+
+
+
+
+
+
 
                         </div>
                                 <div class="footer">
@@ -324,42 +338,62 @@
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="/assets_back/js/demo.js"></script>
 
-
 <script>
+
+
+
+
     function resetOrientation(srcBase64, srcOrientation, callback) {
         var img = new Image();
 
-        img.onload = function() {
+        img.onload = function () {
             var width = img.width,
                 height = img.height,
                 canvas = document.createElement('canvas'),
                 ctx = canvas.getContext("2d");
-
-// set proper canvas dimensions before transform & export
-            if ([5,6,7,8].indexOf(srcOrientation) > -1) {
+            // set proper canvas dimensions before transform & export
+            if ([5, 6, 7, 8].indexOf(srcOrientation) > -1) {
                 canvas.width = height;
                 canvas.height = width;
-            } else {
+            }
+
+            else {
                 canvas.width = width;
                 canvas.height = height;
             }
 
-// transform context before drawing image
+            // transform context before drawing image
+            console.log("Orientamento" + srcOrientation);
             switch (srcOrientation) {
-                case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;
-                case 3: ctx.transform(-1, 0, 0, -1, width, height ); break;
-                case 4: ctx.transform(1, 0, 0, -1, 0, height ); break;
-                case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
-                case 6: ctx.transform(0, 1, -1, 0, height , 0); break;
-                case 7: ctx.transform(0, -1, -1, 0, height , width); break;
-                case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
-                default: ctx.transform(1, 0, 0, 1, 0, 0);
+                case 2:
+                    ctx.transform(-1, 0, 0, 1, width, 0);
+                    break;
+                case 3:
+                    ctx.transform(-1, 0, 0, -1, width, height);
+                    break;
+                case 4:
+                    ctx.transform(1, 0, 0, -1, 0, height);
+                    break;
+                case 5:
+                    ctx.transform(0, 1, 1, 0, 0, 0);
+                    break;
+                case 6:
+                    ctx.transform(0, 1, -1, 0, height, 0);
+                    break;
+                case 7:
+                    ctx.transform(0, -1, -1, 0, height, width);
+                    break;
+                case 8:
+                    ctx.transform(0, -1, 1, 0, 0, width);
+                    break;
+                case 0:
+                    ctx.transform(1, 0, 0, 1, 0, 0);
             }
 
-// draw image
+            // draw image
             ctx.drawImage(img, 0, 0);
 
-// export base64
+            // export base64
             callback(canvas.toDataURL());
         };
 
@@ -369,11 +403,24 @@
     var originalImage = document.getElementById("image-original"),
         resetImage = document.getElementById("image-reset");
 
-    resetOrientation(originalImage.src, 5, function(resetBase64Image) {
-        resetImage.src = resetBase64Image;
+
+
+    var target_image = document.getElementById("image-original");
+
+    var mario=0;
+    EXIF.getData(target_image, function() {
+        mario= EXIF.getTag(this, "Orientation");
+
+        resetOrientation(originalImage.src, mario, function (resetBase64Image) {
+            resetImage.src = resetBase64Image;
+        });
     });
 
+
+
+
 </script>
+
 
 
 </html>
