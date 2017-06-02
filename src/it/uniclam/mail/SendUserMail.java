@@ -5,15 +5,15 @@ package it.uniclam.mail;
  */
 
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.Date;
-import java.util.Properties;
+import org.apache.struts2.interceptor.ServletRequestAware;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.apache.struts2.interceptor.ServletRequestAware;
-import it.uniclam.action.backend.PhotoManageAction;
+import java.util.Date;
+import java.util.Properties;
 
 public class SendUserMail extends ActionSupport implements ServletRequestAware{
     private String to;
@@ -48,7 +48,7 @@ public class SendUserMail extends ActionSupport implements ServletRequestAware{
     }
 
     // Also include an inner class that is used for authentication purposes
-    private class SMTPAuthenticator extends Authenticator{
+    public static class SMTPAuthenticator extends Authenticator{
         @Override
         public PasswordAuthentication getPasswordAuthentication() {
             return new PasswordAuthentication(from, m_password);

@@ -1,135 +1,95 @@
 package it.uniclam.action.backend;
 
 import com.opensymphony.xwork2.ActionSupport;
-import it.uniclam.db.DBUtility;
+import it.uniclam.mail.SendUserMail;
+import it.uniclam.model.PhotoView;
+import it.uniclam.model.Singleton;
+import org.apache.struts2.interceptor.ServletRequestAware;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+import java.util.Properties;
 
-/**
- * Created by Enifix on 02/06/2017.
- */
-public class UserInfoMail extends ActionSupport
-{
-    private int idUser;
-    private String Nome;
+public class UserInfoMail extends ActionSupport implements ServletRequestAware {
 
-    public int getIdPhoto() {
-        return idPhoto;
+
+    private String subject;
+
+    public String getSubject() {
+        return subject;
     }
 
-    public void setIdPhoto(int idPhoto) {
-        this.idPhoto = idPhoto;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
-    private int idPhoto;
-
-    public String getNome() {
-        return Nome;
+    public String getMessage() {
+        return message;
     }
 
-    public void setNome(String nome) {
-        Nome = nome;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public String getCognome() {
-        return Cognome;
+    private String message;
+
+
+    public String execute() throws MessagingException {
+
+        PhotoView p = Singleton.getMyphoto();
+
+         String subject = getSubject();
+        String messaggio = getMessage();
+         String email = p.getEmail();
+
+
+
+
+        invia(subject, messaggio, email);
+
+        return "success";
     }
 
-    public void setCognome(String cognome) {
-        Cognome = cognome;
+
+    @Override
+    public void setServletRequest(HttpServletRequest httpServletRequest) {
+
     }
 
-    private String Cognome;
 
-    public int getIdUser() {
-        return idUser;
+    public static void invia(String oggetto, String messaggio, String email) throws MessagingException {
+
+        final String smtpServ = "smtp.gmail.com";
+
+        String from ="appmonugram@gmail.com";
+
+
+         Properties props = System.getProperties();
+        // -- Attaching to default Session, or we could start a new one --
+        props.put("mail.transport.protocol", "smtp" );
+        props.put("mail.smtp.starttls.enable","true" );
+        props.put("mail.smtp.host",smtpServ);
+        props.put("mail.smtp.auth", "true" );
+        Authenticator auth = new SendUserMail.SMTPAuthenticator();
+        Session session = Session.getInstance(props, auth);
+        // -- Create a new message --
+        Message msg = new MimeMessage(session);
+        // -- Set the FROM and TO fields --
+        msg.setFrom(new InternetAddress(from));
+        msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email, false));
+        msg.setSubject(oggetto);
+        msg.setText(messaggio);
+        // -- Set some other header information --
+        msg.setHeader("MyMail", "Mr. XYZ" );
+        msg.setSentDate(new Date());
+        // -- Send the message --
+        Transport.send(msg);
+        System.out.println("Message sent to"+email+" OK." );
+
+
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
-
-    public String getUserMail() {
-        return userMail;
-    }
-
-    public void setUserMail(String userMail) {
-        this.userMail = userMail;
-    }
-
-    private String userMail;
-
-    public String execute()
-    {
-        idPhoto = getIdPhoto();
-        idUser = idUtente(idPhoto);
-        userMail = getUserMail(idUser);
-
-        System.out.println("ID Foto >>: "+ idPhoto);
-        System.out.println("Utente da contattare: "+ idUser);
-        System.out.println("EMAIL: "+userMail);
-
-        return "input";
-    }
-
-    public int idUtente(int idut)
-    {
-        int idUt = 0;
-
-        java.sql.Statement st = null;
-        String Query = "SELECT user_idUser FROM Photo WHERE idPhoto='"+idut+"'";
-        try
-        {
-            Connection con = DBUtility.getDBConnection();
-            st=con.createStatement();
-            ResultSet rs1 = st.executeQuery(Query);
-
-            if (rs1.next()) {
-                idUt = rs1.getInt("user_idUser");
-            }
-            rs1.close();
-            st.close();
-            con.close();
-        }
-        catch (SQLException e)
-        {
-            System.err.println(e.getMessage());
-        }
-        return idUt;
-    }
-
-    public String getUserMail(int idusr)
-    {
-        String mail = null;
-
-        try
-        {
-            Connection con = DBUtility.getDBConnection();
-
-            String sql;
-
-            sql = "SELECT email FROM User WHERE idUser = '"+idusr+"'";
-
-            java.sql.Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-
-            while (rs.next()) {
-
-                mail = rs.getString("email");
-
-            }
-            // chiusura rs2 e stmt2
-            rs.close();
-            stmt.close();
-            // chiusura rs e stmt
-
-        }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-        return mail;
-    }
 }

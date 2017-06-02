@@ -2,6 +2,8 @@ package it.uniclam.action.backend;
 
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
+import it.uniclam.model.PhotoView;
+import it.uniclam.model.Singleton;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -91,15 +93,27 @@ import java.sql.SQLException;
         photoname = photoName(idreceived);
         statPh = getStatus(idreceived);
 
+        String email_user = email_user(idreceived);
+
+        PhotoView p = new PhotoView(email_user,monu);
+        Singleton.setMyphoto(p);
+
         if(statPh.equalsIgnoreCase("checked"))
             statoFoto = "Controllata";
         else
             statoFoto = "Non Controllata";
 
 
+
+
+
         System.out.println("Id photo cliccata "+idreceived);
         System.out.println("Nome foto cliccata: "+photoname+" - Stato: "+statoFoto);
         System.out.println("Monumento: "+monu);
+
+
+
+
         return "success";
     }
 
@@ -154,4 +168,41 @@ import java.sql.SQLException;
         return stat;
     }
 
-   }
+
+    public String email_user (int idPhoto){
+
+        String email = null;
+        String stat=null;
+        java.sql.Statement st = null;
+
+        //String statQuery = "SELECT status FROM Photo WHERE idPhoto='"+idphot+"'";
+
+        String query = "SELECT u.email \n" +
+                "from Photo p, User u\n" +
+                "WHERE p.User_idUser= u.idUser\n" +
+                "and p.idPhoto='"+idPhoto+"'";
+        try
+        {
+            Connection con = DBUtility.getDBConnection();
+            st=con.createStatement();
+            ResultSet rs1 = st.executeQuery(query);
+            if (rs1.next()) {
+                email = rs1.getString("u.email");
+            }
+            rs1.close();
+            st.close();
+            con.close();
+        }
+        catch (SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+
+        return email;
+    }
+
+
+
+    }
+
+

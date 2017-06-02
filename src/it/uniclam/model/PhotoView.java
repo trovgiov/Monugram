@@ -77,4 +77,20 @@ public class PhotoView {
     private String monumento;
 
     private String stato;
+
+    public PhotoView(String email,String monumento) {
+        this.email = email;
+        this.monumento=monumento;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private String email;
+
 }

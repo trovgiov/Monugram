@@ -15,6 +15,15 @@ public class Singleton {
     private static User myUser;
     private static Monument mymonument;
     private static Session mysession;
+    private static PhotoView myphoto;
+
+    public static PhotoView getMyphoto() {
+        return myphoto;
+    }
+
+    public static void setMyphoto(PhotoView myphoto) {
+        Singleton.myphoto = myphoto;
+    }
 
     public static Session getMysession() {
         return mysession;
