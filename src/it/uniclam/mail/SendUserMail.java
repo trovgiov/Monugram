@@ -5,15 +5,15 @@ package it.uniclam.mail;
  */
 
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.interceptor.ServletRequestAware;
-
+import java.util.Date;
+import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.Properties;
+import org.apache.struts2.interceptor.ServletRequestAware;
+import it.uniclam.action.backend.PhotoManageAction;
 
 public class SendUserMail extends ActionSupport implements ServletRequestAware{
     private String to;
@@ -67,7 +67,21 @@ public class SendUserMail extends ActionSupport implements ServletRequestAware{
         return from;
     }
 
+    /*public void setFrom(String from) {
+        this.from = from.toLowerCase();
+        if(!from.isEmpty()) {
+            if(from.endsWith("@gmail.com")){
+                this.smtpServ="smtp.gmail.com";
+            }
+            if(from.endsWith("@live.com")){
+                this.smtpServ="smtp.live.com";
+            }
+            if(from.endsWith("@hotmail.com")){
+                this.smtpServ="smtp.hotmail.com";
+            }
 
+        }
+    }*/
 
     public String getSubject() {
         return subject;
@@ -85,39 +99,6 @@ public class SendUserMail extends ActionSupport implements ServletRequestAware{
         this.message = message;
     }
 
-
-    public String execute(){
-
-
-        idUtente = getIdUtente();
-
-        System.out.println("Dentro l'action");
-        System.out.println("Id Utente: "+idUtente);
-
-        hs=hsr.getSession();
-        try{
-            if(hs.getAttribute("sms")!=null){
-                hs.removeAttribute("sms");
-            }
-        }catch(Exception e){
-            System.out.println("IN EXECUTE() : FIRST TRY FAILED");
-        }
-        try{
-            i=sendMail();
-            if(i==0){
-                hs.setAttribute("sms", "Your E-Mail has been sent successfully to :"+to);
-                return "success";
-
-            }else{
-                hs.setAttribute("sms", "Failed to Send Email to :"+to+" : Authentication Failed ");
-            }
-        }catch(Exception e){
-            System.out.println("IN EXECUTE : SECOND TRY FAILED");
-            System.out.println(e);
-            hs.setAttribute("sms", "Error:::"+e);
-        }
-        return "error";
-    }
 
     public int sendMail(){
         try
@@ -152,7 +133,48 @@ public class SendUserMail extends ActionSupport implements ServletRequestAware{
             return -1;
         }
     }
+    @Override
+    public String execute(){
 
+        hs=hsr.getSession();
+        try{
+            if(hs.getAttribute("sms")!=null){
+                hs.removeAttribute("sms");
+            }
+        }catch(Exception e){
+            System.out.println("IN EXECUTE() : FIRST TRY FAILED");
+        }
+        try{
+            i=sendMail();
+            if(i==0){
+                hs.setAttribute("sms", "Your E-Mail has been sent successfully to :"+to);
+            }else{
+                hs.setAttribute("sms", "Failed to Send Email to :"+to+" : Authentication Failed ");
+            }
+            return "success";
+        }catch(Exception e){
+            System.out.println("IN EXECUTE : SECOND TRY FAILED");
+            System.out.println(e);
+            hs.setAttribute("sms", "Error:::"+e);
+            return "error";
+        }
+    }
+    @Override
+    public void validate(){
+
+        /*if(to.isEmpty()){
+            addFieldError("to", "Email Field cannot be left blank!!!");
+        }
+        else if((!to.endsWith("@gmail.com"))&&(!to.endsWith("@live.com"))&&(!to.endsWith("@hotmail.com"))){
+            addFieldError("from", "Email ID not valid!!!");
+        }
+        else if(from.isEmpty()){
+            addFieldError("to", "Email Field cannot be left blank!!!");
+        }
+        else  if((!from.endsWith("@gmail.com"))&&(!from.endsWith("@live.com"))&&(!from.endsWith("@hotmail.com"))){
+            addFieldError("from", "Email ID not valid!!!");
+        }*/
+    }
 
 
 

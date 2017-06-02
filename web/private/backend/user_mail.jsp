@@ -21,7 +21,7 @@ Author     : Sudhanshu
       
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
      
-    <title>HeGO Mail User</title>
+    <title>HeGO Mail Utente</title>
 
             <style>
                 body {
@@ -39,13 +39,13 @@ Author     : Sudhanshu
         </head>
     <body>
         <div id="text">
-            <h1>Send Email to: </h1>
-    <s:form action="sendusermail" class="forms">
-                    <s:textfield name="to" label="To" maxLength="40" size="80" required="true"/>
-                <s:textfield name="subject" label="Soggetto" maxLength="40" size="80"/>
-                <s:textarea name="message" label="Messaggio" cssClass="msg" required="true"/>
-                <s:submit value="Invia Email"/>
+            <h1>Invia Email a: <s:property value="userMail"/> </h1>
+    <s:form method="post" action="usermail2" class="forms">
+                    <s:textfield name="subject" label="Soggetto" maxLength="40" size="80"/>
+                    <s:textarea name="message" label="Messaggio" cssClass="msg" required="true"/>
+                    <s:submit value="Invia Email"/>
     </s:form>
+
 </div>
            
         </body>
