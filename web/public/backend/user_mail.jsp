@@ -40,8 +40,8 @@ Author     : Sudhanshu
     <body>
         <div id="text">
             <h1>Send Email to: </h1>
-    <s:form method="post" action="sendusermail" class="forms">
-                <s:textfield name="to" label="To" maxLength="40" size="80" required="true"/>
+    <s:form action="sendusermail" class="forms">
+                    <s:textfield name="to" label="To" maxLength="40" size="80" required="true"/>
                 <s:textfield name="subject" label="Soggetto" maxLength="40" size="80"/>
                 <s:textarea name="message" label="Messaggio" cssClass="msg" required="true"/>
                 <s:submit value="Invia Email"/>

@@ -126,7 +126,10 @@
 -->
             <s:iterator value="lista_foto">
             <article>
-                <s:div><a href="/Monumenti/<s:property value="monument"/>/<s:property value="title"/>" class="image featured"></s:div><img src="/Monumenti/<s:property value="monument"/>/<s:property value="title"/>"  width="336" height="189" alt="" /></a>
+                <s:div><a href="/Monumenti/<s:property value="monument"/>/<s:property value="title"/>" class="image featured"></s:div>
+                    <img src="/Monumenti/<s:property value="monument"/>/<s:property value="title"/>"   style="width:336px; height:200px;" />
+                 </a>
+
                 <header>
                     <h3><a href="<s:url action="monuview"/>?monumento=<s:property value="monument"/>"> <s:property value="monument"/> </a></h3>
                 </header>
@@ -262,6 +265,89 @@
     {
         window.document.forms[0].submit();
     }</script>
+
+
+<script>
+
+
+
+
+    function resetOrientation(srcBase64, srcOrientation, callback) {
+        var img = new Image();
+
+        img.onload = function () {
+            var width = img.width,
+                height = img.height,
+                canvas = document.createElement('canvas'),
+                ctx = canvas.getContext("2d");
+            // set proper canvas dimensions before transform & export
+            if ([5, 6, 7, 8].indexOf(srcOrientation) > -1) {
+                canvas.width = height;
+                canvas.height = width;
+            }
+
+            else {
+                canvas.width = width;
+                canvas.height = height;
+            }
+
+            // transform context before drawing image
+            console.log("Orientamento" + srcOrientation);
+            switch (srcOrientation) {
+                case 2:
+                    ctx.transform(-1, 0, 0, 1, width, 0);
+                    break;
+                case 3:
+                    ctx.transform(-1, 0, 0, -1, width, height);
+                    break;
+                case 4:
+                    ctx.transform(1, 0, 0, -1, 0, height);
+                    break;
+                case 5:
+                    ctx.transform(0, 1, 1, 0, 0, 0);
+                    break;
+                case 6:
+                    ctx.transform(0, 1, -1, 0, height, 0);
+                    break;
+                case 7:
+                    ctx.transform(0, -1, -1, 0, height, width);
+                    break;
+                case 8:
+                    ctx.transform(0, -1, 1, 0, 0, width);
+                    break;
+                case 0:
+                    ctx.transform(1, 0, 0, 1, 0, 0);
+            }
+
+            // draw image
+            ctx.drawImage(img, 0, 0);
+
+            // export base64
+            callback(canvas.toDataURL());
+        };
+
+        img.src = srcBase64;
+    };
+
+    var originalImage = document.getElementById("image-original"),
+        resetImage = document.getElementById("image-reset");
+
+
+
+    var target_image = document.getElementById("image-original");
+
+    var mario=0;
+    EXIF.getData(target_image, function() {
+        mario= EXIF.getTag(this, "Orientation");
+
+        resetOrientation(originalImage.src, mario, function (resetBase64Image) {
+            resetImage.src = resetBase64Image;
+        });
+    });
+
+
+
+</script>
 
 </body>
 </html>

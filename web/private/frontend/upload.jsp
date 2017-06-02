@@ -36,7 +36,7 @@
             <i class="fa fa-camera"></i> TAKE A PICTURE
         </label>
 
-        <s:div class="forms"><s:file name="userImage" accept="image/*" class="image-button" id="capture" capture="camera"/></s:div>
+        <s:div class="forms"><s:file name="userImage" accept="image/*" class="image-button" id="capture" capture="camera" /></s:div>
 
         <label for="submit" class="custom-file-upload">
             <i class="fa fa-institution"></i> SUBMIT
@@ -47,6 +47,8 @@
 
 </s:div>
 </body>
+
+
 
 
 

@@ -162,10 +162,10 @@
 
 
                             <h3></h3>
-                            <img id="image-original" src="/Monumenti/<s:property value="monu"/>/<s:property value="photoname"/>" style="display:none;">
+                            <img i src="/Monumenti/<s:property value="monu"/>/<s:property value="photoname"/>" style="width:100%; height:100%">
 
                             <h3></h3>
-                            <img id="image-reset" src="" style="width:100%; height:100%;" />
+
 
 
 
@@ -235,7 +235,7 @@
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-info text-center">
-                                            <a href="<s:url action="sendusermail"/>" target="popup" onclick="window.open(this.href,'Upload','width=640,height=400'); return false;">
+                                            <a href="/public/backend/user_mail.jsp" target="popup" onclick="window.open(this.href,'Upload','width=640,height=400'); return false;">
                                                 <img src="/images/mail_icon.png" alt="Users" style="width:70px;height:50px;">
                                             </a>
                                         </div>
@@ -340,88 +340,7 @@
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="/assets_back/js/demo.js"></script>
 
-<script>
 
-
-
-
-    function resetOrientation(srcBase64, srcOrientation, callback) {
-        var img = new Image();
-
-        img.onload = function () {
-            var width = img.width,
-                height = img.height,
-                canvas = document.createElement('canvas'),
-                ctx = canvas.getContext("2d");
-            // set proper canvas dimensions before transform & export
-            if ([5, 6, 7, 8].indexOf(srcOrientation) > -1) {
-                canvas.width = height;
-                canvas.height = width;
-            }
-
-            else {
-                canvas.width = width;
-                canvas.height = height;
-            }
-
-            // transform context before drawing image
-            console.log("Orientamento" + srcOrientation);
-            switch (srcOrientation) {
-                case 2:
-                    ctx.transform(-1, 0, 0, 1, width, 0);
-                    break;
-                case 3:
-                    ctx.transform(-1, 0, 0, -1, width, height);
-                    break;
-                case 4:
-                    ctx.transform(1, 0, 0, -1, 0, height);
-                    break;
-                case 5:
-                    ctx.transform(0, 1, 1, 0, 0, 0);
-                    break;
-                case 6:
-                    ctx.transform(0, 1, -1, 0, height, 0);
-                    break;
-                case 7:
-                    ctx.transform(0, -1, -1, 0, height, width);
-                    break;
-                case 8:
-                    ctx.transform(0, -1, 1, 0, 0, width);
-                    break;
-                case 0:
-                    ctx.transform(1, 0, 0, 1, 0, 0);
-            }
-
-            // draw image
-            ctx.drawImage(img, 0, 0);
-
-            // export base64
-            callback(canvas.toDataURL());
-        };
-
-        img.src = srcBase64;
-    }
-
-    var originalImage = document.getElementById("image-original"),
-        resetImage = document.getElementById("image-reset");
-
-
-
-    var target_image = document.getElementById("image-original");
-
-    var mario=0;
-    EXIF.getData(target_image, function() {
-        mario= EXIF.getTag(this, "Orientation");
-
-        resetOrientation(originalImage.src, mario, function (resetBase64Image) {
-            resetImage.src = resetBase64Image;
-        });
-    });
-
-
-
-
-</script>
 
 
 

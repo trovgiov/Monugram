@@ -4,6 +4,11 @@ package it.uniclam.upload;
  * Created by GiovanniTrovini on 29/04/17.
  */
 
+import com.drew.imaging.ImageMetadataReader;
+import com.drew.metadata.Directory;
+import com.drew.metadata.Metadata;
+import com.drew.metadata.exif.ExifIFD0Directory;
+import com.drew.metadata.jpeg.JpegDirectory;
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
 import it.uniclam.model.Monument;
@@ -13,7 +18,11 @@ import it.uniclam.model.User;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -129,8 +138,79 @@ public class FileUploadAction extends ActionSupport implements
             File fileToCreate = new File(getFilepath(), official_title);
 
 
-            FileUtils.copyFile(userImage, fileToCreate);
+            // INIZIO MANIPOLAZIONE FOTO PER EFFETTUARE UNA CORRETTA ROTAZIONE  //
 
+            Metadata metadata = ImageMetadataReader.readMetadata(userImage);
+            int orientation;
+
+            BufferedImage originalImage = ImageIO.read(userImage);
+            Directory directory1 = metadata.getDirectory(ExifIFD0Directory.class);
+            orientation = directory1.getInt(ExifIFD0Directory.TAG_ORIENTATION);
+            System.out.println("ORIENTAAAA \n\n\n" +orientation);
+
+            JpegDirectory jpegDirectory = (JpegDirectory) metadata.getDirectory(JpegDirectory.class);
+
+            int width = jpegDirectory.getImageWidth();
+            int height = jpegDirectory.getImageHeight();
+            System.out.println("Width : "+width);
+            System.out.println("height : "+height);
+
+            AffineTransform affineTransform = new AffineTransform();
+
+            switch (orientation) {
+                case 1:
+                    break;
+                case 2: // Flip X
+                    affineTransform.scale(-1.0, 1.0);
+                    affineTransform.translate(-width, 0);
+                    break;
+                case 3: // PI rotation
+                    affineTransform.translate(width, height);
+                    affineTransform.rotate(Math.PI);
+                    break;
+                case 4: // Flip Y
+                    affineTransform.scale(1.0, -1.0);
+                    affineTransform.translate(0, -height);
+                    break;
+                case 5: // - PI/2 and Flip X
+                    affineTransform.rotate(-Math.PI / 2);
+                    affineTransform.scale(-1.0, 1.0);
+                    break;
+                case 6: // -PI/2 and -width
+                    affineTransform.translate(height, 0);
+                    affineTransform.rotate(Math.PI / 2);
+                    break;
+                case 7: // PI/2 and Flip
+                    affineTransform.scale(-1.0, 1.0);
+                    affineTransform.translate(-height, 0);
+                    affineTransform.translate(0, width);
+                    affineTransform.rotate(3 * Math.PI / 2);
+                    break;
+                case 8: // PI / 2
+                    affineTransform.translate(0, width);
+                    affineTransform.rotate(3 * Math.PI / 2);
+                    break;
+                default:
+                    break;
+            }
+
+            AffineTransformOp affineTransformOp = new AffineTransformOp(affineTransform, AffineTransformOp.TYPE_BILINEAR);
+            BufferedImage destinationImage = new BufferedImage(originalImage.getHeight(), originalImage.getWidth(), originalImage.getType());
+            destinationImage = affineTransformOp.filter(originalImage, destinationImage);
+            ImageIO.write(destinationImage, "jpg", userImage);
+
+
+
+            // fine manipolazione foto   e salvataggio        //
+
+             FileUtils.copyFile(userImage, fileToCreate);
+
+
+
+
+
+
+             //inserimento nel db
             insert(m, official_title, contatore, u);
 
             System.out.println("\nFoto Inserita nel db");
@@ -162,6 +242,9 @@ public class FileUploadAction extends ActionSupport implements
     public void setUserImageContentType(String userImageContentType) {
         this.userImageContentType = userImageContentType;
     }
+
+
+
 
     public String getUserImageFileName() {
         return userImageFileName;

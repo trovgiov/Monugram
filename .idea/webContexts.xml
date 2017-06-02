@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/web/assets/css" value="file://$PROJECT_DIR$/web" />
         <entry key="file://$PROJECT_DIR$/web/assets/css/style.css" value="file://$PROJECT_DIR$/web" />
+        <entry key="file://$PROJECT_DIR$/web/private/backend/photo_manage.jsp" value="file://$PROJECT_DIR$/web/private/backend" />
       </map>
     </option>
   </component>
