@@ -92,6 +92,7 @@
             <result name="success">/private/backend/dashboard.jsp</result>
         </action>
 
+        
         <action name="usermail" class="it.uniclam.action.backend.UserInfoMail" >
             <result name="input">/private/backend/user_mail.jsp</result>
             <result name="success">/private/backend/user_mail.jsp</result>

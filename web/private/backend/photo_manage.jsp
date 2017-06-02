@@ -242,7 +242,7 @@
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p><a href="<s:url action="usermail"/>?idPhoto=<s:property value="idreceived"></s:property>">Contatta l'utente</a></p>
+                                            <p><a href="<s:url action="usermail"/>?idPhoto=<s:property value="idreceived"></s:property>">Contatta Utente</a></p>
 
                                         </div>
                                     </div>

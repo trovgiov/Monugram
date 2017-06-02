@@ -76,7 +76,7 @@ public class UserInfoMail extends ActionSupport
 
     public int idUtente(int idut)
     {
-        int idUt=0;
+        int idUt = 0;
 
         java.sql.Statement st = null;
         String Query = "SELECT user_idUser FROM Photo WHERE idPhoto='"+idut+"'";
