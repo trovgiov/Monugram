@@ -45,7 +45,7 @@
 
     <!-- ACCORDION CODE -->
     <link rel="stylesheet" href="../../assets_back/css/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="../../assets_back/css/jquery-ui.js"></script>
     <script>
@@ -160,22 +160,22 @@
                                 <h4 class="title">Foto</h4>
                              </div>
                             <div id="accordion">
-                                <h3>Foto Non Approvate</h3>
+                                <h3>&nbsp &nbsp Foto Non Approvate</h3>
                                 <div style="height: auto">
                                     <p>
                                         <div id="PhotoTableContainer"></div>
                                     </p>
                                 </div>
-                                <h3>Foto Approvate</h3>
+                                <h3>&nbsp &nbsp Foto Approvate</h3>
                                 <div style="height: auto">
                                     <p>
                                         <div id="PhotoCheckedTableContainer"></div>
                                     </p>
                                 </div>
-                                <h3>Foto Ignorate</h3>
+                                <h3>&nbsp &nbsp Foto Ignorate</h3>
                                 <div style="height: auto">
                                     <p>
-                                        <h3>Qui Andranno le foto ignorate</h3>
+                                        <div id="PhotoIgnoredTableContainer"></div>
                                     </p>
                                 </div>
                             </div>
@@ -239,8 +239,6 @@
     <!--  Notifications Plugin    -->
     <script src="../../assets_back/js/bootstrap-notify.js"></script>
 
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 	<script src="../../assets_back/js/paper-dashboard.js"></script>
@@ -252,5 +250,6 @@
 <script src="/js/jquery.jtable.js" type="text/javascript"></script>
 <script src="/js/photolist.js" type="text/javascript"></script>
 <script src="/js/photochecked.js" type="text/javascript"></script>
+<script src="/js/photoignored.js" type="text/javascript"></script>
 
 </html>

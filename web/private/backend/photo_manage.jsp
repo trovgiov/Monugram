@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="assets_back/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>MonuGRAM Dashboard</title>
+    <title>HeGO Dashboard</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -64,7 +64,7 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                Monugram
+                HeGO
             </div>
 
             <ul class="nav">
@@ -77,7 +77,7 @@
                 <li>
                     <a href="<s:url action="users"/>">
                         <i class="ti-user"></i>
-                        <p>Users</p>
+                        <p>Utenti</p>
                     </a>
                 </li>
                 <li class="active">
@@ -107,19 +107,10 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="/private/backend/dashboard.jsp">Dashboard</a>
+                    <a class="navbar-brand" href="#">Dashboard</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="ti-panel"></i>
-                                <p>Stats</p>
-
-
-
-                            </a>
-                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="ti-bell"></i>
@@ -128,16 +119,15 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
+                                <li><a href="#">Notifica 1</a></li>
+                                <li><a href="#">Notifica 2</a></li>
+                                <li><a href="#">Notifica 3</a></li>
+                                <li><a href="#">Notifica 4</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="/public/frontend/login.jsp">
-                                <i class="ti-shift-left "></i>
+                                <i class="ti-power-off"></i>
                                 <p>Logout</p>
                             </a>
                         </li>
@@ -233,14 +223,14 @@
                                 <div class="row">
                                     <div class="col-xs-5">
                                         <div class="icon-big icon-info text-center">
-                                            <a href="/public/backend/user_mail.jsp">
+                                            <a href="/public/backend/user_mail.jsp" target="popup" onclick="window.open(this.href,'Upload','width=640,height=480'); return false;">
                                                 <img src="/images/mail_icon.png" alt="Users" style="width:70px;height:50px;">
                                             </a>
                                         </div>
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p><a href="/public/backend/user_mail.jsp">Contatta Utente</a></p>
+                                            <p><a href="/public/backend/user_mail.jsp" target="popup" onclick="window.open(this.href,'Upload','width=640,height=480'); return false;">Contatta Utente</a></p>
 
                                         </div>
                                     </div>

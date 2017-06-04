@@ -22,6 +22,7 @@
 
   <!--  <link rel="stylesheet" href="assets/css/main.css" /> -->
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <link href="assets_back/css/themify-icons.css" rel="stylesheet">
 </head>
 <body class="homepage">
 <div id="page-wrapper">
@@ -67,6 +68,7 @@
 
 
                 <li><a href="#contact">Contact Us</a></li>
+                <li> <a href="<s:url action="login"/>"> <i class="ti-power-off"></i> Logout </a></li>
             </ul>
         </nav>
 
@@ -226,12 +228,12 @@
                         </header>
                         <p>Keep in touch with He<em>GO</em>!</p>
                         <ul class="icons">
-                            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                            <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
-                            <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-                            <li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
+                            <li><a href="#" class="ti-twitter"><span class="label"></span></a></li>
+                            <li><a href="#" class="ti-facebook"><span class="label"></span></a></li>
+                            <li><a href="#" class="ti-instagram"><span class="label"></span></a></li>
+                            <li><a href="#" class="ti-pinterest"><span class="label"></span></a></li>
+                            <li><a href="#" class="ti-dribbble"><span class="label"></span></a></li>
+                            <li><a href="#" class="ti-linkedin"><span class="label"></span></a></li>
                         </ul>
                     </section>
 

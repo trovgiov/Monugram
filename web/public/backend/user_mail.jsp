@@ -12,10 +12,9 @@
 <html >
 <head>
     <meta charset="UTF-8">
-    <title>Elegant Contact Form</title>
+    <title>HeGO - Contatta l'utente</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
 
     <link rel="stylesheet" href="/css/email/stylemail.css">
 

@@ -46,7 +46,7 @@
          <a href="/Monumenti/<s:property value="monument"/>/<s:property value="title"/>" class="image">
 
              <s:div id="test">
-            <img src="/Monumenti/<s:property value="monument"/>/<s:property value="title"/>"   width="480" height="294" />
+                <img src="/Monumenti/<s:property value="monument"/>/<s:property value="title"/>" width="100%" height="100%">
              </s:div>
          </a>
 

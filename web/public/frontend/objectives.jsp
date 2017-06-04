@@ -21,6 +21,21 @@
     <script src="/js/liquidFillGauge.js" language="JavaScript"></script>
     <style>
         .liquidFillGaugeText { font-family: 'Muli', Arial, sans-serif;}
+
+        #svg-container
+        {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        #fillgauge1
+        {
+            margin: 0 auto;
+            display: block;
+        }
+
+
     </style>
 
 </head>
@@ -29,7 +44,16 @@
 
 <h1 id="title" class="hidden"><img src="../../images/hego_logo.png" alt="logo" style="width:60px;height:60px;border:0;"></br> CONSTRUCTION PROGRESS OF <s:property value="monumento"></s:property></h1>
 
-<svg id="fillgauge1" width="97%" height="250"></svg>
+<div id="svg-container"><svg id="fillgauge1" height="350px" width="350px"></svg></div>
+
+<p><p><p></p>
+<div class="textarea"><img src="/Monumenti/<s:property value="monumento"/>/<s:property value="monumento"/>.jpg" style="width:400px; height:224px;">
+
+    <p><p></p>
+    <a href="<s:action name=""/>"><img src="../../images/back.png" style="width:120px;height:60px;"></a>
+
+</div>
+
 
 <script language="JavaScript">
 

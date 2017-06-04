@@ -30,7 +30,7 @@
 <s:div class="logo"><img src="./images/success.png" alt="success" style="width:82px;height:82px;"></s:div>
 <s:div class="forms"><h3>Well Done! Your photo was successfully uploaded!!</h3>
 
-    <button type="button" id="button" onclick="window.open('', '_self', ''); window.close();"><img src="/images/back_home.png" alt="success" style="width:192px;height:79px;"></button></s:div>
+    <button type="button" onclick="window.close();"><img src="/images/back_home.png" alt="success" style="width:150px;height:48px;"></button></s:div>
 
 
 </body>

@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: GiovanniTrovini
-  Date: 16/05/17
-  Time: 12:58
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -244,11 +237,11 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Users Behavior</h4>
-                                <p class="category">24 Hours performance</p>
+                                <h4 class="title">Grafico progressi</h4>
+                                <p class="category">Nelle ultime 24 ore</p>
                             </div>
                             <div class="content">
-                                <div id="chartHours" class="ct-chart"></div>
+                                <!--<div id="chartHours" class="ct-chart"></div>
                                 <div class="footer">
                                     <div class="chart-legend">
                                         <i class="fa fa-circle text-info"></i> Open
@@ -256,7 +249,7 @@
                                         <i class="fa fa-circle text-warning"></i> Click Second Time
                                     </div>
                                     <hr>
-                                    <div class="stats">
+                                    <div class="stats">-->
                                         <i class="ti-reload"></i> Aggiornato 3 ore fa
                                     </div>
                                 </div>
@@ -361,9 +354,6 @@
 
 <!--  Notifications Plugin    -->
 <script src="assets_back/js/bootstrap-notify.js"></script>
-
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
 <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 <script src="assets_back/js/paper-dashboard.js"></script>

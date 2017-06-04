@@ -25,6 +25,10 @@
             <result type="json"></result>
         </action>
 
+        <action name="photo_ignored_list" method="list" class="it.uniclam.action.backend.Controller.ControllerPhotoIgnored">
+            <result type="json"></result>
+        </action>
+
 
         <action name="photoview">
 
