@@ -44,7 +44,7 @@
         <s:submit value="submit" name="UPLOAD" id="submit"/>
 
         <br>
-        <p>*  Per una migliore qualità della foto , si consiglia di scattare la foto ponendo il dispositivo
+        <p>*  Per una migliore qualità della foto, si consiglia di scattare la foto ponendo il dispositivo
            in posizione orizzontale
         <br>
         <p>** For better photo quality, it is recommended that you take the photo by placing the device horizontally

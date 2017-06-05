@@ -14,10 +14,12 @@ import java.sql.SQLException;
 public class DBUtility {
 
     public static final String DRIVERNAME = "com.mysql.jdbc.Driver";
-    public static final String USER = "sql11171626";
-    public static final String PASSWORD = "ipSx2liyxJ";
-    public static final String URL = "jdbc:mysql://sql11.freesqldatabase.com:3306/sql11171626";
-
+   // public static final String USER = "sql11171626";
+    //public static final String PASSWORD = "ipSx2liyxJ";
+    //public static final String URL = "jdbc:mysql://sql11.freesqldatabase.com:3306/sql11171626";
+   public static final String USER = "root";
+    public static final String PASSWORD = "root";
+    public static final String URL="jdbc:mysql://localhost/hego";
     static {
 
         try {

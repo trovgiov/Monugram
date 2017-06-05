@@ -45,6 +45,40 @@ body {
 
 }
 
+#button_dsk {
+    background: transparent;
+    text-align: center;
+    width: 80px;
+    height: 40px;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+}
+
+@media all and (max-width: 959px) {
+    .button_dsk {display:block;}
+    .button_mbl {display:none;}
+}
+
+@media all and (max-width: 479px) {
+    .button_dsk {display:none;}
+    .button_mbl {display:block;}
+}
+
+#button_mbl {
+    background: transparent;
+    text-align: center;
+    width: 80px;
+    color: white;
+    height: 40px;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
 /* Typography */
 h1#title {
     font-family: 'Muli', Arial, sans-serif;

@@ -38,7 +38,7 @@
                 <p>Hi, <s:property value="nome"/>, let's start to capture or upload your FANTASTIC monument photos!</p>
             </header>
             <footer>
-                <a href="<s:url action="monument_drop"/> " class="button circled scrolly" target="popup" onclick="window.open(this.href,'Upload','width=450,height=400'); return false;">Start</a>
+                <a href="<s:url action="monument_drop"/> " class="button circled scrolly" target="popup" onclick="window.open(this.href,'Upload','width=650,height=500'); return false;">Start</a>
                 <!-- #banner -->
             </footer>
         </s:div>
