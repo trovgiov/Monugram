@@ -12,19 +12,19 @@
     <title>HeGO User Page</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
 
     <!-- USED FONT -->
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/main.css"/>
-    <script src="/js/exif.js"></script>
+    <script src="../../js/exif.js"></script>
 
   <!--  <link rel="stylesheet" href="assets/css/main.css" /> -->
-    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-    <link href="assets_back/css/themify-icons.css" rel="stylesheet">
+    <!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+    <link href="../../assets_back/css/themify-icons.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="/css/adblock.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/adblock.css"/>
 
 
 </head>
@@ -69,9 +69,7 @@
 
                 </li>
 
-               <li>  <a href="<s:url action="logOut"/>">LogOut</a></li>
-
-
+               <li>  <a href="<s:url action="logOut"/>"> <i class="ti-power"></i>LogOut</a></li>
               </ul>
         </nav>
 
@@ -256,23 +254,14 @@
 </div>
 
 <!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.dropotron.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/jquery.onvisible.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-<script src="assets/js/main.js"></script>
-
-<script>
-    function RefreshPage()
-    {
-        window.document.forms[0].submit();
-    }</script>
-
-
-
+<script src="../../assets/js/jquery.min.js"></script>
+<script src="../../assets/js/jquery.dropotron.min.js"></script>
+<script src="../../assets/js/jquery.scrolly.min.js"></script>
+<script src="../../assets/js/jquery.onvisible.min.js"></script>
+<script src="../../assets/js/skel.min.js"></script>
+<script src="../../assets/js/util.js"></script>
+<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="../../assets/js/main.js"></script>
 
 </body>
 </html>

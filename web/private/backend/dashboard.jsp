@@ -238,6 +238,10 @@
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Grafico progressi</h4>
+                                <video controls autoplay>
+                                    <source src="../../images/3D.mp4" type="video/mp4" style="width: 100%; height: 100%;">
+                                    Your browser does not support the video tag.
+                                </video>
                                 <p class="category">Nelle ultime 24 ore</p>
                             </div>
                             <div class="content">
@@ -258,7 +262,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <!--<div class="col-md-6">
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Email Statistics</h4>
@@ -280,8 +284,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
+                    </div>-->
+                    <!--<div class="col-md-6">
                         <div class="card ">
                             <div class="header">
                                 <h4 class="title">2015 Sales</h4>
@@ -302,7 +306,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>

@@ -118,7 +118,7 @@ public class RegisterDAO {
 
         // Inserimento Utente solo se check uguale a false
 
-        if(check == false)
+        if(check == false && checkemail ==  true)
         {
              try {
 

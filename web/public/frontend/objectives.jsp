@@ -50,7 +50,7 @@
 <div class="textarea"><img src="/Monumenti/<s:property value="monumento"/>/<s:property value="monumento"/>.jpg" style="width:400px; height:224px;">
 
     <p><p></p>
-    <a href="<s:action name=""/>"><img src="../../images/back.png" style="width:120px;height:60px;"></a>
+    <a href="<s:url action="home"/>"><img src="../../images/back.png" style="width:120px;height:60px;"></a>
 
 </div>
 

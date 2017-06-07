@@ -2988,7 +2988,7 @@ body.homepage.is-loading #header:after {
 	/* Nav */
 
 	#nav {
-		display: none;
+		display: inline;
 	}
 
 	/* Banner */

@@ -30,7 +30,7 @@
 </head>
 
 <body>
-<s:div class="logo"><img src="./images/success.png" alt="success" style="width:82px;height:82px;"></s:div><p></p>
+<s:div class="logo"><img src="./images/success.png" alt="success" style="width:82px;height:82px;"></s:div><p></p><br><p></p>
 <s:div class="forms"><h3>Well Done! Your photo was successfully uploaded!!</h3>
 <p></p>
 
