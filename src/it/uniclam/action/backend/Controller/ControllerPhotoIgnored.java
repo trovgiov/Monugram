@@ -8,7 +8,8 @@ import java.sql.Date;
 import java.util.List;
 
 /**
- * Created by Enifix on 03/06/2017.
+ * BACKEND :
+ * Consente la creazione di una lista di tutte le foto ignorate
  */
 public class ControllerPhotoIgnored {
     private CrudDao_Photo_ignored dao = new CrudDao_Photo_ignored();

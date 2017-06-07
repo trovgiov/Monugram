@@ -10,6 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Gestisce la visualizzazione foto nel backend
+ */
+
     public class PhotoManageAction extends ActionSupport {
 
     private Connection dbConnection;

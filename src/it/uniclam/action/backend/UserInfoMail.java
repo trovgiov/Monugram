@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.Properties;
 
+/**
+ * Invio mail utente lato backend
+ */
 public class UserInfoMail extends ActionSupport implements ServletRequestAware {
 
 

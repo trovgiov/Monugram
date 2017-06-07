@@ -2,7 +2,6 @@ package it.uniclam.action.frontend;
 
 import it.uniclam.db.DBUtility;
 import it.uniclam.model.Photo;
-import it.uniclam.model.Session;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
 
@@ -10,7 +9,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-
+/**
+ * Consente la visualizzazione delle foto relative all'utente che si è loggato
+ */
     public class MonuViewUserAction {
         User u;
         private int idusr;
@@ -65,13 +66,8 @@ import java.util.ArrayList;
 
         public String execute(){
             try{
-                Session s = Singleton.getMysession();
-
-                if(s.getId().equals("null")){
 
 
-                    return "error";
-                }
 
                  u = Singleton.getMyUser();
                 idusr = u.getIdUser();

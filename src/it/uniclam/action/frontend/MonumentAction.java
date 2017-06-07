@@ -3,7 +3,6 @@ package it.uniclam.action.frontend;
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
 import it.uniclam.model.Monument;
-import it.uniclam.model.Session;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
 
@@ -11,12 +10,16 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+
+/**
+ * Mostra tutti i monumenti presenti nel sistema
+ */
 public class MonumentAction extends ActionSupport{
-     private ArrayList<String> list = new ArrayList<String>();
+    private ArrayList<String> list = new ArrayList<>();
     private String monument;
-private String name;
-private int idmon;
-Monument m;
+    private String name;
+    private int idmon;
+    Monument m;
 
     public Monument getM() {
         return m;
@@ -42,6 +45,10 @@ Monument m;
         this.monument = monument;
     }
 
+
+    /**
+     * Crea una lista con tutti i monumenti presenti nel sistema
+     */
     public MonumentAction (){
         try{
 
@@ -56,11 +63,11 @@ Monument m;
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
 
-              //Monument m=new Monument(rs.getString("monumento"));
+                //Monument m=new Monument(rs.getString("monumento"));
                 //idmon=rs.getInt("idMonument");
 
                 monument = rs.getString("monumento");
-               list.add(monument);
+                list.add(monument);
             }
             // chiusura rs2 e stmt2
             rs.close();
@@ -82,25 +89,33 @@ Monument m;
 
     public String execute (){
         User u = Singleton.getMyUser();
-        Session s = Singleton.getMysession();
 
         int idmon = findMonId(monument);
         Monument m = new Monument(idmon,monument);
         Singleton.setMymonument(m);
 
-             name=u.getNome();
+        name=u.getNome();
 
-            //System.out.println("Nome dopo scelta : "+name+" Monumento : "+m.getMonument()+" "+m.getIdMonument());
+        //System.out.println("Nome dopo scelta : "+name+" Monumento : "+m.getMonument()+" "+m.getIdMonument());
 
         return "success";
     }
 
+    /**
+     * Visualizza i monumenti
+     * @return
+     */
     public String display (){
 
         return NONE;
     }
 
 
+    /**
+     * Trova l'id del monumento, dato il nome in ingresso
+     * @param n_monumento  String : indica il nome del monumento
+     * @return
+     */
     public static int findMonId(String n_monumento)
     {
         int mId=0;

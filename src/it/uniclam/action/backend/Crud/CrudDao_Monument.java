@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Addolorata on 25/05/2017.
+ * Lato Backend :
+ * Implementazione query per la creazione di una lista di monumenti,  modifica e la cancellazione
  */
 public class CrudDao_Monument {
 
@@ -20,6 +21,10 @@ public class CrudDao_Monument {
     }
 
 
+    /**
+     * Lista monumenti
+     * @return
+     */
     public List<Monument> getAllMonuments() {
         List<Monument> monuments = new ArrayList<Monument>();
 
@@ -44,6 +49,10 @@ public class CrudDao_Monument {
         return monuments;
     }
 
+    /**
+     * Inserimento nuovo monumento
+     * @param monument
+     */
     public void addMonument(Monument monument) {
         String insertQuery = "INSERT INTO Monument(monumento, progress) VALUES (?,?)";
         try {
@@ -56,6 +65,10 @@ public class CrudDao_Monument {
         }
     }
 
+    /**
+     * Aggiornamento info monumento
+     * @param monument
+     */
     public void updateMonument(Monument monument) {
        String updateQuery = "UPDATE Monument SET monumento = ?, progress = ? WHERE idMonument = ?";
         try {
@@ -70,6 +83,11 @@ public class CrudDao_Monument {
         }
     }
 
+
+    /**
+     * Cancellazione monumento dal sistema
+     * @param idMonument
+     */
     public void deleteMonument(int idMonument) {
 
         String deleteQuery = "DELETE FROM Monument WHERE idMonument = ?";

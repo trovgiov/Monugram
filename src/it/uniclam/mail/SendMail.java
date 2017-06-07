@@ -16,6 +16,9 @@ import java.util.Date;
 import java.util.Properties;
 
 
+/**
+ * Invia una mail all'utente per il recupero password di accesso
+ */
 public class SendMail extends ActionSupport implements ServletRequestAware{
     private String to;
     public static final String from = "monugramapp@gmail.com";
@@ -50,6 +53,10 @@ public class SendMail extends ActionSupport implements ServletRequestAware{
     }
 
 
+    /**
+     * Stabilisce una connessione smtp con il server email
+     * @return
+     */
     public int sendMail(){
         try
         {
@@ -126,6 +133,11 @@ public class SendMail extends ActionSupport implements ServletRequestAware{
         }
     }
 
+    /**
+     * Cerca la password nel db riferita all'utente che ne richiede il recupero
+     * @param u_email email dell'utente
+     * @return
+     */
     public static String findPassword(String u_email)
     {
         String uPass = "null";
@@ -159,23 +171,7 @@ public class SendMail extends ActionSupport implements ServletRequestAware{
             addFieldError("from", "Email ID not valid!!!");
         }
 
-       /* else if((!to.endsWith("@gmail.com"))&&(!to.endsWith("@live.com"))&&(!to.endsWith("@hotmail.com"))){
-            addFieldError("from", "Email ID not valid!!!");
-        }
-        else if(from.isEmpty()){
-            addFieldError("to", "Email Field cannot be left blank!!!");
-        }
-        else if(m_password.isEmpty()||password2.isEmpty())
-        {
-            addFieldError("password2", "Please enter your m_password!!!");
-        }
 
-        else if(!m_password.equals(password2)) {
-            addFieldError("password2", "Password mismatch!!!");
-        }
-        else if(message.isEmpty()){
-            addFieldError("message", "Please Enter your message!!!");
-        }*/
     }
 
 }

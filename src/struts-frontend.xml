@@ -3,9 +3,55 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 
-    <constant name="struts.multipart.maxSize" value="30000000" />
+    <constant name="struts.devMode" value="true" />
+    <package name="login" extends="struts-default" >
+        <interceptors>
+            <interceptor class="it.uniclam.action.Interceptor.LoginInterceptor" name="loginInterceptor">
+            </interceptor>
+            <interceptor-stack name="loginStack">
+                <interceptor-ref name="loginInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
 
-    <package name="default" extends="struts-default" namespace="/">
+        <global-results>
+            <result name="login">/public/frontend/login.jsp</result>
+        </global-results>
+
+        <!--   login action  -->
+        <action name="loginUser" class="it.uniclam.action.frontend.Login" method="loginRegisterUser">
+            <result name="success" type="redirect">/public/frontend/loginsuccess.jsp</result>
+            <result name="login">/public/frontend/login.jsp</result>
+        </action>
+
+        <action name="facebook_login" class="it.uniclam.action.frontend.LoginFacebook"  method="loginRegisterUser">
+            <result name="success" type="redirect">/public/frontend/loginsuccess.jsp</result>
+            <result name="no_mail">/public/frontend/no_email.jsp</result>
+        </action>
+
+        <action name="register_mail" class="it.uniclam.action.frontend.RegisterMail" method="loginRegisterUser">
+            <result name="success" type="redirect">/public/frontend/loginsuccess.jsp</result>
+        </action>
+        <!-- home link action -->
+        <action name="homeAction" class="it.uniclam.action.frontend.Login" method="home">
+            <interceptor-ref name="loginStack" />
+            <result name="success">/public/frontend/loginsuccess.jsp</result>
+
+
+        </action>
+
+        <!-- home link action -->
+        <action name="homeAction1" class="it.uniclam.action.frontend.LoginFacebook" method="home">
+            <interceptor-ref name="loginStack" />
+            <result name="success">/public/frontend/loginsuccess.jsp</result>
+        </action>
+
+
+
+        <!--   logout action  -->
+        <action name="logOut" class="it.uniclam.action.frontend.Login" method="logOut">
+            <result name="success">/public/frontend/login.jsp</result>
+        </action>
 
         <action name="register" class="it.uniclam.action.frontend.RegisterAction">
             <result name="success">/public/frontend/register-success.jsp</result>
@@ -14,31 +60,18 @@
             <result name="input">/public/frontend/register.jsp</result>
         </action>
 
-        <action name="login">
-            <result>/public/frontend/login.jsp</result>
-        </action>
 
-
-        <action name="loginprocess" class="it.uniclam.action.frontend.Login">
-            <result name="success">/public/frontend/loginsuccess.jsp</result>
-            <result name="log_error">/public/frontend/login.jsp</result>
-            <result name="input">/public/frontend/login.jsp</result>
-        </action>
 
 
         <action name="home" class="it.uniclam.action.frontend.HomeAction">
+            <interceptor-ref name="loginStack" />
+
             <result name="success">/private/frontend/user_page.jsp</result>
         </action>
 
 
-        <action name="facebook_login" class="it.uniclam.action.frontend.FacebookLogin">
-            <result name="success">/public/frontend/loginsuccess.jsp</result>
-            <result name="no_mail">/public/frontend/no_email.jsp</result>
-        </action>
 
-        <action name="register_mail" class="it.uniclam.action.frontend.RegisterMail">
-            <result name="SUCCESS">/public/frontend/loginsuccess.jsp</result>
-        </action>
+
 
         <action name="sendemail" class="it.uniclam.mail.SendMail">
             <result name="success">/private/frontend/success_mail.jsp</result>
@@ -50,45 +83,52 @@
             <result>/public/frontend/mail.jsp</result>
         </action>
 
-        <action name="uploadPhoto" class="it.uniclam.action.frontend.UploadAction">
-            <result name="SUCCESS">/private/frontend/upload.jsp</result>
-            <result name="error">/error_mail.jsp</result>
-        </action>
 
 
-        <action name="userImage" class="it.uniclam.upload.FileUploadAction">
-        <interceptor-ref name="fileUpload">
-            <param name="maximumSize">20174560</param>
+        <action name="userImage" class="it.uniclam.action.frontend.FileUploadAction">
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">20174560</param>
 
-            <param name="allowedTypes">
-                image/png,image/gif,image/jpeg,image/pjpeg
-            </param>
-        </interceptor-ref>
-        <interceptor-ref name="defaultStack"></interceptor-ref>
-        <result name="success">/private/frontend/successPhoto.jsp</result>
-        <result name="input">/private/frontend/message.jsp</result>
+                <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/pjpeg
+                </param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="success">/private/frontend/successPhoto.jsp</result>
+            <result name="error">/private/frontend/errorPhoto.jsp</result>
+            <result name="input">/private/frontend/message.jsp</result>
         </action>
 
         <action name="monument_drop" class="it.uniclam.action.frontend.MonumentAction" method="display">
-        <result name="none">/private/frontend/monument_drop.jsp</result>
-    </action>
+            <interceptor-ref name="loginStack" />
+
+            <result name="none">/private/frontend/monument_drop.jsp</result>
+        </action>
 
         <action name="resultAction" class="it.uniclam.action.frontend.MonumentAction" >
+            <interceptor-ref name="loginStack" />
+
             <result name="success">/private/frontend/upload.jsp</result>
         </action>
 
 
         <action name="monuview" class="it.uniclam.action.frontend.MonuViewAction" >
+            <interceptor-ref name="loginStack" />
+
             <result name="success">/private/frontend/monu_view.jsp</result>
         </action>
 
         <action name="monuuserview" class="it.uniclam.action.frontend.MonuViewUserAction" >
+            <interceptor-ref name="loginStack" />
+
             <result name="success">/private/frontend/monu_user_view.jsp</result>
             <result name="error">/error/error.jsp</result>
         </action>
 
 
         <action name="monuprogress" class="it.uniclam.action.frontend.MonuProgressAction" >
+            <interceptor-ref name="loginStack" />
+
             <result name="success">/public/frontend/objectives.jsp</result>
         </action>
 

@@ -8,7 +8,8 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by Addolorata on 24/05/2017.
+ * BACKEND :
+ * Consente l'inserimento, l'update e la cancellazione dei monumenti presenti nel sistema.
  */
 public class ControllerMonument {
 
@@ -87,6 +88,10 @@ public class ControllerMonument {
         this.progress = progress;
     }
 
+    /**
+     * Lista di tutti i monumenti
+     * @return
+     */
     public String list() {
         try {
             // Fetch Data from Monuments Table
@@ -101,6 +106,11 @@ public class ControllerMonument {
     }
 
 
+    /**
+     * Inserimento monumenti
+     * @return
+     * @throws IOException
+     */
     public String create() throws IOException {
         record = new Monument();
 
@@ -120,7 +130,11 @@ public class ControllerMonument {
         return Action.SUCCESS;
     }
 
-
+    /**
+     * Aggiornamento info monumenti
+     * @return
+     * @throws IOException
+     */
     public String update() throws IOException {
         Monument monumento = new Monument();
 
@@ -141,6 +155,11 @@ public class ControllerMonument {
     }
 
 
+    /**
+     * Cancellazione monumenti dal sistema
+     * @return
+     * @throws IOException
+     */
     public String delete() throws IOException {
         // Delete record
         try {

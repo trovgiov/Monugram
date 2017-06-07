@@ -1,7 +1,8 @@
-package it.uniclam.upload;
+package it.uniclam.action.frontend;
 
 /**
- * Created by GiovanniTrovini on 29/04/17.
+ * Classe che consente l'upload delle foto nel server . Le foto sono suddivise in cartelle per ogni monumento.
+ * Inoltre vengono effettuate delle operazioni sull'immagine , per garantire una corretta orientazione
  */
 
 import com.drew.imaging.ImageMetadataReader;
@@ -12,7 +13,6 @@ import com.drew.metadata.jpeg.JpegDirectory;
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
 import it.uniclam.model.Monument;
-import it.uniclam.model.Session;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
 import org.apache.commons.io.FileUtils;
@@ -85,14 +85,10 @@ public class FileUploadAction extends ActionSupport implements
     public String execute() {
         try {
 
-            Session s = Singleton.getMysession();
-            System.out.println("Session id "+s.getId());
+
             User u = Singleton.getMyUser();
             Monument m = Singleton.getMymonument();
 
-            //directory che contiene le foto
-            // Possibile Sviluppo = Creare cartelle per ogni monumento
-            // Per ora, le foto si trovano nella cartella $TOMCAT_HOME/out/uploadedPhoto
 
             setFilepath(servletRequest.getSession().getServletContext().getRealPath("/Monumenti/" + m.getMonument()));
 
@@ -138,90 +134,90 @@ public class FileUploadAction extends ActionSupport implements
             File fileToCreate = new File(getFilepath(), official_title);
 
 
-            // INIZIO MANIPOLAZIONE FOTO PER EFFETTUARE UNA CORRETTA ROTAZIONE  //
 
-            Metadata metadata = ImageMetadataReader.readMetadata(userImage);
-            int orientation;
 
-            BufferedImage originalImage = ImageIO.read(userImage);
-            Directory directory1 = metadata.getDirectory(ExifIFD0Directory.class);
-            orientation = directory1.getInt(ExifIFD0Directory.TAG_ORIENTATION);
-            System.out.println("ORIENTAAAA \n\n\n" +orientation);
+                // INIZIO MANIPOLAZIONE FOTO PER EFFETTUARE UNA CORRETTA ROTAZIONE  //
 
-            JpegDirectory jpegDirectory = (JpegDirectory) metadata.getDirectory(JpegDirectory.class);
+                Metadata metadata = ImageMetadataReader.readMetadata(userImage);
+                int orientation;
 
-            int width = jpegDirectory.getImageWidth();
-            int height = jpegDirectory.getImageHeight();
-            System.out.println("Width : "+width);
-            System.out.println("height : "+height);
+                BufferedImage originalImage = ImageIO.read(userImage);
+                Directory directory1 = metadata.getDirectory(ExifIFD0Directory.class);
+                orientation = directory1.getInt(ExifIFD0Directory.TAG_ORIENTATION);
+                System.out.println("ORIENTAAAA \n\n\n" + orientation);
 
-            AffineTransform affineTransform = new AffineTransform();
+                JpegDirectory jpegDirectory = (JpegDirectory) metadata.getDirectory(JpegDirectory.class);
 
-            if (orientation == 1)
-            {
-                FileUtils.copyFile(userImage, fileToCreate);
-            }
-            else {
+                int width = jpegDirectory.getImageWidth();
+                int height = jpegDirectory.getImageHeight();
+                System.out.println("Width : " + width);
+                System.out.println("height : " + height);
 
-                switch (orientation) {
-                    case 1:
-                        break;
-                    case 2: // Flip X
-                        affineTransform.scale(-1.0, 1.0);
-                        affineTransform.translate(-width, 0);
-                        break;
-                    case 3: // PI rotation
-                        affineTransform.translate(width, height);
-                        affineTransform.rotate(Math.PI);
-                        break;
-                    case 4: // Flip Y
-                        affineTransform.scale(1.0, -1.0);
-                        affineTransform.translate(0, -height);
-                        break;
-                    case 5: // - PI/2 and Flip X
-                        affineTransform.rotate(-Math.PI / 2);
-                        affineTransform.scale(-1.0, 1.0);
-                        break;
-                    case 6: // -PI/2 and -width
-                        affineTransform.translate(height, 0);
-                        affineTransform.rotate(Math.PI / 2);
-                        break;
-                    case 7: // PI/2 and Flip
-                        affineTransform.scale(-1.0, 1.0);
-                        affineTransform.translate(-height, 0);
-                        affineTransform.translate(0, width);
-                        affineTransform.rotate(3 * Math.PI / 2);
-                        break;
-                    case 8: // PI / 2
-                        affineTransform.translate(0, width);
-                        affineTransform.rotate(3 * Math.PI / 2);
-                        break;
-                    default:
-                        break;
+                AffineTransform affineTransform = new AffineTransform();
+
+                if (orientation == 1) {
+                    FileUtils.copyFile(userImage, fileToCreate);
+                } else {
+
+                    switch (orientation) {
+                        case 1:
+                            break;
+                        case 2: // Flip X
+                            affineTransform.scale(-1.0, 1.0);
+                            affineTransform.translate(-width, 0);
+                            break;
+                        case 3: // PI rotation
+                            affineTransform.translate(width, height);
+                            affineTransform.rotate(Math.PI);
+                            break;
+                        case 4: // Flip Y
+                            affineTransform.scale(1.0, -1.0);
+                            affineTransform.translate(0, -height);
+                            break;
+                        case 5: // - PI/2 and Flip X
+                            affineTransform.rotate(-Math.PI / 2);
+                            affineTransform.scale(-1.0, 1.0);
+                            break;
+                        case 6: // -PI/2 and -width
+                            affineTransform.translate(height, 0);
+                            affineTransform.rotate(Math.PI / 2);
+                            break;
+                        case 7: // PI/2 and Flip
+                            affineTransform.scale(-1.0, 1.0);
+                            affineTransform.translate(-height, 0);
+                            affineTransform.translate(0, width);
+                            affineTransform.rotate(3 * Math.PI / 2);
+                            break;
+                        case 8: // PI / 2
+                            affineTransform.translate(0, width);
+                            affineTransform.rotate(3 * Math.PI / 2);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    AffineTransformOp affineTransformOp = new AffineTransformOp(affineTransform, AffineTransformOp.TYPE_BILINEAR);
+                    BufferedImage destinationImage = new BufferedImage(originalImage.getHeight(), originalImage.getWidth(), originalImage.getType());
+                    destinationImage = affineTransformOp.filter(originalImage, destinationImage);
+                    ImageIO.write(destinationImage, estensione, userImage);
+
+
+                    // fine manipolazione foto   e salvataggio        //
+                    FileUtils.copyFile(userImage, fileToCreate);
+
+
                 }
 
-                AffineTransformOp affineTransformOp = new AffineTransformOp(affineTransform, AffineTransformOp.TYPE_BILINEAR);
-                BufferedImage destinationImage = new BufferedImage(originalImage.getHeight(), originalImage.getWidth(), originalImage.getType());
-                destinationImage = affineTransformOp.filter(originalImage, destinationImage);
-                ImageIO.write(destinationImage, "jpg", userImage);
+
+                //inserimento nel db
+                insert(m, official_title, contatore, u);
+
+                System.out.println("\nFoto Inserita nel db");
+
+                System.out.println("\nFoto caricata da : " + u.getNome());
+                System.out.println("\nMonumento : " + m.getMonument());
 
 
-                // fine manipolazione foto   e salvataggio        //
-
-                FileUtils.copyFile(userImage, fileToCreate);
-
-
-            }
-
-
-
-             //inserimento nel db
-            insert(m, official_title, contatore, u);
-
-            System.out.println("\nFoto Inserita nel db");
-
-            System.out.println("\nFoto caricata da : " + u.getNome());
-            System.out.println("\nMonumento : " + m.getMonument());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -231,6 +227,7 @@ public class FileUploadAction extends ActionSupport implements
         }
         return SUCCESS;
     }
+
 
     public File getUserImage() {
         return userImage;
@@ -266,8 +263,15 @@ public class FileUploadAction extends ActionSupport implements
     }
 
 
-    // RESTITUISCE IL NOME FILE
-
+    /**
+     * Restituisce il nome di chi ha fatto la foto e il numero di volte che ha fotografato il monumento scelto.
+     * Il nome file è strutturato : nomecognome_count.ext
+     * @param filename Nome del file
+     * @param m Monumento scelto
+     * @param u Utente che ha effettuato la foto
+     * @return
+     * @throws SQLException
+     */
     public String[] CheckName(String filename, Monument m, User u) throws SQLException {
 
 
@@ -371,6 +375,11 @@ public class FileUploadAction extends ActionSupport implements
     }
 
 
+    /**
+     * Trovo l'id del monumento scelto
+     * @param n_monumento nome monumento
+     * @return
+     */
     public static int findMonId(String n_monumento) {
         int mId = 0;
         java.sql.Statement st = null;
@@ -393,6 +402,14 @@ public class FileUploadAction extends ActionSupport implements
     }
 
 
+    /**
+     *
+     * @param m
+     * @param final_filename
+     * @param count
+     * @param u
+     * @throws SQLException
+     */
     public void insert(Monument m, String final_filename, int count, User u) throws SQLException {
 
 

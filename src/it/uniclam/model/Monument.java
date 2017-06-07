@@ -1,7 +1,7 @@
 package it.uniclam.model;
 
 /**
- * Created by GiovanniTrovini on 03/05/17.
+ * Bean entità monumento
  */
 public class Monument {
     private int idMonument;

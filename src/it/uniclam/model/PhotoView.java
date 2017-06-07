@@ -3,7 +3,7 @@ package it.uniclam.model;
 import java.sql.Date;
 
 /**
- * Created by GiovanniTrovini on 22/05/17.
+ * Bean entità PhotoView (visualizzazione foto)
  */
 public class PhotoView {
 

@@ -1,7 +1,7 @@
 package it.uniclam.model;
 
 /**
- * Created by GiovanniTrovini on 11/05/17.
+ * Bean entità Photo
  */
 public class Photo {
 

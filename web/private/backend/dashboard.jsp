@@ -116,10 +116,10 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="/public/frontend/login.jsp">
+                        <li>  <a href="<s:url action="logOutBack"/>">
                                 <i class="ti-power-off"></i>
                                 <p>Logout</p>
-                            </a>
+                    </a>
                         </li>
                     </ul>
 

@@ -1,31 +1,47 @@
 package it.uniclam.action.frontend;
 
-/**
- * Created by GiovanniTrovini on 21/04/17.
- */
-
-
+import com.mysql.jdbc.PreparedStatement;
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
-import it.uniclam.db.LoginDAO;
-import it.uniclam.model.Session;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
-import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
-import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Map;
 
+/**
+ * Gestisce il login per gli utenti registrati con l'app.
+ * Il login viene gestito con l'uso degli interceptor, per avere un maggiore controllo sulla sessione di accesso.
+ */
+public class Login extends ActionSupport implements SessionAware {
 
-public  class Login extends ActionSupport implements SessionAware  {
-    private String email,password;
+    private static final long serialVersionUID = 1L;
+    private String userName;
+    private String password;
+    private Map<String, Object> session;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     private String nome;
     private String cognome;
+    private String email;
+
+    User u;
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public String getCognome() {
         return cognome;
@@ -35,23 +51,119 @@ public  class Login extends ActionSupport implements SessionAware  {
         this.cognome = cognome;
     }
 
-    public String getNome() {
-        return nome;
+    public String home() {
+        return SUCCESS;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    // ---------------------------- Log Out register user
+
+
+    /**
+     * Effettua il logout rimuovendo la sessione
+     * @return
+     */
+    public String logOut() {
+        session.remove("loginId");
+        addActionMessage("You Have Been Successfully Logged Out");
+        return SUCCESS;
     }
 
-    //private String photo;
-    SessionMap sessionmap;
+    // ---------------------------- Login register user
 
-    public String getEmail() {
-        return email;
+
+    /**
+     * Controlla se email e password sono contenuti nel db. Se sono presenti, viene creata una sessione e viene allocato
+     * l'utente, tramite l'uso del costrutto singleton
+     * @return
+     */
+    public String loginRegisterUser() {
+
+        try{
+
+            Connection con = DBUtility.getDBConnection();
+
+            PreparedStatement ps=(PreparedStatement) con.prepareStatement(
+                    "select * from User where email=? and password=?");
+            ps.setString(1,userName);
+            ps.setString(2,password);
+            ResultSet rs=ps.executeQuery();
+
+
+            if(rs.next()){
+                session.put("loginId", userName);
+
+                try{
+
+                    Connection con1 = DBUtility.getDBConnection();
+
+                    String sql2;
+
+                    sql2 = "SELECT idUser,nome,cognome,email,password,point from User where email='"+userName+"'";
+
+
+                    java.sql.Statement stmt2 = con.createStatement();
+
+                    ResultSet rs2 = stmt2.executeQuery(sql2);
+
+                    while (rs2.next()) {
+
+                        u=new User(rs2.getInt("idUser"),rs2.getString("nome"),rs2.getString("cognome"),userName,password,rs2.getInt("point"));
+
+
+                    }
+
+                    nome=u.getNome();
+                    cognome=u.getCognome();
+                    email=u.getEmail();
+
+
+                    // Alloco l'utente
+                    Singleton.setMyUser(u);
+
+
+
+
+                    // chiusura rs2 e stmt2
+                    rs2.close();
+                    stmt2.close();
+                    // chiusura rs e stmt
+                }
+                catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+
+
+
+
+
+                return SUCCESS;
+            } else {
+                addActionError("Please Enter Valid emailId or Password");
+                return LOGIN;
+            }
+
+
+
+
+
+
+
+            //System.out.println("Email "+getUser_email());
+        }catch(Exception e){e.printStackTrace();
+        }
+        return LOGIN;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+
+
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -62,137 +174,12 @@ public  class Login extends ActionSupport implements SessionAware  {
         this.password = password;
     }
 
-    public User getU() {
-        return u;
+    public Map<String, Object> getSession() {
+        return session;
     }
 
-    public void setU(User u) {
-        this.u = u;
-    }
-//  private ArrayList<User> lista = new ArrayList<Utente>();
-
-
-    User u;
-
-
-
-    public String execute(){
-
-        boolean check = LoginDAO.validate(email, password);
-
-        HttpServletRequest req = ServletActionContext.getRequest();
-        setEmail(req.getParameter("email"));
-        setPassword(req.getParameter("password"));
-
-
-         if(LoginDAO.validate(email, password)){
-
-
-             String id = req.getRequestedSessionId();
-
-             Session s = new Session(id);
-
-             Singleton.setMysession(s);
-
-             System.out.println("Session id "+id);
-
-
-             try{
-
-                Connection con = DBUtility.getDBConnection();
-
-                String sql2;
-
-                sql2 = "SELECT idUser,nome,cognome,email,password,point from User where email='"+email+"'";
-
-                java.sql.Statement stmt2 = con.createStatement();
-
-                ResultSet rs2 = stmt2.executeQuery(sql2);
-
-                while (rs2.next()) {
-
-                    u=new User(rs2.getInt("idUser"),rs2.getString("nome"),rs2.getString("cognome"),email,password,rs2.getInt("point"));
-
-
-                }
-
-                nome=u.getNome();
-                cognome=u.getCognome();
-                email=u.getEmail();
-
-
-                Singleton.setMyUser(u);
-
-
-
-
-                // chiusura rs2 e stmt2
-                rs2.close();
-                stmt2.close();
-                // chiusura rs e stmt
-            }
-            catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-
-
-
-
-
-            return "success";
-        }
-        else{
-            return "log_error";
-        }
-    }
-
-
-
-
-    public Login() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-
-
-
-    public SessionMap getSessionmap() {
-        return sessionmap;
-    }
-
-
-    public void setSessionmap(SessionMap sessionmap) {
-        this.sessionmap = sessionmap;
-    }
-
-    @Override
     public void setSession(Map<String, Object> map) {
-
+        this.session = map;
     }
 
-    @Override
-    public void validate(){
-
-        if(this.getEmail().isEmpty()){
-            addFieldError("email", "Email Field cannot be left blank!!!");
-        }
-        else if((!getEmail().endsWith("@gmail.com"))&&(!getEmail().endsWith("@live.com"))&&(!getEmail().endsWith("@hotmail.com"))){
-            addFieldError("email", "Email ID not valid!!!");
-        }
-        /*else if(from.isEmpty()){
-            addFieldError("to", "Email Field cannot be left blank!!!");
-        }
-        else  if((!from.endsWith("@gmail.com"))&&(!from.endsWith("@live.com"))&&(!from.endsWith("@hotmail.com"))){
-            addFieldError("from", "Email ID not valid!!!");
-        }
-        else if(m_password.contentEquals(u.getPassword()))
-        {
-            addFieldError("m_password", "Please enter your m_password!!!");
-        }*/
-
-        /*else if(message.isEmpty()){
-            addFieldError("message", "Please Enter your message!!!");
-        }*/
-    }
 }

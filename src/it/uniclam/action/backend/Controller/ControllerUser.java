@@ -9,6 +9,10 @@ import java.util.List;
 
 import static com.opensymphony.xwork2.Action.SUCCESS;
 
+/**
+ * BACKEND :
+ * Consente l'aggiornamento e la cancellazione di un utente nel sistema
+ */
 public class ControllerUser {
 
     private CrudDao dao = new CrudDao();
@@ -113,6 +117,10 @@ public class ControllerUser {
         this.login_type = login_type;
     }
 
+    /**
+     * Lista utenti registrati nel sistema
+     * @return
+     */
     public String list() {
         try {
             // Fetch Data from People Table
@@ -126,31 +134,12 @@ public class ControllerUser {
         return SUCCESS;
     }
 
-	/*
-	public String create() throws IOException {
-		record = new Student();
 
-		record.setStudentId(studentId);
-		record.setName(name);
-		record.setDepartment(department);
-		record.setEmailId(emailId);
-
-		try {
-			// Create new record
-			dao.addStudent(record);
-			result = "OK";
-
-		} catch (Exception e) {
-			result = "ERROR";
-			message = e.getMessage();
-			System.err.println(e.getMessage());
-		}
-		return Action.SUCCESS;
-	}
-
-
-	*/
-
+    /**
+     * Consente aggiornamento info utente
+     * @return
+     * @throws IOException
+     */
 	public String update() throws IOException {
 		User u = new User();
 
@@ -175,9 +164,11 @@ public class ControllerUser {
 	}
 
 
-
-
-
+    /**
+     * Consente la cancellazione dell'utente nel sistema
+     * @return
+     * @throws IOException
+     */
 	public String delete() throws IOException {
 		// Delete record
 		try {

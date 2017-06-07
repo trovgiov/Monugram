@@ -8,7 +8,8 @@ import java.sql.Date;
 import java.util.List;
 
 /**
- * Created by GiovanniTrovini on 22/05/17.
+ * BACKEND :
+ * Consente l'inserimento, l'update e la cancellazione delle foto presenti nel sistema.
  */
 public class ControllerPhoto {
     private CrudDao_Photo dao = new CrudDao_Photo();
@@ -117,6 +118,10 @@ public class ControllerPhoto {
         IsActive = active;
     }
 
+    /**
+     * Lista di tutte le foto
+     * @return
+     */
     public String list(){
         try{
             records=dao.getAllPhotos();

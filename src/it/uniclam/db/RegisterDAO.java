@@ -8,16 +8,20 @@ import java.sql.ResultSet;
 
 
 /**
- * Created by GiovanniTrovini on 20/04/17.
+ * Accesso al db per la registrazione utente
  */
 public class RegisterDAO {
 
 
+    /**
+     * Controlla se l'utente è presente nel db.
+     * Restituisce true se è già registrato, false se è un nuovo utente
+     * @param r Register Action
+     * @return boolean
+     */
     public static boolean checkUser(RegisterAction r)
     {
-        /*
-            CONTROLLO SE L'EMAIL E' GIA' PRESENTE NEL DB
-         */
+
         boolean end = false;
 
         try {
@@ -53,6 +57,13 @@ public class RegisterDAO {
         -> Restituisce TRUE se l'email è corretta
                        FALSE altrimenti
      */
+
+    /**
+     * Controlla se l'utente ha inserito correttamente la mail.
+     * Restituisce true se l'inserimento è corretto, false altrimenti.
+     * @param email
+     * @return
+     */
     public static boolean isValidEmail(String email) {
         boolean stricterFilter = true;
         String stricterFilterString = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
@@ -67,6 +78,13 @@ public class RegisterDAO {
         -> Restituisce TRUE se c'è almeno un carattere
                        FALSE altrimenti
      */
+
+    /**
+     * Controlla se l'utente ha inserito una password di almeno un carattere
+     * Restituisce true se corretto, false altrimenti
+     * @param password  Stringa inserita nel form
+     * @return
+     */
     public static boolean passCheck(String password)
     {
         boolean isPasswordOk = false;
@@ -77,33 +95,32 @@ public class RegisterDAO {
         return isPasswordOk;
     }
 
+
+    /**
+     * Salva l'utente nel db.
+     * Restituisce un intero che indica il corretto/errato inserimento.
+     * @param r RegisterAction
+     * @return int status
+     * status = 0 Falso  utente non salvato
+    // status = 1 Vero
+    // status = 2 Email o Password errata
+     */
     public static int save(RegisterAction r)
     {
 
         int status = 0;
         boolean check = checkUser(r);
-        //System.out.println(".............."+check);
 
         boolean checkemail=isValidEmail(r.getEmail());
-        //System.out.println("STATUS EMAIL "+checkemail);
 
         boolean checkPassword=passCheck(r.getPassword1());
-        //System.out.println("STATUS PASSWORD "+checkPassword);
-
-        /* Controllo PRE-QUERY:
-            -> Controlla se l'utente è già presente nel DB, se l'email è corretta e se c'è la m_password
-         */
 
 
+        // Inserimento Utente solo se check uguale a false
 
-        // Status = 0 Falso   // utente non salvato
-        // Status = 1 Vero
-        // Status = 2 Email o Password errata
-
-        if(check == false)// && checkemail==true && checkPassword==true)
+        if(check == false)
         {
-            // Inserimento Utente solo se check uguale a false
-            try {
+             try {
 
                 //Connessione al db
                 Connection con = DBUtility.getDBConnection();

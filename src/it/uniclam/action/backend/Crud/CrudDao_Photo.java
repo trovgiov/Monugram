@@ -7,6 +7,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Lato Backend :
+ * Implementazione query per la creazione di una lista foto
+ */
 public class CrudDao_Photo {
 
     private Connection dbConnection;
@@ -17,7 +21,10 @@ public class CrudDao_Photo {
     }
 
 
-
+    /**
+     * Lista foto
+     * @return
+     */
     public List<PhotoView> getAllPhotos() {
         List<PhotoView> photos = new ArrayList<PhotoView>();
 

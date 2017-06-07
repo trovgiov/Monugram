@@ -12,7 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Created by GiovanniTrovini on 07/05/17.
+ * Gestione pagina home dopo aver effettuato il login.
+ * Acquisice le info personali dell'utente e mostra le ultime foto inserite
  */
 public class HomeAction extends ActionSupport  implements
         ServletRequestAware {
@@ -86,9 +87,10 @@ public class HomeAction extends ActionSupport  implements
     }
 
     private ArrayList<Monument> lista_mon = new ArrayList<>();
+
+
     public String execute () throws SQLException {
-        Session s = Singleton.getMysession();
-         User u = Singleton.getMyUser();
+          User u = Singleton.getMyUser();
 
         iduser=u.getIdUser();
         nome=u.getNome();
@@ -99,7 +101,7 @@ public class HomeAction extends ActionSupport  implements
         try{
         Connection con = DBUtility.getDBConnection();
         String sql;
-        // sql = "select idPhoto,tag,Monument_idMonument,User_idUser from Photo order by idPhoto DESC";
+
             sql="select u.nome,u.cognome,p.idPhoto,p.tag,p.Monument_idMonument,p.User_idUser from Photo p, User u\n" +
                     "\n" +
                     "where p.User_idUser=u.idUser\n and status = 'checked'" +
@@ -117,7 +119,6 @@ public class HomeAction extends ActionSupport  implements
 
             if(rs1.next()) {
                 String monumento = rs1.getString("monumento");
-                //System.out.println(monumento);
 
                 String nome= rs.getString("u.nome");
                 String cognome=rs.getString("u.cognome");
@@ -130,9 +131,7 @@ public class HomeAction extends ActionSupport  implements
              rs1.close();
             stmt1.close();
          }
-        //controllo se l'utente esiste
-        // se check = false -> utente non esiste
-        //se check = true -> utente esiste
+
          rs.close();
         stmt.close();
 

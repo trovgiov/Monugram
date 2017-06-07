@@ -1,36 +1,29 @@
 package it.uniclam.action.frontend;
 
+/**
+ * Gestisce il login tramite credenziali di facebook. E' stato usato il tool Facebook SDK for Javascript
+ */
+
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
-import it.uniclam.model.Session;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
-import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.SessionAware;
 
-import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 
-/**
- * Created by GiovanniTrovini on 22/04/17.
- */
-public class FacebookLogin extends ActionSupport {
-
-User u;
-
-    public User getU() {
-        return u;
-    }
-
-    public void setU(User u) {
-        this.u = u;
-    }
-
-    private String nome;
-    private String cognome;
-    private String email;
+public class LoginFacebook extends ActionSupport implements SessionAware {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private String userName;
+    private String password;
+    private Map<String, Object> session;
 
     public String getEmail() {
         return email;
@@ -40,6 +33,11 @@ User u;
         this.email = email;
     }
 
+    private String nome;
+    private String cognome;
+    private String email;
+
+    User u;
     public String getNome() {
         return nome;
     }
@@ -54,14 +52,37 @@ User u;
 
     public void setCognome(String cognome) {
         this.cognome = cognome;
-
     }
 
+    public String home() {
+        return SUCCESS;
+    }
 
-    HttpServletRequest req = ServletActionContext.getRequest();
+    // ---------------------------- Log Out register user
 
-    public String execute() {
 
+    /**
+     * Logout
+     * @return
+     */
+    public String logOut() {
+        session.remove("loginId");
+        addActionMessage("You Have Been Successfully Logged Out");
+        return SUCCESS;
+    }
+
+    // ---------------------------- Login register user
+
+    /**
+     * Crea la session con email e password provenienti da facebook.
+     * Se l'email , considerata come chiave primaria, non è presente nel db, si procede alla registrazione dell'utente
+     * Se l'email non è presente nelle info utente facebook, per motivi di privacy, si viene reindirizzati ad un'altra
+     * pagina dove è possibile inserire una mail valida.
+     * Se l'email è presente nel db, allora viene consentito l'accesso all'utente.
+     *
+     * @return
+     */
+    public String loginRegisterUser() {
 
 
         // Acquisisco tutte le persone che si sono collegate all'app con facebook
@@ -73,6 +94,7 @@ User u;
         System.out.println(email);
 
         if (email.equals("undefined")){
+
 
 
             email="undefined";
@@ -105,19 +127,15 @@ User u;
 
 
 
-                    String id = req.getRequestedSessionId();
-
-                    Session s = new Session(id);
-                    System.out.println("Session id "+id);
-
-                    Singleton.setMysession(s);
-                    email = rs3.getString("email");
 
 
-                     u = new User(rs3.getInt("idUser"), rs3.getString("nome"), rs3.getString("cognome"), email, "encrypted", rs3.getInt("point"));
+                     email = rs3.getString("email");
 
 
+                    u = new User(rs3.getInt("idUser"), rs3.getString("nome"), rs3.getString("cognome"), email, "encrypted", rs3.getInt("point"));
 
+
+                    session.put("loginId", email);
                     Singleton.setMyUser(u);
 
 
@@ -127,7 +145,7 @@ User u;
 
 
 
-                    return "success";
+                    return SUCCESS;
                 }
 
 
@@ -147,11 +165,12 @@ User u;
 
 
 
-         }
+        }
 
-         // SE EMAIL NON UNDEFINED
+        // SE EMAIL NON UNDEFINED
         else {
             try {
+
 
                 Connection con = DBUtility.getDBConnection();
 
@@ -219,7 +238,7 @@ User u;
 
                 while (rs2.next()) {
 
-                     u = new User(rs2.getInt("idUser"), rs2.getString("nome"), rs2.getString("cognome"), email, "encrypted", rs2.getInt("point"));
+                    u = new User(rs2.getInt("idUser"), rs2.getString("nome"), rs2.getString("cognome"), email, "encrypted", rs2.getInt("point"));
 
 
                     System.out.println("Utente Loggato: Nome " + u.getNome() + "Cognome " + u.getCognome() + "Email: " + getEmail());
@@ -229,13 +248,9 @@ User u;
                 // se check = false -> utente non esiste
                 //se check = true -> utente esiste
 
-                String id = req.getRequestedSessionId();
 
-                Session s = new Session(id);
 
-                Singleton.setMysession(s);
-                System.out.println("Session id "+id);
-
+                session.put("loginId", email);
 
                 Singleton.setMyUser(u);
 
@@ -248,8 +263,41 @@ User u;
 
 
         }
-        return "success";
+        return  SUCCESS;
 
     }
 
+
+
+
+
+
+
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Map<String, Object> getSession() {
+        return session;
+    }
+
+    public void setSession(Map<String, Object> map) {
+        this.session = map;
+    }
+
 }
+

@@ -1,7 +1,9 @@
 package it.uniclam.model;
 
 /**
- * Created by GiovanniTrovini on 01/05/17.
+ * Gestisce il modello Singleton
+ * Ha lo scopo di garantire che di una determinata classe venga creata una e una sola istanza,
+ * e di fornire un punto di accesso globale a tale istanza.
  */
 public class Singleton {
     public static User getMyUser() {
@@ -14,8 +16,7 @@ public class Singleton {
 
     private static User myUser;
     private static Monument mymonument;
-    private static Session mysession;
-    private static PhotoView myphoto;
+     private static PhotoView myphoto;
 
     public static PhotoView getMyphoto() {
         return myphoto;
@@ -25,13 +26,7 @@ public class Singleton {
         Singleton.myphoto = myphoto;
     }
 
-    public static Session getMysession() {
-        return mysession;
-    }
 
-    public static void setMysession(Session mysession) {
-        Singleton.mysession = mysession;
-    }
 
     public static Monument getMymonument() {
         return mymonument;

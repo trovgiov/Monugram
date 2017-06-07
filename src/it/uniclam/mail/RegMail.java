@@ -1,7 +1,8 @@
 package it.uniclam.mail;
 
 /**
- * Created by Enifix on 28/04/2017.
+ * Invia una mail di conferma all'utente per la corretta registrazione, con il riepilogo delle credenziali e del
+ * punteggio acquisito
  */
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.action.frontend.RegisterAction;
@@ -23,7 +24,7 @@ public class RegMail extends ActionSupport implements ServletRequestAware
     public static final String m_password = "unicas2017";
     public static final String smtpServ = "smtp.gmail.com";
     public static final String subject = "Welcome to Monugram";
-    public String message = "Hi, \n Thank you for your registration to MonugramAPP. \nYour credentials are: \nUsername: ";
+    public String message = "Hi, \n Thank you for your registration to heGO aoo. \nYour credentials are: \nUsername: ";
     public String user_pass;
     private HttpServletRequest hsr;
     private HttpSession hs;
@@ -51,6 +52,10 @@ public class RegMail extends ActionSupport implements ServletRequestAware
         this.to = to.toLowerCase();
     }*/
 
+    /**
+     * Invio Mail
+     * @return
+     */
     public int sender(){
         try
         {

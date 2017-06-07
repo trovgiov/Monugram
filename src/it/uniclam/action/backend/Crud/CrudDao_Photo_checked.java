@@ -6,6 +6,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Lato Backend :
+ * Implementazione query per la creazione di una lista foto controllate
+ */
 public class CrudDao_Photo_checked {
 
     private Connection dbConnection;
@@ -16,7 +20,10 @@ public class CrudDao_Photo_checked {
     }
 
 
-
+    /**
+     * Lista foto controllate
+     * @return
+     */
     public List<PhotoView> getAllPhotos_ch() {
         List<PhotoView> photos = new ArrayList<PhotoView>();
 

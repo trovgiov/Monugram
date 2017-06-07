@@ -8,7 +8,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 /**
- * Created by GiovanniTrovini on 21/05/17.
+ * Gestisce il grafico del progresso per le foto relative al monumento ricevuto in ingresso. Nella parte di visualizzazione
+ * viene fatto uso della libreria d3.js, che riceve il parametro dalla query effettuata in questa classe
  */
 public class MonuProgressAction extends ActionSupport {
 

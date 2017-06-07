@@ -1,7 +1,7 @@
 package it.uniclam.mail;
 
 /**
- * Created by Enifix on 31/05/2017.
+ * Invia una mail all'utente - Lato backend
  */
 
 import com.opensymphony.xwork2.ActionSupport;

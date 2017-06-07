@@ -63,9 +63,9 @@
         <s:div class="box-header">
             <h2>Log In</h2>
         </s:div>
-            <s:form action="loginprocess" class="forms">
+            <s:form action="loginUser"  class="forms">
                 <s:label value="Email"></s:label>
-                <s:textfield name="email" required="true"></s:textfield>
+                <s:textfield name="userName" required="true"></s:textfield>
 
                 <s:label value="Password"></s:label>
                 <s:password name="password" required="true"></s:password>

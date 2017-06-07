@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Enifix on 03/06/2017.
+ * Lato Backend :
+ * Implementazione query per la creazione di una lista foto ignorate
  */
 public class CrudDao_Photo_ignored {
     private Connection dbConnection;

@@ -2,14 +2,13 @@ package it.uniclam.action.backend;
 
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
-import it.uniclam.model.Session;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
 
 import java.sql.*;
 
 /**
- * Created by GiovanniTrovini on 21/05/17.
+ * Gestione info app
  */
 public class home_back extends ActionSupport {
 
@@ -63,8 +62,6 @@ public class home_back extends ActionSupport {
 
     public String execute (){
 
-        Session s = Singleton.getMysession();
-        System.out.println("Session id " +s.getId());
 
 
         User u = Singleton.getMyUser();
@@ -83,6 +80,10 @@ public class home_back extends ActionSupport {
         return "success";
     }
 
+    /**
+     * Mostra il numero di utenti registrati
+     * @return
+     */
     public static int showUserConn()
     {
         int stat=0;
@@ -107,6 +108,10 @@ public class home_back extends ActionSupport {
         return stat;
     }
 
+    /**
+     * Mostra il numero di fato non controlate
+     * @return
+     */
     public static int showTotPhoto()
     {
         int ph=0;
@@ -131,6 +136,10 @@ public class home_back extends ActionSupport {
         return ph;
     }
 
+    /**
+     * Mostra il numero di monumenti nel sistema
+     * @return
+     */
     public static int showTotMon()
     {
         int tmon=0;
@@ -155,6 +164,10 @@ public class home_back extends ActionSupport {
         return tmon;
     }
 
+    /**
+     * Mostra il numero di foto controllate
+     * @return
+     */
     public static int showCheckPh()
     {
         int pch=0;

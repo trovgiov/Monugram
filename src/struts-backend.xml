@@ -4,14 +4,29 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-    <package name="default1" extends="struts-default,json-default" >
+    <package name="login1" extends="struts-default,json-default" >
+        <interceptors>
+            <interceptor class="it.uniclam.action.Interceptor.LoginInterceptor" name="loginInterceptor">
+            </interceptor>
+            <interceptor-stack name="loginStack">
+                <interceptor-ref name="loginInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
 
-    <action name="loginback" class="it.uniclam.action.backend.Login_back">
-        <result name="success">/private/backend/login_back_succ.jsp</result>
-        <result name="log_error">/public/backend/login_back.jsp</result>
-        <result name="input">/public/backend/login_back.jsp</result>
+        <global-results>
+            <result name="login">/public/backend/login_back.jsp</result>
+        </global-results>
+
+        <!--   login action  -->
+        <action name="loginback" class="it.uniclam.action.backend.Login_back" method="loginRegisterUser">
+            <result name="success" type="redirect">/public/backend/login_back_succ.jsp</result>
+            <result name="login">/public/backend/login_back.jsp</result>
+        </action>
+
+        <action name="logOutBack" class="it.uniclam.action.backend.Login_back" method="logOut">
+        <result name="success">/public/backend/login_back.jsp</result>
     </action>
-
 
         <action name="people_list" method="list" class="it.uniclam.action.backend.Controller.ControllerUser">
             <result type="json"></result>
@@ -31,11 +46,14 @@
 
 
         <action name="photoview">
+            <interceptor-ref name="loginStack" />
 
             <result>/private/backend/photoview.jsp</result>
 
         </action>
         <action name="users">
+            <interceptor-ref name="loginStack" />
+
             <result>/private/backend/users.jsp</result>
 
         </action>
@@ -49,19 +67,28 @@
         </action>
 
         <action name="showStats" class="it.uniclam.action.backend.home_back">
+            <interceptor-ref name="loginStack" />
+
+
             <result>/private/backend/dashboard.jsp</result>
         </action>
 
         <action name="updateStatus" class="it.uniclam.action.backend.UpdateStatus">
+            <interceptor-ref name="loginStack" />
+
             <result name="success">/private/backend/photoview.jsp</result>
         </action>
 
         <action name="home_back" class="it.uniclam.action.backend.home_back">
-            <result>/private/backend/dashboard.jsp</result>
+            <interceptor-ref name="loginStack" />
+
+            <result name="success">/private/backend/dashboard.jsp</result>
 
         </action>
 
         <action name="photo_manage" class="it.uniclam.action.backend.PhotoManageAction">
+            <interceptor-ref name="loginStack" />
+
             <result name="success">/private/backend/photo_manage.jsp</result>
 
         </action>
@@ -72,6 +99,8 @@
         </action>
 
         <action name="monumentview" >
+            <interceptor-ref name="loginStack" />
+
             <result>/private/backend/monuments.jsp</result>
 
         </action>
@@ -89,15 +118,20 @@
         </action>
 
         <action name="photo_ignore" method="ignore" class="it.uniclam.action.backend.UpdateStatus">
+            <interceptor-ref name="loginStack" />
+
             <result name="success">/private/backend/photo_manage.jsp</result>
         </action>
 
         <action name="delete_photo" method="execute" class="it.uniclam.action.backend.DeletePhoto">
+
             <result name="success">/private/backend/dashboard.jsp</result>
         </action>
 
         
         <action name="usermail" class="it.uniclam.action.backend.UserInfoMail" >
+            <interceptor-ref name="loginStack" />
+
             <result name="input">/public/backend/user_mail.jsp</result>
             <result name="success">/private/backend/user_mail_success.jsp</result>
             <result name="error">error_mail.jsp</result>

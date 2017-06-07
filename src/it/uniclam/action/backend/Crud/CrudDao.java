@@ -7,6 +7,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Lato Backend :
+ * Implementazione query per la creazione di una lista di utenti, la modifica e la cancellazione
+ */
 public class CrudDao {
 
     private Connection dbConnection;
@@ -17,7 +21,11 @@ public class CrudDao {
     }
 
 
-
+    /**
+     * Lato Backend
+     * inserisce nella lista utenti, tutti gli utenti presenti nel db
+     * @return
+     */
     public List<User> getAllPeople() {
         List<User> users = new ArrayList<User>();
 
@@ -49,6 +57,10 @@ public class CrudDao {
     }
 
 
+    /**
+     * Aggiorna info dell'utente
+     * @param u  User u : utente su cui effettuare la modifica
+     */
     public void updateUser(User u) {
         String updateQuery = "UPDATE User SET email = ? , point = ? WHERE idUser = ?";
         try {
@@ -67,6 +79,10 @@ public class CrudDao {
         }
     }
 
+    /**
+     * Elimina l'utente a partire dall'user id
+     * @param userId
+     */
     public void deleteStudent(int userId) {
         String deleteQuery = "DELETE FROM User WHERE idUser = ?";
         try {

@@ -1,7 +1,7 @@
 package it.uniclam.model;
 
 /**
- * Created by GiovanniTrovini on 18/04/17.
+ * Bean entità user
  */
 public class User {
 
@@ -30,6 +30,7 @@ public class User {
     }
 
     public String getLogin_type() {
+
 
         return login_type;
     }

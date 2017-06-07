@@ -4,7 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.RegisterDAO;
 
 /**
- * Created by GiovanniTrovini on 20/04/17.
+ * Consente la registrazione dell'utente nell'app
  */
 
 public class RegisterAction extends ActionSupport {
@@ -67,7 +67,11 @@ public class RegisterAction extends ActionSupport {
         this.point = point;
     }
 
-    //setters and getters
+
+    /**
+     * Controlla se la registrazione è andata a buon fine
+     * @return
+     */
     public String execute() {
         int i = RegisterDAO.save(this);
         if (i == 1) {

@@ -1,28 +1,25 @@
 package it.uniclam.action.backend;
 
-/**
- * Created by GiovanniTrovini on 21/04/17.
- */
-
-
+import com.mysql.jdbc.PreparedStatement;
 import com.opensymphony.xwork2.ActionSupport;
-import it.uniclam.db.LoginDAO_back;
-import it.uniclam.model.Session;
+import it.uniclam.db.DBUtility;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
-import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
-import javax.servlet.http.HttpServletRequest;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.util.Map;
 
+/**
+ * Gestisce il login per gli utenti registrati con l'app.
+ * Il login viene gestito con l'uso degli interceptor, per avere un maggiore controllo sulla sessione di accesso.
+ */
+public class Login_back extends ActionSupport implements SessionAware {
 
-public  class Login_back extends ActionSupport implements SessionAware {
-    private String username, password;
-
-
-    //private String photo;
+    private static final long serialVersionUID = 1L;
+    private String username;
+    private String password;
 
     public String getUsername() {
         return username;
@@ -32,7 +29,105 @@ public  class Login_back extends ActionSupport implements SessionAware {
         this.username = username;
     }
 
-    SessionMap sessionmap;
+    private Map<String, Object> session;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private String nome;
+    private String cognome;
+    private String email;
+
+    User u;
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public String home() {
+        return SUCCESS;
+    }
+
+    // ---------------------------- Log Out register user
+
+
+    /**
+     * Effettua il logout rimuovendo la sessione
+     * @return
+     */
+    public String logOut() {
+        session.remove("loginId");
+        addActionMessage("You Have Been Successfully Logged Out");
+        return SUCCESS;
+    }
+
+    // ---------------------------- Login register user
+
+
+    /**
+     * Controlla se email e password sono contenuti nel db. Se sono presenti, viene creata una sessione e viene allocato
+     * l'utente, tramite l'uso del costrutto singleton
+     * @return
+     */
+    public String loginRegisterUser() {
+
+        try{
+
+            Connection con = DBUtility.getDBConnection();
+
+            PreparedStatement ps=(PreparedStatement) con.prepareStatement(
+                    "select * from Admin where username=? and password=?");
+            ps.setString(1,username);
+            ps.setString(2,password);
+            ResultSet rs=ps.executeQuery();
+
+
+            if(rs.next()){
+                session.put("loginId", username);
+
+                User u = new User(username);
+
+                Singleton.setMyUser(u);
+
+
+
+
+                return SUCCESS;
+            } else {
+                addActionError("Please Enter Valid emailId or Password");
+                return LOGIN;
+            }
+
+
+
+
+
+
+
+            //System.out.println("Email "+getUser_email());
+        }catch(Exception e){e.printStackTrace();
+        }
+        return LOGIN;
+    }
+
+
+
 
 
     public String getPassword() {
@@ -43,43 +138,12 @@ public  class Login_back extends ActionSupport implements SessionAware {
         this.password = password;
     }
 
-
-    public String execute() {
-
-        boolean check = LoginDAO_back.validate(username, password);
-
-        HttpServletRequest req = ServletActionContext.getRequest();
-        setUsername(req.getParameter("username"));
-        setPassword(req.getParameter("password"));
-
-
-        if (LoginDAO_back.validate(username, password)) {
-
-
-            // chiusura rs2 e stmt2
-
-            // chiusura rs e stmt
-
-            String id = req.getRequestedSessionId();
-
-
-             User u = new User(username);
-            Singleton.setMyUser(u);
-
-            Session s = new Session(id);
-            Singleton.setMysession(s);
-
-            System.out.println(" id session " +id);
-
-            return "success";
-        } else {
-            return "log_error";
-        }
+    public Map<String, Object> getSession() {
+        return session;
     }
 
-
-    @Override
     public void setSession(Map<String, Object> map) {
-
+        this.session = map;
     }
+
 }

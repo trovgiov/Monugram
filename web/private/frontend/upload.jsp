@@ -32,13 +32,14 @@
 
     <s:form action="userImage" method="post" enctype="multipart/form-data" class="login">
         <s:hidden value="monument"/>
-        <label for="capture" class="custom-file-upload">
+
+        <label for="captures" class="custom-file-upload">
             <i class="fa fa-camera"></i> TAKE A PICTURE
         </label>
 
-        <s:div class="forms"><s:file name="userImage" accept="image/*" class="image-button" id="capture" capture="camera" /></s:div>
 
-        <label for="submit" class="custom-file-upload">
+        <s:div class="forms"><s:file name="userImage" accept="image/*" id="captures" capture="camera" /></s:div>
+         <label for="submit" class="custom-file-upload">
             <i class="fa fa-institution"></i> SUBMIT
         </label>
         <s:submit value="submit" name="UPLOAD" id="submit"/>

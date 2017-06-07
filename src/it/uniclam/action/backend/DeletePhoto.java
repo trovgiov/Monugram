@@ -2,7 +2,6 @@ package it.uniclam.action.backend;
 
 import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
-import it.uniclam.model.Session;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -15,7 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Created by GiovanniTrovini on 28/05/17.
+ *
+ * Implementazione query per la cancellazione delle foto sia nel sistema che nel db
  */
 public class DeletePhoto extends ActionSupport implements ServletRequestAware {
     private Connection dbConnection;
@@ -47,8 +47,6 @@ public class DeletePhoto extends ActionSupport implements ServletRequestAware {
     public String execute() throws SQLException {
 
 
-        Session s = Singleton.getMysession();
-        System.out.println("Session id " + s.getId());
 
 
         User u = Singleton.getMyUser();

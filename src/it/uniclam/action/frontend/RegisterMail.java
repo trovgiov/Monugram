@@ -4,19 +4,36 @@ import com.opensymphony.xwork2.ActionSupport;
 import it.uniclam.db.DBUtility;
 import it.uniclam.model.Singleton;
 import it.uniclam.model.User;
+import org.apache.struts2.interceptor.SessionAware;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 
 /**
- * Created by GiovanniTrovini on 26/04/17.
+ * Gestisce il caso in cui, per motivi di privacy al momento della registrazione nell'app,
+ * facebook non restituisce la corretta email ma la stringa "unnamed".
+ * Consente di inserire una mail valida e successivamente inserirla  nel database.
+ * Questo processo verrà effettuato solo quando l'utente accederà per la prima volta.
+ * Quando l'utente, già registrato nel db dell'app, effettua il login con facebook e la mail ricevuta è unnamed, la stringa
+ * "unnamed" viene sostituita con la mail presente nel db e viene creata la session.
+ *
  */
-public class RegisterMail extends ActionSupport {
+public class RegisterMail extends ActionSupport implements SessionAware{
 
+    private Map<String, Object> session;
 
     private String email;
+
+    public Map<String, Object> getSession() {
+        return session;
+    }
+
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
+    }
 
     public String getCognome() {
         return cognome;
@@ -57,7 +74,7 @@ public class RegisterMail extends ActionSupport {
         this.u = u;
     }
 
-    public String execute() {
+    public String loginRegisterUser() {
 
         try {
 
@@ -137,14 +154,14 @@ public class RegisterMail extends ActionSupport {
                 System.out.println("Utente Loggato: Nome " + u.getNome() + "Cognome " + u.getCognome() + "Email: " + getEmail());
             }
 
-            //controllo se l'utente esiste
-            // se check = false -> utente non esiste
-            //se check = true -> utente esiste
 
 
 
             stmt2.close();
             con2.close();
+
+            System.out.println("NEW MAIL "+email);
+            session.put("loginId", email);
 
             Singleton.setMyUser(u);
 
@@ -153,7 +170,7 @@ public class RegisterMail extends ActionSupport {
             e.printStackTrace();
         }
 
-        return "SUCCESS";
+        return SUCCESS;
 
     }
 

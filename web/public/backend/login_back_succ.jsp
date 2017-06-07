@@ -16,7 +16,7 @@
 
 
 
-    <meta http-equiv="refresh" content="2;URL=<s:url action="home_back"/>">
+    <meta http-equiv="refresh" content="2;URL=/home_back.action" >
 
 
 <body>

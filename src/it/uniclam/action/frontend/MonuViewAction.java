@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
- * Created by GiovanniTrovini on 14/05/17.
+ * Permette la visualizzazione dei monumenti
  */
 public class MonuViewAction {
 

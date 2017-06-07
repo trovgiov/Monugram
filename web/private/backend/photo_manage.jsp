@@ -125,11 +125,10 @@
                                 <li><a href="#">Notifica 4</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="/public/frontend/login.jsp">
-                                <i class="ti-power-off"></i>
-                                <p>Logout</p>
-                            </a>
+                        <li>  <a href="<s:url action="logOutBack"/>">
+                            <i class="ti-power-off"></i>
+                            <p>Logout</p>
+                        </a>
                         </li>
                     </ul>
 

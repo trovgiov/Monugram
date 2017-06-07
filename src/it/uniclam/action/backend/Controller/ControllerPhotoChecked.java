@@ -1,11 +1,11 @@
 package it.uniclam.action.backend.Controller;
 
 /**
- * Created by Enifix on 26/05/2017.
+ * BACKEND :
+ * Consente la creazione di una lista di tutte lel foto controllate
  */
 
 import com.opensymphony.xwork2.Action;
-import it.uniclam.action.backend.Crud.CrudDao_Photo;
 import it.uniclam.action.backend.Crud.CrudDao_Photo_checked;
 import it.uniclam.model.PhotoView;
 
@@ -119,6 +119,10 @@ public class ControllerPhotoChecked {
         IsActive = active;
     }
 
+    /**
+     * Lista foto
+     * @return
+     */
     public String list(){
         try{
             records=dao.getAllPhotos_ch();

@@ -8,9 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Created by Enifix on 26/05/2017.
- */
+
 public class UpdateStatus extends ActionSupport {
 
 
