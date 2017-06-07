@@ -278,7 +278,7 @@
 
                         <li>
                             <a href="http://www.creative-tim.com">
-                                monuGRAM TEAM
+                                heGO TEAM
                             </a>
                         </li>
                         <li>

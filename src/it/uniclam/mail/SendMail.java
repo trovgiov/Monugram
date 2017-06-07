@@ -21,8 +21,8 @@ import java.util.Properties;
  */
 public class SendMail extends ActionSupport implements ServletRequestAware{
     private String to;
-    public static final String from = "monugramapp@gmail.com";
-    public static final String m_password = "unicas2017";
+    public static final String from = "hegoapp@gmail.com";
+    public static final String m_password = "unicasapp2017";
     public static final String smtpServ = "smtp.gmail.com";
     public static final String subject = "Password Recovery from Monugram";
     public String message = "Hi, you have requested your password from MonugramAPP. Your password is: ";

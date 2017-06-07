@@ -372,7 +372,7 @@
 
         $.notify({
             icon: 'ti-face-smile',
-            message: "Benvenuto nella <b>monuGRAM Dashboard</b> - Da qui puoi gestire tutti gli utenti e le foto presenti nel sistema!"
+            message: "Benvenuto nella <b>heGo Dashboard</b> - Da qui puoi gestire tutti gli utenti e le foto presenti nel sistema!"
 
         },{
             type: 'success',

@@ -96,7 +96,7 @@
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <result name="success">/private/frontend/successPhoto.jsp</result>
             <result name="error">/private/frontend/errorPhoto.jsp</result>
-            <result name="input">/private/frontend/message.jsp</result>
+            <result name="input">/private/frontend/errorPhoto.jsp</result>
         </action>
 
         <action name="monument_drop" class="it.uniclam.action.frontend.MonumentAction" method="display">

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 
 /**
   *
-  * @author Enifix
+  *
   */
 public class Back implements ServletRequestAware {
     HttpServletRequest hsr;

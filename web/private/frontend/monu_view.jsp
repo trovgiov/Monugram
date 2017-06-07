@@ -29,7 +29,7 @@
 
     <!-- Header -->
     <header id="header">
-        <h1><strong><s:property value="monumento"></s:property></strong> - MONUgram</h1>
+        <h1><strong><s:property value="monumento"></s:property></strong> - heGO</h1>
         <nav>
             <ul>
                 <li><a href="<s:url action="monuprogress"/>?monumento=<s:property value="monumento"/>" class="icon fa-info-circle">Progress</a></li>

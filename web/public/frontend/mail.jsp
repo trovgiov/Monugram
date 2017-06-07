@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monugram - Register</title>
+    <title>heGO - Register</title>
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
@@ -53,7 +53,7 @@
 
 <s:div class="container">
     <s:div class="top">
-        <h1 id="title" class="hidden"><span id="logo">Monu<span>GRAM</span></span></h1><br>
+        <h1 id="title" class="hidden"><span id="logo">he<span>GO</span></span></h1><br>
     </s:div>
     <s:div class="login-box animated fadeInUp">
         <s:div class="box-header">

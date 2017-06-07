@@ -143,7 +143,9 @@ public class FileUploadAction extends ActionSupport implements
 
                 BufferedImage originalImage = ImageIO.read(userImage);
                 Directory directory1 = metadata.getDirectory(ExifIFD0Directory.class);
+
                 orientation = directory1.getInt(ExifIFD0Directory.TAG_ORIENTATION);
+
                 System.out.println("ORIENTAAAA \n\n\n" + orientation);
 
                 JpegDirectory jpegDirectory = (JpegDirectory) metadata.getDirectory(JpegDirectory.class);
