@@ -117,9 +117,6 @@
                      <header>
                     <h3> <s:property value="filepath" /><s:property value="monument" />/<s:property value="title" /></h3>
                     </header>
-                    <p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
-
-
                     <br>
 
                 </s:iterator>

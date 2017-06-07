@@ -47,7 +47,7 @@
 <div id="svg-container"><svg id="fillgauge1" height="350px" width="350px"></svg></div>
 
 <p><p><p></p>
-<div class="textarea"><img src="/Monumenti/<s:property value="monumento"/>/<s:property value="monumento"/>.jpg" style="width:400px; height:224px;">
+<div class="textarea"><img src="../../images/<s:property value="monumento"/>.jpg" style="width:400px; height:224px;">
 
     <p><p></p>
     <a href="<s:url action="home"/>"><img src="../../images/back.png" style="width:120px;height:60px;"></a>
